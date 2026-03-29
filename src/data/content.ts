@@ -9,6 +9,14 @@ import {
   WandSparkles
 } from 'lucide-react';
 
+
+// src/data/content.ts
+export const projects: string[] = [
+  'Intro to Machine Learning mini-series',
+  'Prompting challenge of the month',
+  'AI ethics debate night',
+  'Build-a-bot workshop'
+];
 export const navLinks = [
   { label: 'About', href: '#about' },
   { label: 'What We Do', href: '#what-we-do' },
