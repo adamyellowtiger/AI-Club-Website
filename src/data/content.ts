@@ -9,17 +9,10 @@ import {
   WandSparkles
 } from 'lucide-react';
 
-
-// src/data/content.ts
-export const projects: string[] = [
-  'Intro to Machine Learning mini-series',
-  'Prompting challenge of the month',
-  'AI ethics debate night',
-  'Build-a-bot workshop'
-];
 export const navLinks = [
   { label: 'About', href: '#about' },
   { label: 'What We Do', href: '#what-we-do' },
+  { label: 'Prompt-A-Thon', href: '#promptathon' },
   { label: 'Meetings', href: '#meetings' },
   { label: 'AI Bits', href: '#ai-bits' },
   { label: 'Resources', href: '#resources' },
@@ -123,6 +116,47 @@ export const aiBits: AIBit[] = [
     ]
   }
 ];
+
+
+export const promptathon = {
+  title: 'Prompt-A-Thon Competition',
+  subtitle:
+    'A team-based AI competition where students use prompt engineering, iteration, and critical thinking to solve real problems.',
+  details: [
+    { label: 'Date', value: 'May 6, 2026' },
+    { label: 'Time', value: '8:30 AM - 4:00 PM' },
+    { label: 'Site', value: 'York University at Markham' },
+    { label: 'Team Size', value: 'Teams of 4 (Grades 9-12 division for Bayview)' },
+    { label: 'Open Spots', value: 'Bayview AI Club currently has 2 open spots' }
+  ],
+  overview:
+    'A Prompt-A-Thon is a creative problem-solving challenge where teams use strategic prompting with Generative AI to research, iterate, and develop solutions to a central challenge. The event helps students move from passive AI use to active, critical thinking and responsible AI practice.',
+  skills: ['Prompting', 'Critical analysis', 'Iteration', 'Human-in-the-loop thinking', 'Fact-checking'],
+  bringItems: [
+    'Laptop or device with internet access and DTAP-approved tools',
+    'Charging cable',
+    'Headphones',
+    '1 power bar (optional)',
+    'Helpful accessories (external mouse, keyboard, or headset)',
+    'Signed media release forms'
+  ],
+  format: [
+    'Teams use AI as a thought partner to address a current issue.',
+    'Preliminary judges circulate throughout the day to ask about prompts, process, and ideas.',
+    'Teams may be notified by 1:45 PM if selected for the final pitch.',
+    'Certificates are handed out around 3:15 PM, followed by closing remarks and 4:00 PM pickup.'
+  ],
+  notes: [
+    'Lunch is provided.',
+    'Any food brought must be nut-free.',
+    'All team members must be from the same school.',
+    'Students must follow the YRDSB Code of Student Conduct.',
+    'Use only DTAP-approved digital tools and permitted materials.',
+    'Dishonest conduct such as cheating or plagiarism is not allowed.',
+    'Tables and chairs are provided onsite.'
+  ],
+  callout: 'Bayview AI Club currently has 2 open spots for our Prompt-A-Thon team.'
+};
 
 export const resources = [
   { title: 'AI Basics Starter Guide', description: 'Simple glossary and concept map for new members.', href: '#' },
