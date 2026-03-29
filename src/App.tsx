@@ -6,6 +6,7 @@ import FaqSection from './sections/FaqSection';
 import HeroSection from './sections/HeroSection';
 import JoinSection from './sections/JoinSection';
 import MeetingsSection from './sections/MeetingsSection';
+import ProjectsSection from './sections/ProjectsSection';
 import ResourcesSection from './sections/ResourcesSection';
 import TeamSection from './sections/TeamSection';
 import WhatWeDoSection from './sections/WhatWeDoSection';
@@ -20,6 +21,7 @@ export default function App() {
         <WhatWeDoSection />
         <MeetingsSection />
         <AIBitsSection />
+        <ProjectsSection />
         <ResourcesSection />
         <TeamSection />
         <FaqSection />

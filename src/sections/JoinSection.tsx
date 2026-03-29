@@ -9,24 +9,14 @@ export default function JoinSection() {
           <SectionTitle
             eyebrow="Join Us"
             title="Ready to learn AI with us?"
-            subtitle="Join our official channels to get meeting reminders, resources, and updates."
+            subtitle="Pick the platform that works best for you and stay connected with Bayview AI Club updates."
           />
           <div className="mt-6 flex flex-wrap gap-3">
             {joinLinks.map((link) => (
-              <a
-                key={link.label}
-                href={link.href}
-                className="rounded-xl bg-white px-5 py-3 font-semibold text-blue-700 hover:bg-blue-50"
-                target="_blank"
-                rel="noreferrer"
-              >
+              <a key={link.label} href={link.href} className="rounded-xl bg-white px-5 py-3 font-semibold text-blue-700 hover:bg-blue-50">
                 {link.label}
               </a>
             ))}
-          </div>
-          <div className="mt-6 rounded-2xl border border-blue-300/60 bg-white/10 p-4 text-sm leading-relaxed text-blue-50">
-            <p>Use a YRDSB gapps account to join Google Classroom.</p>
-            <p className="mt-1">If the link does not work, use class code: 7b6loaop.</p>
           </div>
         </div>
       </div>
