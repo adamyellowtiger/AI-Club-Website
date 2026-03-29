@@ -12,9 +12,10 @@ export default function ProjectsSection() {
           subtitle="These initiatives help members practice communication, critical thinking, and technical skills."
         />
         <div className="grid gap-4 md:grid-cols-2">
-          {projects.map((project: string) => (
-            <article className="card" key={project}>
-              <p className="font-medium text-slate-700">{project}</p>
+          {projects.map((project) => (
+            <article className="card" key={project.title}>
+              <p className="font-medium text-slate-700">{project.title}</p>
+              <p className="mt-2 text-sm text-slate-600">{project.description}</p>
             </article>
           ))}
         </div>
