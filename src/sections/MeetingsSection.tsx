@@ -15,8 +15,8 @@ export default function MeetingsSection() {
             Upcoming Session
           </span>
           <div className="space-y-4">
-            {meetings.map((meeting, index) => (
-              <article key={`${meeting.date}-${meeting.topic}-${index}`} className="card">
+            {meetings.map((meeting) => (
+              <article key={meeting.id} className="card">
                 <p className="pill mb-3">{meeting.date}</p>
                 <h3 className="text-xl font-bold text-slate-900">{meeting.topic}</h3>
                 <p className="mt-3 text-slate-600">{meeting.note}</p>
