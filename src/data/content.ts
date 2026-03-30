@@ -178,12 +178,28 @@ export const promptathon = {
 };
 
 export const resources = [
-  { title: 'AI Basics Starter Guide', description: 'Simple glossary and concept map for new members.', href: '#' },
+  {
+    title: 'AI Basics Starter Guide',
+    description: 'Simple glossary and concept map for new members.',
+    href: `${import.meta.env.BASE_URL}resources/AI_Basics_Starter_Guide.pdf`
+  },
   { title: 'Meeting Slides Archive', description: 'Slide decks from recent sessions and demos.', href: '#' },
   { title: 'Weekly Recap Notes', description: 'Quick summaries for anyone who missed a meeting.', href: '#' },
-  { title: 'Useful Tools List', description: 'Curated free tools for learning, building, and presenting.', href: '#' },
-  { title: 'AI Ethics Reading List', description: 'Articles and videos to spark thoughtful discussion.', href: '#' },
-  { title: 'Prompting Cheat Sheet', description: 'Tips for clearer prompts and better results.', href: '#' }
+  {
+    title: 'Useful Tools List',
+    description: 'Curated free tools for learning, building, and presenting.',
+    href: `${import.meta.env.BASE_URL}resources/Useful_Tools_List.pdf`
+  },
+  {
+    title: 'AI Ethics Reading List',
+    description: 'Articles and videos to spark thoughtful discussion.',
+    href: `${import.meta.env.BASE_URL}resources/AI_Ethics_Reading_List.pdf`
+  },
+  {
+    title: 'Prompting Cheat Sheet',
+    description: 'Tips for clearer prompts and better results.',
+    href: `${import.meta.env.BASE_URL}resources/Prompting_Cheat_Sheet.pdf`
+  }
 ];
 
 export const team = [
