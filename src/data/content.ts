@@ -46,6 +46,11 @@ export const featureCards = [
 
 export const meetings = [
   {
+    date: 'TBD',
+    topic: 'AI Agents',
+    note: 'We will break down what AI agents are, how they work, and where they are being used in real-world workflows.'
+  },
+  {
     date: 'Tuesday, March 31',
     topic: 'Mechanistic Interpretability',
     note: 'We will explore how researchers peek inside neural networks, trace internal circuits, and ask what specific components may be doing.'
