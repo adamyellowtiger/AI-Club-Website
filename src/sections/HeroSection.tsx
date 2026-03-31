@@ -3,7 +3,10 @@ import { meetings } from '../data/content';
 
 export default function HeroSection() {
   const nextMeeting = meetings.find((meeting) => meeting.date !== 'TBD') ?? meetings[0];
-  const alsoComingSoonMeeting = meetings.find((meeting) => meeting.date === 'TBD' && meeting.id !== nextMeeting?.id);
+  const alsoComingSoonMeeting =
+    nextMeeting?.date !== 'TBD'
+      ? meetings.find((meeting) => meeting.date === 'TBD' && meeting.id !== nextMeeting.id)
+      : undefined;
 
   return (
     <section id="top" className="bg-hero-glow">
