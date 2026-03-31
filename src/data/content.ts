@@ -246,6 +246,6 @@ export const joinLinks = [
   {
     label: 'Join Google Classroom',
     href: 'https://classroom.google.com/c/ODI1MTYzNTE5OTU2?cjc=7b6loaop',
-    helperText: 'Official school-side updates and resources (use your YRDSB account).'
+    helperText: 'Official school updates and resources (use your YRDSB account).'
   }
 ];
