@@ -7,5 +7,4 @@
     "allowSyntheticDefaultImports": true
   },
   "include": ["vite.config.ts"]
-  "include": ["src", "src/vite-env.d.ts"]
 }
