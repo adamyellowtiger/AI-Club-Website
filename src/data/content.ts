@@ -200,31 +200,49 @@ export const resources = [
   }
 ];
 
-export const team = [
+export type TeamMember = {
+  name: string;
+  role: string;
+  summary: string;
+  focusLabel: string;
+  focus: string;
+};
+
+export const team: TeamMember[] = [
   {
     name: 'Adam Fan',
     role: 'Co-President',
-    bio: 'Helps lead club direction, shape meeting plans, and keep the club welcoming and ambitious.'
+    summary: 'Co-leads overall club direction, planning, and member experience across the school year.',
+    focusLabel: 'Owns',
+    focus: 'Semester roadmap, weekly planning priorities, and leadership coordination.'
   },
   {
     name: 'Leo Wang',
     role: 'Co-President',
-    bio: 'Helps lead meetings, coordinate members, and keep club activities organized and engaging.'
+    summary: 'Co-leads meetings and operations to keep sessions organized, consistent, and student-focused.',
+    focusLabel: 'Runs',
+    focus: 'Meeting flow, member coordination, and in-session facilitation.'
   },
   {
     name: 'Albert Yang',
     role: 'Teaching and Meeting Executive',
-    bio: 'Supports lesson planning, explainers, and the structure of weekly meeting activities.'
+    summary: 'Designs beginner-friendly learning segments and supports the structure of weekly lessons.',
+    focusLabel: 'Leads',
+    focus: 'Lesson outlines, concept explainers, and hands-on meeting activities.'
   },
   {
     name: 'Muhammed Masood',
     role: 'Outreach and Media Executive',
-    bio: 'Helps with outreach, updates, promotion, and club-facing media content.'
+    summary: 'Supports external communication so members and the wider school community stay informed.',
+    focusLabel: 'Handles',
+    focus: 'Club outreach updates, promotion, and media content planning.'
   },
   {
     name: 'Claire Bilodeau',
     role: 'Outreach and Media Executive',
-    bio: 'Helps with communications, announcements, outreach, and visual/media support.'
+    summary: 'Coordinates communication touchpoints and helps keep public-facing club messaging consistent.',
+    focusLabel: 'Supports',
+    focus: 'Announcements, outreach communication, and visual/media materials.'
   }
 ];
 
