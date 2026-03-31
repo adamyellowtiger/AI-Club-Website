@@ -11,17 +11,19 @@ export default function JoinSection() {
             title="Ready to learn AI with us?"
             subtitle="Join our official channels to get meeting reminders, resources, and updates."
           />
-          <div className="mt-6 flex flex-wrap gap-3">
+          <div className="mt-6 grid gap-4 sm:grid-cols-2">
             {joinLinks.map((link) => (
-              <a
-                key={link.label}
-                href={link.href}
-                className="rounded-xl bg-white px-5 py-3 font-semibold text-blue-700 hover:bg-blue-50"
-                target="_blank"
-                rel="noreferrer"
-              >
-                {link.label}
-              </a>
+              <div key={link.label} className="min-w-0">
+                <a
+                  href={link.href}
+                  className="inline-flex rounded-xl bg-white px-5 py-3 font-semibold text-blue-700 hover:bg-blue-50"
+                  target="_blank"
+                  rel="noreferrer"
+                >
+                  {link.label}
+                </a>
+                {link.helperText ? <p className="mt-2 text-sm text-blue-100">{link.helperText}</p> : null}
+              </div>
             ))}
           </div>
           <div className="mt-6 rounded-2xl border border-blue-300/60 bg-white/10 p-4 text-sm leading-relaxed text-blue-50">

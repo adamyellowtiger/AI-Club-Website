@@ -256,6 +256,14 @@ export const faqs = [
 ];
 
 export const joinLinks = [
-  { label: 'Discord', href: 'https://discord.gg/RKta2VYbrH' },
-  { label: 'Google Classroom', href: 'https://classroom.google.com/c/ODI1MTYzNTE5OTU2?cjc=7b6loaop' }
+  {
+    label: 'Join Discord',
+    href: 'https://discord.gg/RKta2VYbrH',
+    helperText: 'Best place for quick reminders, announcements, and community updates.'
+  },
+  {
+    label: 'Join Google Classroom',
+    href: 'https://classroom.google.com/c/ODI1MTYzNTE5OTU2?cjc=7b6loaop',
+    helperText: 'Official school updates and resources (use your YRDSB account).'
+  }
 ];
