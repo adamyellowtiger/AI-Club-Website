@@ -20,12 +20,6 @@ export const navLinks = [
   { label: 'FAQ', href: '#faq' },
   { label: 'Join', href: '#join' }
 ];
-export type Project = { title: string; description: string };
-
-export const projects: Project[] = [
-  { title: 'Weekly mini-builds', description: 'Short hands-on builds to practice AI concepts.' },
-  { title: 'Show-and-tell demos', description: 'Members present what they built or learned.' }
-];
 export const aboutCards = [
   { title: 'Learn', text: 'Understand AI basics, from data to models, with beginner-friendly explainers and visual demos.' },
   { title: 'Discuss', text: 'Talk about AI in school, society, and careers while practicing thoughtful and respectful dialogue.' },
