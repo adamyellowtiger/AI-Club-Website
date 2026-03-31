@@ -1,0 +1,126 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="Meeting Slides Archive for Bayview AI Club."
+    />
+    <title>Meeting Slides Archive</title>
+    <style>
+      :root {
+        color-scheme: light;
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+
+      body {
+        margin: 0;
+        font-family: Inter, system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+        background: linear-gradient(180deg, #eff6ff 0%, #ffffff 60%);
+        color: #0f172a;
+      }
+
+      .page {
+        max-width: 760px;
+        margin: 0 auto;
+        padding: 48px 20px 64px;
+      }
+
+      h1 {
+        margin: 0;
+        font-size: clamp(1.75rem, 4vw, 2.25rem);
+        color: #1d4ed8;
+      }
+
+      .intro {
+        margin-top: 12px;
+        color: #334155;
+        line-height: 1.6;
+      }
+
+      .entry {
+        margin-top: 28px;
+        padding: 24px;
+        border: 1px solid #bfdbfe;
+        border-radius: 14px;
+        background: #ffffff;
+        box-shadow: 0 10px 30px rgba(15, 23, 42, 0.08);
+      }
+
+      .entry h2 {
+        margin: 0;
+        font-size: 1.25rem;
+        color: #1e3a8a;
+      }
+
+      .entry p {
+        margin: 12px 0 0;
+        color: #475569;
+        line-height: 1.6;
+      }
+
+      .actions {
+        margin-top: 18px;
+        display: flex;
+        flex-wrap: wrap;
+        gap: 12px;
+      }
+
+      .button {
+        display: inline-block;
+        text-decoration: none;
+        font-weight: 600;
+        border-radius: 10px;
+        padding: 10px 14px;
+        border: 1px solid transparent;
+      }
+
+      .button-download {
+        background: #2563eb;
+        color: #ffffff;
+      }
+
+      .button-download:hover {
+        background: #1d4ed8;
+      }
+
+      .button-back {
+        color: #1d4ed8;
+        border-color: #93c5fd;
+        background: #f8fbff;
+      }
+
+      .button-back:hover {
+        background: #eff6ff;
+      }
+    </style>
+  </head>
+  <body>
+    <main class="page">
+      <h1>Meeting Slides Archive</h1>
+      <p class="intro">Browse and download Bayview AI Club meeting slide decks.</p>
+
+      <section class="entry" aria-label="Slideshow entry">
+        <h2>Embeddings in 20 Minutes: Turning Meaning into Numbers</h2>
+        <p>
+          A Bayview AI Club mini-lesson introducing embeddings, meaning as numbers, vectors,
+          cosine similarity, semantic search, recommendations, and RAG.
+        </p>
+        <div class="actions">
+          <a
+            class="button button-download"
+            href="slides/embeddings-in-20-minutes-turning-meaning-into-numbers.pptx"
+            target="_blank"
+            rel="noopener noreferrer"
+            >Download Slides (.pptx)</a
+          >
+          <a class="button button-back" href="./">Back to Bayview AI Club</a>
+        </div>
+      </section>
+    </main>
+  </body>
+</html>
