@@ -13,7 +13,7 @@ export default function ResourcesSection() {
         <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
           {resources.map((item) =>
             item.status === 'coming-soon' ? (
-              <div key={item.title} className="card block cursor-not-allowed border-dashed border-slate-300 bg-slate-50/70 opacity-85" aria-disabled="true">
+              <div key={item.title} className="card block cursor-not-allowed border-dashed border-slate-300 bg-slate-50/70 opacity-85">
                 <div className="flex items-start justify-between gap-3">
                   <h3 className="font-bold text-slate-900">{item.title}</h3>
                   <span className="inline-flex rounded-full bg-slate-200 px-2.5 py-1 text-xs font-semibold uppercase tracking-wide text-slate-700">Coming soon</span>
