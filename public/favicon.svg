@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" role="img" aria-label="Bayview AI Club favicon">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#1d4ed8" />
+      <stop offset="100%" stop-color="#3b82f6" />
+    </linearGradient>
+  </defs>
+  <rect x="2" y="2" width="60" height="60" rx="14" fill="url(#bg)" />
+  <circle cx="32" cy="32" r="18" fill="#eff6ff" />
+  <rect x="20" y="18" width="24" height="20" rx="6" fill="#ffffff" stroke="#2563eb" stroke-width="2.5" />
+  <circle cx="27" cy="28" r="2.3" fill="#2563eb" />
+  <circle cx="37" cy="28" r="2.3" fill="#2563eb" />
+  <rect x="25.5" y="33" width="13" height="2.8" rx="1.4" fill="#60a5fa" />
+  <rect x="24" y="40" width="16" height="8" rx="3.2" fill="#ffffff" stroke="#2563eb" stroke-width="2" />
+  <rect x="27.5" y="11" width="9" height="5.5" rx="2.7" fill="#2563eb" />
+  <circle cx="32" cy="9" r="2.2" fill="#93c5fd" />
+</svg>
