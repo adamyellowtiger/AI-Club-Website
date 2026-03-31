@@ -175,28 +175,33 @@ export const resources = [
   {
     title: 'AI Basics Starter Guide',
     description: 'Simple glossary and concept map for new members.',
-    href: `${import.meta.env.BASE_URL}resources/AI_Basics_Starter_Guide.pdf`
+    href: `${import.meta.env.BASE_URL}resources/AI_Basics_Starter_Guide.pdf`,
+    status: 'live'
   },
   {
     title: 'Meeting Slides Archive',
     description: 'Slide decks from recent sessions and demos.',
-    href: `${import.meta.env.BASE_URL}meeting-slides-archive.html`
+    href: `${import.meta.env.BASE_URL}meeting-slides-archive.html`,
+    status: 'live'
   },
-  { title: 'Weekly Recap Notes', description: 'Quick summaries for anyone who missed a meeting.', href: '#' },
+  { title: 'Weekly Recap Notes', description: 'Quick summaries for anyone who missed a meeting.', href: '#', status: 'coming-soon' },
   {
     title: 'Useful Tools List',
     description: 'Curated free tools for learning, building, and presenting.',
-    href: `${import.meta.env.BASE_URL}resources/Useful_Tools_List.pdf`
+    href: `${import.meta.env.BASE_URL}resources/Useful_Tools_List.pdf`,
+    status: 'live'
   },
   {
     title: 'AI Ethics Reading List',
     description: 'Articles and videos to spark thoughtful discussion.',
-    href: `${import.meta.env.BASE_URL}resources/AI_Ethics_Reading_List.pdf`
+    href: `${import.meta.env.BASE_URL}resources/AI_Ethics_Reading_List.pdf`,
+    status: 'live'
   },
   {
     title: 'Prompting Cheat Sheet',
     description: 'Tips for clearer prompts and better results.',
-    href: `${import.meta.env.BASE_URL}resources/Prompting_Cheat_Sheet.pdf`
+    href: `${import.meta.env.BASE_URL}resources/Prompting_Cheat_Sheet.pdf`,
+    status: 'live'
   }
 ];
 

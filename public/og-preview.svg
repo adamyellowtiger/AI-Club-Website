@@ -1,0 +1,37 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 630" role="img" aria-label="Bayview AI Club social preview">
+  <defs>
+    <linearGradient id="page" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#dbeafe" />
+      <stop offset="100%" stop-color="#eff6ff" />
+    </linearGradient>
+    <linearGradient id="card" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#2563eb" />
+      <stop offset="100%" stop-color="#1d4ed8" />
+    </linearGradient>
+  </defs>
+
+  <rect width="1200" height="630" fill="url(#page)" />
+  <rect x="70" y="70" width="1060" height="490" rx="36" fill="#ffffff" />
+  <rect x="95" y="95" width="1010" height="440" rx="30" fill="url(#card)" />
+
+  <g transform="translate(160,160)">
+    <circle cx="130" cy="130" r="118" fill="#eff7ff" />
+    <rect x="70" y="62" width="120" height="102" rx="28" fill="#ffffff" stroke="#2e7de0" stroke-width="7" />
+    <rect x="100" y="34" width="60" height="28" rx="12" fill="#2e7de0" />
+    <circle cx="130" cy="24" r="10" fill="#8ad2ff" />
+    <circle cx="102" cy="110" r="10" fill="#2e7de0" />
+    <circle cx="158" cy="110" r="10" fill="#2e7de0" />
+    <rect x="98" y="136" width="64" height="8" rx="4" fill="#5ba9ff" />
+    <rect x="86" y="172" width="88" height="58" rx="18" fill="#ffffff" stroke="#2e7de0" stroke-width="7" />
+  </g>
+
+  <text x="430" y="250" fill="#ffffff" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="66" font-weight="800">
+    Bayview AI Club
+  </text>
+  <text x="430" y="315" fill="#dbeafe" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="32" font-weight="500">
+    Student-led AI learning at Bayview
+  </text>
+  <text x="430" y="375" fill="#dbeafe" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="28">
+    Learn how AI works • Explore real tools • Join beginner-friendly meetings
+  </text>
+</svg>
