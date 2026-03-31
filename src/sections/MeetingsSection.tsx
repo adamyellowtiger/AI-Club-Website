@@ -26,10 +26,9 @@ export default function MeetingsSection() {
     'inline-flex items-center rounded-full border border-slate-200 bg-slate-100 px-3 py-1 text-xs font-semibold text-slate-600';
   const tentativeFeaturedPillClassName =
     'mb-3 inline-flex rounded-full border border-amber-200 bg-amber-50 px-3 py-1 text-xs font-semibold text-amber-700';
-  const featuredLabelClassName = featuredIsConfirmed
-    ? 'pill mb-3'
-    : tentativeFeaturedPillClassName;
-  const featuredDateClassName = featuredIsConfirmed ? 'mt-3 text-sm font-semibold text-blue-700' : 'mt-3 text-sm font-semibold text-amber-700';
+  const featuredLabelClassName = featuredIsConfirmed ? 'pill mb-3' : tentativeFeaturedPillClassName;
+  const featuredDateBaseClassName = 'mt-3 text-sm font-semibold';
+  const featuredDateClassName = `${featuredDateBaseClassName} ${featuredIsConfirmed ? 'text-blue-700' : 'text-amber-700'}`;
   const featuredDateText = featuredIsConfirmed ? featuredMeeting?.date : 'Date TBD';
 
   return (
