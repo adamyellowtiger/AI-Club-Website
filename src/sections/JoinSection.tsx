@@ -10,6 +10,7 @@ export default function JoinSection() {
             eyebrow="Join Us"
             title="Ready to learn AI with us?"
             subtitle="Join our official channels to get meeting reminders, resources, and updates."
+            tone="inverse"
           />
           <div className="mt-6 grid gap-4 sm:grid-cols-2">
             {joinLinks.map((link) => (
