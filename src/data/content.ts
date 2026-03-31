@@ -183,7 +183,11 @@ export const resources = [
     description: 'Simple glossary and concept map for new members.',
     href: `${import.meta.env.BASE_URL}resources/AI_Basics_Starter_Guide.pdf`
   },
-  { title: 'Meeting Slides Archive', description: 'Slide decks from recent sessions and demos.', href: '#' },
+  {
+    title: 'Meeting Slides Archive',
+    description: 'Slide decks from recent sessions and demos.',
+    href: `${import.meta.env.BASE_URL}meeting-slides-archive.html`
+  },
   { title: 'Weekly Recap Notes', description: 'Quick summaries for anyone who missed a meeting.', href: '#' },
   {
     title: 'Useful Tools List',
