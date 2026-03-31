@@ -6,8 +6,13 @@ export default function MeetingsSection() {
   const tentativeMeetings = meetings.filter((meeting) => meeting.date === 'TBD');
   const featuredMeeting = confirmedMeetings[0] ?? meetings[0];
   const remainingConfirmed = confirmedMeetings.slice(1);
-  const remainingTentative = tentativeMeetings.filter((meeting) => meeting.id !== featuredMeeting?.id);
   const featuredIsConfirmed = featuredMeeting?.date !== 'TBD';
+  const remainingTentative = featuredIsConfirmed ? tentativeMeetings : tentativeMeetings.slice(1);
+  const featuredLabelClassName = featuredIsConfirmed
+    ? 'pill mb-3'
+    : 'mb-3 inline-flex rounded-full border border-amber-200 bg-amber-50 px-3 py-1 text-xs font-semibold text-amber-700';
+  const featuredDateClassName = featuredIsConfirmed ? 'mt-3 text-sm font-semibold text-blue-700' : 'mt-3 text-sm font-semibold text-amber-700';
+  const featuredDateText = featuredIsConfirmed ? featuredMeeting?.date : 'Date TBD';
 
   return (
     <section id="meetings">
@@ -20,11 +25,11 @@ export default function MeetingsSection() {
         <div className="mx-auto max-w-3xl space-y-5">
           {featuredMeeting && (
             <article className="card">
-              <span className={featuredIsConfirmed ? 'pill mb-3' : 'mb-3 inline-flex rounded-full border border-amber-200 bg-amber-50 px-3 py-1 text-xs font-semibold text-amber-700'}>
+              <span className={featuredLabelClassName}>
                 Next Meeting
               </span>
               <h3 className="text-xl font-bold text-slate-900">{featuredMeeting.topic}</h3>
-              <p className={featuredIsConfirmed ? 'mt-3 text-sm font-semibold text-blue-700' : 'mt-3 text-sm font-semibold text-amber-700'}>{featuredIsConfirmed ? featuredMeeting.date : 'Date TBD'}</p>
+              <p className={featuredDateClassName}>{featuredDateText}</p>
               <p className="mt-3 text-slate-600">{featuredMeeting.note}</p>
             </article>
           )}
