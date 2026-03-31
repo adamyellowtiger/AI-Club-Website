@@ -40,8 +40,8 @@ export default function AIBitsSection() {
             </button>
             {expandedBitId === featuredBit.id && (
               <div className="mt-4 space-y-3 text-slate-600">
-                {featuredBit.body.map((paragraph) => (
-                  <p key={paragraph}>{paragraph}</p>
+                {featuredBit.body.map((paragraph, index) => (
+                  <p key={`${featuredBit.id}-${index}`}>{paragraph}</p>
                 ))}
               </div>
             )}
@@ -71,8 +71,8 @@ export default function AIBitsSection() {
                 </button>
                 {expandedBitId === bit.id && (
                   <div className="mt-4 space-y-3 text-sm text-slate-600">
-                    {bit.body.map((paragraph) => (
-                      <p key={paragraph}>{paragraph}</p>
+                    {bit.body.map((paragraph, index) => (
+                      <p key={`${bit.id}-${index}`}>{paragraph}</p>
                     ))}
                   </div>
                 )}
