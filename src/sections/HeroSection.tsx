@@ -3,10 +3,6 @@ import { meetings } from '../data/content';
 
 export default function HeroSection() {
   const nextMeeting = meetings.find((meeting) => meeting.date !== 'TBD') ?? meetings[0];
-  const alsoComingSoonMeeting =
-    nextMeeting?.date !== 'TBD'
-      ? meetings.find((meeting) => meeting.date === 'TBD' && meeting.id !== nextMeeting.id)
-      : undefined;
 
   return (
     <section id="top" className="bg-hero-glow">
@@ -22,9 +18,6 @@ export default function HeroSection() {
               <p className="text-xs font-semibold uppercase tracking-wide text-blue-700">Next Meeting</p>
               <p className="mt-1 text-base font-bold text-slate-900">{nextMeeting.topic}</p>
               <p className="text-sm text-slate-600">{nextMeeting.date}</p>
-              {alsoComingSoonMeeting && (
-                <p className="mt-2 text-sm text-slate-500">Also coming soon: {alsoComingSoonMeeting.topic}</p>
-              )}
             </div>
           )}
           <div className="mt-8 flex flex-wrap gap-3">

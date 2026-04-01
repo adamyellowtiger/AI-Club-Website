@@ -48,15 +48,9 @@ export type Meeting = {
 export const meetings: Meeting[] = [
   {
     id: 'ai-agents',
-    date: 'TBD',
+    date: 'Tuesday, April 14',
     topic: 'AI Agents',
-    note: 'We will break down what AI agents are, how they work, and where they are being used in real-world workflows.'
-  },
-  {
-    id: 'mechanistic-interpretability',
-    date: 'Tuesday, March 31',
-    topic: 'Mechanistic Interpretability',
-    note: 'We will explore how researchers peek inside neural networks, trace internal circuits, and ask what specific components may be doing.'
+    note: 'Explore what AI agents are, how they differ from standard chatbots, and where they are useful in practice.'
   }
 ];
 
