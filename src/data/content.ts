@@ -12,10 +12,10 @@ import {
 export const navLinks = [
   { label: 'About', href: '#about' },
   { label: 'What We Do', href: '#what-we-do' },
-  { label: 'Prompt-A-Thon', href: '#promptathon' },
   { label: 'Meetings', href: '#meetings' },
   { label: 'AI Bits', href: '#ai-bits' },
   { label: 'Resources', href: '#resources' },
+  { label: 'Prompt-A-Thon', href: '#promptathon' },
   { label: 'Team', href: '#team' },
   { label: 'FAQ', href: '#faq' },
   { label: 'Join', href: '#join' }
