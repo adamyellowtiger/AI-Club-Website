@@ -48,7 +48,7 @@ export type Meeting = {
 export const meetings: Meeting[] = [
   {
     id: 'ai-agents',
-    date: 'Tuesday, April 14',
+    date: 'TBD',
     topic: 'AI Agents',
     note: 'Explore what AI agents are, how they differ from standard chatbots, and where they are useful in practice.'
   }
