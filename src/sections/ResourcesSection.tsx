@@ -25,7 +25,7 @@ export default function ResourcesSection() {
                 key={item.title}
                 href={item.href}
                 className={`card block focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 ${
-                  item.title === 'Meeting Slides Archive' ? 'border-blue-200 shadow-lg' : ''
+                  item.featured ? 'border-blue-200 shadow-lg' : ''
                 }`}
                 target="_blank"
                 rel="noopener noreferrer"
@@ -36,7 +36,7 @@ export default function ResourcesSection() {
                   <span className="text-sm font-semibold text-blue-700">Open →</span>
                 </div>
                 <p className="mt-2 text-sm text-slate-600">{item.description}</p>
-                {item.title === 'Meeting Slides Archive' ? (
+                {item.featured ? (
                   <p className="mt-3 text-xs font-semibold uppercase tracking-wide text-blue-700">Most recent sessions</p>
                 ) : null}
               </a>

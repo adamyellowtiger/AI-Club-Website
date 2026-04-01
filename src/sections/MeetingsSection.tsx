@@ -36,7 +36,6 @@ export default function MeetingsSection() {
               <div className="space-y-3">
                 {pastMeetings.map((meeting) => (
                   <article key={meeting.id} className="rounded-xl border border-blue-100 bg-blue-50/40 px-4 py-3">
-                    <p className="text-xs font-semibold uppercase tracking-wide text-slate-500">Past Meeting</p>
                     <p className="mt-1 font-semibold text-slate-900">{meeting.topic}</p>
                     <p className="mt-1 text-sm text-slate-600">{meeting.note}</p>
                   </article>
