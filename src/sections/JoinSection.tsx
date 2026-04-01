@@ -8,8 +8,8 @@ export default function JoinSection() {
         <div className="rounded-3xl bg-gradient-to-r from-blue-700 to-blue-500 p-8 text-white shadow-soft md:p-12">
           <SectionTitle
             eyebrow="Join Us"
-            title="Ready to learn AI with us?"
-            subtitle="Join our official channels to get meeting reminders, resources, and updates."
+            title="Ready to join Bayview AI Club?"
+            subtitle="Pick a channel below to get reminders, slide decks, recaps, and upcoming meeting updates."
             tone="inverse"
           />
           <div className="mt-6 grid gap-4 sm:grid-cols-2">

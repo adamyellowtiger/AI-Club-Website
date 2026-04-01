@@ -21,9 +21,24 @@ export default function ResourcesSection() {
                 <p className="mt-2 text-sm text-slate-600">{item.description}</p>
               </div>
             ) : (
-              <a key={item.title} href={item.href} className="card block" target="_blank" rel="noopener noreferrer">
-                <h3 className="font-bold text-slate-900">{item.title}</h3>
+              <a
+                key={item.title}
+                href={item.href}
+                className={`card block focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 ${
+                  item.featured ? 'border-blue-200 shadow-lg' : ''
+                }`}
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label={`Open ${item.title}`}
+              >
+                <div className="flex items-start justify-between gap-3">
+                  <h3 className="font-bold text-slate-900">{item.title}</h3>
+                  <span className="text-sm font-semibold text-blue-700">Open →</span>
+                </div>
                 <p className="mt-2 text-sm text-slate-600">{item.description}</p>
+                {item.featured ? (
+                  <p className="mt-3 text-xs font-semibold uppercase tracking-wide text-blue-700">Most recent sessions</p>
+                ) : null}
               </a>
             )
           )}

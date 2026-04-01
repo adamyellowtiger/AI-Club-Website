@@ -12,10 +12,10 @@ import {
 export const navLinks = [
   { label: 'About', href: '#about' },
   { label: 'What We Do', href: '#what-we-do' },
-  { label: 'Prompt-A-Thon', href: '#promptathon' },
   { label: 'Meetings', href: '#meetings' },
   { label: 'AI Bits', href: '#ai-bits' },
   { label: 'Resources', href: '#resources' },
+  { label: 'Prompt-A-Thon', href: '#promptathon' },
   { label: 'Team', href: '#team' },
   { label: 'FAQ', href: '#faq' },
   { label: 'Join', href: '#join' }
@@ -43,6 +43,7 @@ export type Meeting = {
   date: string;
   topic: string;
   note: string;
+  status: 'upcoming' | 'past';
 };
 
 export const meetings: Meeting[] = [
@@ -50,7 +51,22 @@ export const meetings: Meeting[] = [
     id: 'ai-agents',
     date: 'TBD',
     topic: 'AI Agents',
-    note: 'Explore what AI agents are, how they differ from standard chatbots, and where they are useful in practice.'
+    note: 'Explore what AI agents are, how they differ from ordinary chatbots, and where they are actually useful.',
+    status: 'upcoming'
+  },
+  {
+    id: 'mechanistic-interpretability',
+    date: 'Previous Session',
+    topic: 'Mechanistic Interpretability',
+    note: 'A practical look at whether we can inspect model internals, what tools help, and where limits still remain.',
+    status: 'past'
+  },
+  {
+    id: 'embeddings-in-20-minutes',
+    date: 'Previous Session',
+    topic: 'Embeddings in 20 Minutes',
+    note: 'How meaning becomes vectors, why similarity search works, and where embeddings appear in real AI products.',
+    status: 'past'
   }
 ];
 
@@ -170,32 +186,37 @@ export const resources = [
     title: 'AI Basics Starter Guide',
     description: 'Simple glossary and concept map for new members.',
     href: `${import.meta.env.BASE_URL}resources/AI_Basics_Starter_Guide.pdf`,
-    status: 'live'
+    status: 'live',
+    featured: false
   },
   {
     title: 'Meeting Slides Archive',
-    description: 'Slide decks from recent sessions and demos.',
+    description: 'Browse and download slide decks from recent Bayview AI Club sessions.',
     href: `${import.meta.env.BASE_URL}meeting-slides-archive.html`,
-    status: 'live'
+    status: 'live',
+    featured: true
   },
-  { title: 'Weekly Recap Notes', description: 'Quick summaries for anyone who missed a meeting.', href: '#', status: 'coming-soon' },
+  { title: 'Weekly Recap Notes', description: 'Quick summaries for anyone who missed a meeting.', href: '#', status: 'coming-soon', featured: false },
   {
     title: 'Useful Tools List',
     description: 'Curated free tools for learning, building, and presenting.',
     href: `${import.meta.env.BASE_URL}resources/Useful_Tools_List.pdf`,
-    status: 'live'
+    status: 'live',
+    featured: false
   },
   {
     title: 'AI Ethics Reading List',
     description: 'Articles and videos to spark thoughtful discussion.',
     href: `${import.meta.env.BASE_URL}resources/AI_Ethics_Reading_List.pdf`,
-    status: 'live'
+    status: 'live',
+    featured: false
   },
   {
     title: 'Prompting Cheat Sheet',
     description: 'Tips for clearer prompts and better results.',
     href: `${import.meta.env.BASE_URL}resources/Prompting_Cheat_Sheet.pdf`,
-    status: 'live'
+    status: 'live',
+    featured: false
   }
 ];
 
