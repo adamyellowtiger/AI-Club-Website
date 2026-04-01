@@ -2,34 +2,8 @@ import SectionTitle from '../components/SectionTitle';
 import { meetings } from '../data/content';
 
 export default function MeetingsSection() {
-  const { confirmedMeetings, tentativeMeetings } = meetings.reduce<{
-    confirmedMeetings: typeof meetings;
-    tentativeMeetings: typeof meetings;
-  }>(
-    (acc, meeting) => {
-      if (meeting.date === 'TBD') {
-        acc.tentativeMeetings.push(meeting);
-      } else {
-        acc.confirmedMeetings.push(meeting);
-      }
-      return acc;
-    },
-    { confirmedMeetings: [], tentativeMeetings: [] }
-  );
-  const featuredMeeting = confirmedMeetings[0] ?? meetings[0];
-  const remainingConfirmed = confirmedMeetings.slice(1);
-  const featuredIsConfirmed = featuredMeeting?.date !== 'TBD';
-  const remainingTentative = featuredIsConfirmed
-    ? tentativeMeetings
-    : tentativeMeetings.filter((meeting) => meeting.id !== featuredMeeting?.id);
-  const tentativePillClassName =
-    'inline-flex items-center rounded-full border border-slate-200 bg-slate-100 px-3 py-1 text-xs font-semibold text-slate-600';
-  const tentativeFeaturedPillClassName =
-    'mb-3 inline-flex rounded-full border border-amber-200 bg-amber-50 px-3 py-1 text-xs font-semibold text-amber-700';
-  const featuredLabelClassName = featuredIsConfirmed ? 'pill mb-3' : tentativeFeaturedPillClassName;
-  const featuredDateBaseClassName = 'mt-3 text-sm font-semibold';
-  const featuredDateClassName = `${featuredDateBaseClassName} ${featuredIsConfirmed ? 'text-blue-700' : 'text-amber-700'}`;
-  const featuredDateText = featuredIsConfirmed ? featuredMeeting?.date : 'Date TBD';
+  const upcomingMeeting = meetings.find((meeting) => meeting.status === 'upcoming') ?? meetings[0];
+  const pastMeetings = meetings.filter((meeting) => meeting.status === 'past');
 
   return (
     <section id="meetings">
@@ -37,49 +11,32 @@ export default function MeetingsSection() {
         <SectionTitle
           eyebrow="Meeting Schedule"
           title="Plan your next AI Club session"
-          subtitle="Check what is confirmed next, what follows after, and which topics are still being finalized."
+          subtitle="See what is coming next, revisit recent sessions, and follow what the club has been actively covering."
         />
         <div className="mx-auto max-w-3xl space-y-5">
-          {featuredMeeting && (
+          {upcomingMeeting && (
             <article className="card">
-              <span className={featuredLabelClassName}>
+              <span className="mb-3 inline-flex rounded-full border border-amber-200 bg-amber-50 px-3 py-1 text-xs font-semibold text-amber-700">
                 Next Meeting
               </span>
-              <h3 className="text-xl font-bold text-slate-900">{featuredMeeting.topic}</h3>
-              <p className={featuredDateClassName}>{featuredDateText}</p>
-              <p className="mt-3 text-slate-600">{featuredMeeting.note}</p>
+              <h3 className="text-xl font-bold text-slate-900">{upcomingMeeting.topic}</h3>
+              <p className="mt-3 text-sm font-semibold text-amber-700">{upcomingMeeting.date}</p>
+              <p className="mt-3 text-slate-600">{upcomingMeeting.note}</p>
+              <p className="mt-3 text-sm font-medium text-blue-700">No prior experience needed.</p>
             </article>
           )}
 
-          {remainingConfirmed.length > 0 && (
+          {pastMeetings.length > 0 && (
             <div className="card p-5">
               <div className="mb-3 flex items-center justify-between gap-2">
-                <h3 className="text-base font-bold text-slate-900">Upcoming Meetings</h3>
-                <span className="pill">{remainingConfirmed.length}</span>
+                <h3 className="text-base font-bold text-slate-900">Recent Sessions</h3>
+                <span className="pill">{pastMeetings.length}</span>
               </div>
+              <p className="mb-3 text-sm text-slate-600">New topics and slide decks are added over time as meetings continue.</p>
               <div className="space-y-3">
-                {remainingConfirmed.map((meeting) => (
+                {pastMeetings.map((meeting) => (
                   <article key={meeting.id} className="rounded-xl border border-blue-100 bg-blue-50/40 px-4 py-3">
-                    <p className="text-sm font-semibold text-blue-700">{meeting.date}</p>
-                    <p className="mt-1 font-semibold text-slate-900">{meeting.topic}</p>
-                  </article>
-                ))}
-              </div>
-            </div>
-          )}
-
-          {remainingTentative.length > 0 && (
-            <div className="card p-5">
-              <div className="mb-3 flex items-center justify-between gap-2">
-                <h3 className="text-base font-bold text-slate-900">Topics in the Pipeline</h3>
-                <span className={tentativePillClassName}>
-                  Coming Soon
-                </span>
-              </div>
-              <div className="space-y-3">
-                {remainingTentative.map((meeting) => (
-                  <article key={meeting.id} className="rounded-xl border border-slate-200 bg-slate-50 px-4 py-3">
-                    <p className="text-xs font-semibold uppercase tracking-wide text-slate-500">TBD</p>
+                    <p className="text-xs font-semibold uppercase tracking-wide text-slate-500">Past Meeting</p>
                     <p className="mt-1 font-semibold text-slate-900">{meeting.topic}</p>
                     <p className="mt-1 text-sm text-slate-600">{meeting.note}</p>
                   </article>

@@ -43,6 +43,7 @@ export type Meeting = {
   date: string;
   topic: string;
   note: string;
+  status: 'upcoming' | 'past';
 };
 
 export const meetings: Meeting[] = [
@@ -50,7 +51,22 @@ export const meetings: Meeting[] = [
     id: 'ai-agents',
     date: 'TBD',
     topic: 'AI Agents',
-    note: 'Explore what AI agents are, how they differ from standard chatbots, and where they are useful in practice.'
+    note: 'Explore what AI agents are, how they differ from ordinary chatbots, and where they are actually useful.',
+    status: 'upcoming'
+  },
+  {
+    id: 'mechanistic-interpretability',
+    date: 'Previous Session',
+    topic: 'Mechanistic Interpretability',
+    note: 'A practical look at whether we can inspect model internals, what tools help, and where limits still remain.',
+    status: 'past'
+  },
+  {
+    id: 'embeddings-in-20-minutes',
+    date: 'Previous Session',
+    topic: 'Embeddings in 20 Minutes',
+    note: 'How meaning becomes vectors, why similarity search works, and where embeddings appear in real AI products.',
+    status: 'past'
   }
 ];
 
@@ -174,7 +190,7 @@ export const resources = [
   },
   {
     title: 'Meeting Slides Archive',
-    description: 'Slide decks from recent sessions and demos.',
+    description: 'Browse and download slide decks from recent Bayview AI Club sessions.',
     href: `${import.meta.env.BASE_URL}meeting-slides-archive.html`,
     status: 'live'
   },
