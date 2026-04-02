@@ -80,6 +80,42 @@ export type AIBit = {
 
 export const aiBits: AIBit[] = [
   {
+    id: 'how-ai-finds-groups-without-being-told-the-labels',
+    title: 'How AI Finds Groups Without Being Told the Labels',
+    summary:
+      'Clustering helps AI group similar items together without pre-labeled categories, so it can discover hidden structure directly from data.',
+    tags: ['Clustering', 'How AI Works', 'Daily Bit of AI'],
+    body: [
+      'Sometimes AI is given data with no answers attached. No categories, no names, no teacher saying what belongs where.',
+      'So how can it still find patterns?',
+      'One common method is called clustering.',
+      'Clustering means grouping things based on how similar they are. The AI looks at the data and tries to place similar items together, even though nobody told it what the groups should be called.',
+      'For example, imagine giving an AI a bunch of songs with information like tempo, mood, and energy. Even without labels, it might notice that some songs are calm and acoustic, while others are loud and energetic. It can then place those songs into separate groups.',
+      'The key idea is that clustering does not start with known categories. It discovers structure on its own.',
+      'This is useful in many real situations, like customer segmentation, organizing search results, spotting patterns in scientific data, or grouping similar images.',
+      'So instead of learning “this belongs to class A,” clustering asks:',
+      'Which things seem to belong together?',
+      'That is how AI can find hidden groups in data without being told the labels.'
+    ]
+  },
+  {
+    id: 'how-ai-learns-by-trial-and-error',
+    title: 'How AI Learns by Trial and Error',
+    summary:
+      'Reinforcement learning teaches AI through feedback: try actions, receive rewards, and gradually favor choices that lead to better outcomes.',
+    tags: ['Reinforcement Learning', 'How AI Works', 'Daily Bit of AI'],
+    body: [
+      'Some AI does not learn by being shown the right answer over and over. Instead, it learns by trying things, seeing what happens, and slowly figuring out which choices lead to better results.',
+      'This is called reinforcement learning.',
+      'A simple way to think about it is training a dog. If the dog does something good, you give it a reward. Over time, it starts repeating the actions that get rewards and avoiding the ones that do not. AI can learn in a similar way.',
+      'For example, imagine an AI trying to play a game. At first, it makes a lot of bad moves because it has no idea what works. But whenever it does something useful, like surviving longer or scoring points, it gets a reward. After many attempts, it starts noticing patterns and choosing better actions more often.',
+      'So instead of learning from a teacher saying “this is correct,” it learns from experience.',
+      'This is powerful for problems where there is no easy answer key, but there is a clear goal. That is why reinforcement learning is often used in things like games, robotics, and decision-making systems.',
+      'Key takeaway:',
+      'Try, get feedback, adjust, repeat.'
+    ]
+  },
+  {
     id: 'why-ai-is-good-at-some-jobs-and-bad-at-others',
     title: 'Why AI is good at some jobs and bad at others',
     summary:
