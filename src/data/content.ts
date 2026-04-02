@@ -80,39 +80,51 @@ export type AIBit = {
 
 export const aiBits: AIBit[] = [
   {
-    id: 'how-ai-finds-groups-without-being-told-the-labels',
-    title: 'How AI Finds Groups Without Being Told the Labels',
+    id: 'anomaly-detection',
+    title: 'Anomaly Detection',
     summary:
-      'Clustering helps AI group similar items together without pre-labeled categories, so it can discover hidden structure directly from data.',
-    tags: ['Clustering', 'How AI Works', 'Daily Bit of AI'],
+      'Anomaly detection helps AI learn what normal looks like so it can flag unusual patterns, rare events, and possible problems quickly.',
+    tags: ['How AI Works', 'Real-World Use', 'Basics'],
     body: [
-      'Sometimes AI is given data with no answers attached. No categories, no names, no teacher saying what belongs where.',
-      'So how can it still find patterns?',
-      'One common method is called clustering.',
-      'Clustering means grouping things based on how similar they are. The AI looks at the data and tries to place similar items together, even though nobody told it what the groups should be called.',
-      'For example, imagine giving an AI a bunch of songs with information like tempo, mood, and energy. Even without labels, it might notice that some songs are calm and acoustic, while others are loud and energetic. It can then place those songs into separate groups.',
-      'The key idea is that clustering does not start with known categories. It discovers structure on its own.',
-      'This is useful in many real situations, like customer segmentation, organizing search results, spotting patterns in scientific data, or grouping similar images.',
-      'So instead of learning “this belongs to class A,” clustering asks:',
-      'Which things seem to belong together?',
-      'That is how AI can find hidden groups in data without being told the labels.'
+      'Not all AI is trying to label or classify things. Sometimes its job is just to notice when something seems off.',
+      'This is called anomaly detection.',
+      'The basic idea is simple: AI looks at lots of normal examples, learns the usual patterns, and then flags anything that does not fit.',
+      'Examples include a credit card transaction at a strange time or place, unusual traffic in a computer network, a defective product on a factory line, or a medical scan that looks different from the norm.',
+      'So instead of asking “What is this?”, it asks: “Does this look unusual compared to everything else I have seen?”',
+      'That makes anomaly detection very useful for catching fraud, errors, security threats, and other rare problems.',
+      'AI is not always looking for what something is. Sometimes it is just looking for what does not belong.'
     ]
   },
   {
-    id: 'how-ai-learns-by-trial-and-error',
-    title: 'How AI Learns by Trial and Error',
+    id: 'clustering',
+    title: 'Clustering',
     summary:
-      'Reinforcement learning teaches AI through feedback: try actions, receive rewards, and gradually favor choices that lead to better outcomes.',
-    tags: ['Reinforcement Learning', 'How AI Works', 'Daily Bit of AI'],
+      'Clustering lets AI find natural groups in data without labels by putting similar items together based on shared patterns.',
+    tags: ['How AI Works', 'Basics', 'Real-World Use'],
     body: [
-      'Some AI does not learn by being shown the right answer over and over. Instead, it learns by trying things, seeing what happens, and slowly figuring out which choices lead to better results.',
+      'Sometimes AI is not given labels at all. Instead, it looks at the data and tries to find natural groups on its own.',
+      'This is called clustering.',
+      'The idea is to group things based on similarity. Items that are more alike end up in the same cluster, even if nobody told the AI what the categories should be.',
+      'For example, imagine giving AI a huge music library without labels. It might still group songs by mood, tempo, or style just by noticing patterns.',
+      'Clustering is useful for customer segmentation, grouping similar images, organizing search results, and finding patterns in scientific data.',
+      'So instead of learning from named categories, clustering tries to answer: “Which things naturally belong together?”',
+      'Clustering helps AI discover hidden groups in data without needing labels first.'
+    ]
+  },
+  {
+    id: 'reinforcement-learning',
+    title: 'Reinforcement Learning',
+    summary:
+      'Reinforcement learning helps AI improve through trial and error by using feedback, rewards, and penalties over many decisions.',
+    tags: ['How AI Works', 'Basics', 'Real-World Use'],
+    body: [
+      'Some AI systems learn the same way people or animals often do: by trying things, seeing what happens, and adjusting.',
       'This is called reinforcement learning.',
-      'A simple way to think about it is training a dog. If the dog does something good, you give it a reward. Over time, it starts repeating the actions that get rewards and avoiding the ones that do not. AI can learn in a similar way.',
-      'For example, imagine an AI trying to play a game. At first, it makes a lot of bad moves because it has no idea what works. But whenever it does something useful, like surviving longer or scoring points, it gets a reward. After many attempts, it starts noticing patterns and choosing better actions more often.',
-      'So instead of learning from a teacher saying “this is correct,” it learns from experience.',
-      'This is powerful for problems where there is no easy answer key, but there is a clear goal. That is why reinforcement learning is often used in things like games, robotics, and decision-making systems.',
-      'Key takeaway:',
-      'Try, get feedback, adjust, repeat.'
+      'The AI takes an action, gets feedback, and then slowly learns which choices lead to better results.',
+      'A simple way to think about it: try something, get a reward or penalty, adjust, and repeat.',
+      'This is useful when the AI has to make a sequence of decisions instead of just one. That is why reinforcement learning shows up in games, robotics, navigation, and decision-making systems.',
+      'Over time, the AI gets better not because someone gave it every correct answer, but because it learned from experience.',
+      'Reinforcement learning is how AI improves by trial and error using feedback.'
     ]
   },
   {
