@@ -80,6 +80,54 @@ export type AIBit = {
 
 export const aiBits: AIBit[] = [
   {
+    id: 'anomaly-detection',
+    title: 'Anomaly Detection',
+    summary:
+      'Anomaly detection helps AI learn what normal looks like so it can flag unusual patterns, rare events, and possible problems quickly.',
+    tags: ['How AI Works', 'Real-World Use', 'Basics'],
+    body: [
+      'Not all AI is trying to label or classify things. Sometimes its job is just to notice when something seems off.',
+      'This is called anomaly detection.',
+      'The basic idea is simple: AI looks at lots of normal examples, learns the usual patterns, and then flags anything that does not fit.',
+      'Examples include a credit card transaction at a strange time or place, unusual traffic in a computer network, a defective product on a factory line, or a medical scan that looks different from the norm.',
+      'So instead of asking “What is this?”, it asks: “Does this look unusual compared to everything else I have seen?”',
+      'That makes anomaly detection very useful for catching fraud, errors, security threats, and other rare problems.',
+      'AI is not always looking for what something is. Sometimes it is just looking for what does not belong.'
+    ]
+  },
+  {
+    id: 'clustering',
+    title: 'Clustering',
+    summary:
+      'Clustering lets AI find natural groups in data without labels by putting similar items together based on shared patterns.',
+    tags: ['How AI Works', 'Basics', 'Real-World Use'],
+    body: [
+      'Sometimes AI is not given labels at all. Instead, it looks at the data and tries to find natural groups on its own.',
+      'This is called clustering.',
+      'The idea is to group things based on similarity. Items that are more alike end up in the same cluster, even if nobody told the AI what the categories should be.',
+      'For example, imagine giving AI a huge music library without labels. It might still group songs by mood, tempo, or style just by noticing patterns.',
+      'Clustering is useful for customer segmentation, grouping similar images, organizing search results, and finding patterns in scientific data.',
+      'So instead of learning from named categories, clustering tries to answer: “Which things naturally belong together?”',
+      'Clustering helps AI discover hidden groups in data without needing labels first.'
+    ]
+  },
+  {
+    id: 'reinforcement-learning',
+    title: 'Reinforcement Learning',
+    summary:
+      'Reinforcement learning helps AI improve through trial and error by using feedback, rewards, and penalties over many decisions.',
+    tags: ['How AI Works', 'Basics', 'Real-World Use'],
+    body: [
+      'Some AI systems learn the same way people or animals often do: by trying things, seeing what happens, and adjusting.',
+      'This is called reinforcement learning.',
+      'The AI takes an action, gets feedback, and then slowly learns which choices lead to better results.',
+      'A simple way to think about it: try something, get a reward or penalty, adjust, and repeat.',
+      'This is useful when the AI has to make a sequence of decisions instead of just one. That is why reinforcement learning shows up in games, robotics, navigation, and decision-making systems.',
+      'Over time, the AI gets better not because someone gave it every correct answer, but because it learned from experience.',
+      'Reinforcement learning is how AI improves by trial and error using feedback.'
+    ]
+  },
+  {
     id: 'why-ai-is-good-at-some-jobs-and-bad-at-others',
     title: 'Why AI is good at some jobs and bad at others',
     summary:
