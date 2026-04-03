@@ -244,7 +244,13 @@ export const resources = [
     status: 'live',
     featured: true
   },
-  { title: 'Weekly Recap Notes', description: 'Quick summaries for anyone who missed a meeting.', href: '#', status: 'coming-soon', featured: false },
+  {
+    title: 'Weekly Recap Notes',
+    description: 'Read concise recap notes from recent AI Club meetings and revisit key concepts anytime.',
+    href: `${import.meta.env.BASE_URL}weekly-recap-notes-archive.html`,
+    status: 'live',
+    featured: false
+  },
   {
     title: 'Useful Tools List',
     description: 'Curated free tools for learning, building, and presenting.',
