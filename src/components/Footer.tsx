@@ -1,12 +1,10 @@
 import ByteBot from '../graphics/ByteBot';
-import { joinLinks, navLinks } from '../data/content';
+import { instagramHandle, instagramUrl, joinLinks, navLinks } from '../data/content';
 
 const footerQuickLinkLabels = ['About', 'Meetings', 'AI Bits', 'Resources', 'FAQ', 'Join'];
 
 export default function Footer() {
   const quickLinks = navLinks.filter((link) => footerQuickLinkLabels.includes(link.label));
-  const instagramHandle = '@bss_aiclub';
-  const instagramUrl = `https://www.instagram.com/${instagramHandle.replace('@', '')}/`;
 
   return (
     <footer className="border-t border-blue-100 bg-white">

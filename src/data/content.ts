@@ -15,7 +15,6 @@ export const navLinks = [
   { label: 'Meetings', href: '#meetings' },
   { label: 'AI Bits', href: '#ai-bits' },
   { label: 'Resources', href: '#resources' },
-  { label: 'Prompt-A-Thon', href: '#promptathon' },
   { label: 'Team', href: '#team' },
   { label: 'FAQ', href: '#faq' },
   { label: 'Join', href: '#join' }
@@ -409,3 +408,6 @@ export const joinLinks = [
     helperText: 'Official school updates and resources (use your YRDSB account).'
   }
 ];
+
+export const instagramHandle = '@bss_aiclub';
+export const instagramUrl = `https://www.instagram.com/${instagramHandle.replace('@', '')}/`;
