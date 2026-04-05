@@ -2,21 +2,27 @@ import SectionTitle from '../components/SectionTitle';
 import { resources } from '../data/content';
 
 export default function ResourcesSection() {
+  const resourcesByCategory = {
+    'start-here': resources.filter((item) => item.category === 'start-here'),
+    'keep-learning': resources.filter((item) => item.category === 'keep-learning'),
+    'revisit-sessions': resources.filter((item) => item.category === 'revisit-sessions')
+  };
+
   const groupedResources = [
     {
+      key: 'start-here',
       title: 'Start Here',
-      subtitle: 'Get oriented fast with beginner-friendly essentials.',
-      items: resources.filter((item) => ['AI Basics Starter Guide', 'Prompting Cheat Sheet'].includes(item.title))
+      subtitle: 'Get oriented fast with beginner-friendly essentials.'
     },
     {
+      key: 'keep-learning',
       title: 'Keep Learning',
-      subtitle: 'Go deeper with practical tools and thoughtful AI context.',
-      items: resources.filter((item) => ['Useful Tools List', 'AI Ethics Reading List'].includes(item.title))
+      subtitle: 'Go deeper with practical tools and thoughtful AI context.'
     },
     {
+      key: 'revisit-sessions',
       title: 'Revisit Club Sessions',
-      subtitle: 'Review what the club has actually covered and shared.',
-      items: resources.filter((item) => ['Meeting Slides Archive', 'Weekly Recap Notes'].includes(item.title))
+      subtitle: 'Review what the club has actually covered and shared.'
     }
   ];
 
@@ -30,18 +36,16 @@ export default function ResourcesSection() {
         />
         <div className="grid gap-6 lg:grid-cols-3">
           {groupedResources.map((group) => (
-            <article key={group.title} className="card p-5">
+            <article key={group.key} className="card p-5">
               <h3 className="text-xl font-bold text-slate-900">{group.title}</h3>
               <p className="mt-2 text-sm text-slate-600">{group.subtitle}</p>
               <div className="mt-4 space-y-3">
-                {group.items.map((item) => (
+                {resourcesByCategory[group.key].map((item) => (
                   <a
                     key={item.title}
                     href={item.href}
                     className={`block rounded-xl border px-4 py-3 transition hover:border-blue-200 hover:bg-blue-50/40 ${
-                      item.featured || ['Meeting Slides Archive', 'Weekly Recap Notes'].includes(item.title)
-                        ? 'border-blue-200 bg-blue-50/30'
-                        : 'border-blue-100 bg-white'
+                      item.featured ? 'border-blue-200 bg-blue-50/30' : 'border-blue-100 bg-white'
                     }`}
                     target="_blank"
                     rel="noopener noreferrer"

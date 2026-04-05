@@ -10,7 +10,8 @@ export default function HeroSection() {
       <div className="section-shell grid items-center gap-10 md:grid-cols-[1.2fr_0.8fr]">
         <div>
           <p className="pill mb-4">Room 129 • After school • Beginners welcome</p>
-          <h1 className="text-4xl font-black tracking-tight text-slate-900 md:text-6xl">Learn practical AI skills with Bayview students</h1>
+          <h1 className="text-4xl font-black tracking-tight text-slate-900 md:text-6xl">Bayview AI Club</h1>
+          <p className="mt-3 text-xl font-semibold text-slate-800">Learn practical AI skills with students</p>
           <p className="mt-5 max-w-xl text-lg text-slate-600">
             Bayview AI Club helps you understand AI without the hype through beginner-friendly sessions, real tools, and student-led discussions you can use in class projects and beyond.
           </p>
