@@ -85,13 +85,33 @@ export type AIBit = {
 
 export const aiBits: AIBit[] = [
   {
-    id: 'computer-vision',
-    title: 'Computer Vision',
+    id: 'self-supervised-learning',
+    title: 'Self-Supervised Learning',
     label: 'Daily Bit of AI',
     dateLabel: 'Today',
     summary:
+      'Self-supervised learning helps AI learn from raw unlabeled data by turning the data itself into training tasks, which makes modern large-scale AI much more practical.',
+    displayCaption: "Today’s Daily Bit of AI: self-supervised learning — how AI learns without human labels.",
+    imageSrc: `${import.meta.env.BASE_URL}daily-bits/dailyBitOfAI20260405.png`,
+    imageAlt: 'Self-supervised learning Daily Bit visual',
+    tags: ['How AI Works', 'Basics', 'Training'],
+    body: [
+      'Before a model can learn anything, someone often has to sit down and label huge amounts of data by hand, such as photos, emails, or audio clips. That is how a lot of traditional AI training works, but it is slow and expensive.',
+      'Self-supervised learning avoids that bottleneck. Instead of depending on human labels, the model creates its own learning tasks directly from raw data.',
+      'For example, it might hide a word in a sentence and try to predict the missing word. Or it might cover part of an image and try to reconstruct what belongs there.',
+      'In other words, the data itself becomes the teacher. No person has to manually label every example first.',
+      'This matters because labeled datasets are limited, but raw data is everywhere. Self-supervised learning is a major reason modern AI systems can scale so effectively.',
+      'The big idea: self-supervised learning lets AI learn useful patterns from unlabeled data by generating its own training tasks.'
+    ]
+  },
+  {
+    id: 'computer-vision',
+    title: 'Computer Vision',
+    label: 'Daily Bit of AI',
+    dateLabel: 'Yesterday',
+    summary:
       'Computer vision is the part of AI that learns to turn raw image pixels into useful understanding, from simple edges to full objects.',
-    displayCaption: "Today’s Daily Bit of AI: computer vision — how AI learns to understand images.",
+    displayCaption: "Yesterday’s Daily Bit of AI: computer vision — how AI learns to understand images.",
     // Drop generated images in `public/daily-bits/` and keep these paths.
     imageSrc: `${import.meta.env.BASE_URL}daily-bits/computer-vision.png`,
     imageAlt: 'Computer vision Daily Bit visual',
@@ -110,10 +130,10 @@ export const aiBits: AIBit[] = [
     id: 'search-and-planning',
     title: 'Search and Planning',
     label: 'Daily Bit of AI',
-    dateLabel: 'Yesterday',
+    dateLabel: '2 days ago',
     summary:
       'Search and planning help AI look ahead, compare possible next steps, and choose a strong sequence of actions.',
-    displayCaption: "Yesterday’s Daily Bit of AI: search and planning — how AI figures out multi-step moves.",
+    displayCaption: "Daily Bit of AI from 2 days ago: search and planning — how AI figures out multi-step moves.",
     imageSrc: `${import.meta.env.BASE_URL}daily-bits/search-and-planning.png`,
     imageAlt: 'Search and planning Daily Bit visual',
     tags: ['How AI Works', 'Basics', 'Real-World Use'],
