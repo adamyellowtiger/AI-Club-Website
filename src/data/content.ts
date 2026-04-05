@@ -113,7 +113,7 @@ export const aiBits: AIBit[] = [
     dateLabel: 'Yesterday',
     summary:
       'Search and planning help AI look ahead, compare possible next steps, and choose a strong sequence of actions.',
-    displayCaption: "Today’s Daily Bit of AI: search and planning — how AI figures out multi-step moves.",
+    displayCaption: "Yesterday’s Daily Bit of AI: search and planning — how AI figures out multi-step moves.",
     imageSrc: `${import.meta.env.BASE_URL}daily-bits/search-and-planning.png`,
     imageAlt: 'Search and planning Daily Bit visual',
     tags: ['How AI Works', 'Basics', 'Real-World Use'],
