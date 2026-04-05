@@ -22,6 +22,17 @@ export default function AIBitsSection() {
 
         <div className="grid gap-6 lg:grid-cols-[1.2fr_0.8fr]">
           <article className="card">
+            {(featuredBit.label || featuredBit.dateLabel) && (
+              <div className="mb-3 flex flex-wrap items-center gap-2 text-xs font-semibold uppercase tracking-wide text-slate-500">
+                {featuredBit.label && <span>{featuredBit.label}</span>}
+                {featuredBit.dateLabel && (
+                  <>
+                    <span aria-hidden="true">•</span>
+                    <span>{featuredBit.dateLabel}</span>
+                  </>
+                )}
+              </div>
+            )}
             <div className="mb-3 flex flex-wrap gap-2">
               {featuredBit.tags.map((tag) => (
                 <span key={tag} className="pill">
@@ -31,6 +42,14 @@ export default function AIBitsSection() {
             </div>
             <h3 className="text-2xl font-bold text-slate-900">{featuredBit.title}</h3>
             <p className="mt-3 text-slate-600">{featuredBit.summary}</p>
+            {featuredBit.imageSrc && (
+              <img
+                src={featuredBit.imageSrc}
+                alt={featuredBit.imageAlt ?? `${featuredBit.title} visual`}
+                className="mt-4 w-full rounded-xl border border-slate-200"
+              />
+            )}
+            {featuredBit.displayCaption && <p className="mt-3 text-sm text-slate-500">{featuredBit.displayCaption}</p>}
             <button
               type="button"
               onClick={() => toggleBit(featuredBit.id)}
@@ -53,6 +72,17 @@ export default function AIBitsSection() {
             </div>
             {archiveBits.map((bit) => (
               <article key={bit.id} className="card">
+                {(bit.label || bit.dateLabel) && (
+                  <div className="mb-3 flex flex-wrap items-center gap-2 text-[11px] font-semibold uppercase tracking-wide text-slate-500">
+                    {bit.label && <span>{bit.label}</span>}
+                    {bit.dateLabel && (
+                      <>
+                        <span aria-hidden="true">•</span>
+                        <span>{bit.dateLabel}</span>
+                      </>
+                    )}
+                  </div>
+                )}
                 <div className="mb-3 flex flex-wrap gap-2">
                   {bit.tags.map((tag) => (
                     <span key={tag} className="pill">
@@ -62,6 +92,14 @@ export default function AIBitsSection() {
                 </div>
                 <h4 className="font-bold text-slate-900">{bit.title}</h4>
                 <p className="mt-2 text-sm text-slate-600">{bit.summary}</p>
+                {bit.imageSrc && (
+                  <img
+                    src={bit.imageSrc}
+                    alt={bit.imageAlt ?? `${bit.title} visual`}
+                    className="mt-3 w-full rounded-lg border border-slate-200"
+                  />
+                )}
+                {bit.displayCaption && <p className="mt-2 text-xs text-slate-500">{bit.displayCaption}</p>}
                 <button
                   type="button"
                   onClick={() => toggleBit(bit.id)}

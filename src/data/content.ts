@@ -73,12 +73,60 @@ export const meetings: Meeting[] = [
 export type AIBit = {
   id: string;
   title: string;
+  label?: string;
+  dateLabel?: string;
   summary: string;
+  displayCaption?: string;
+  imageSrc?: string;
+  imageAlt?: string;
   tags: string[];
   body: string[];
 };
 
 export const aiBits: AIBit[] = [
+  {
+    id: 'computer-vision',
+    title: 'Computer Vision',
+    label: 'Daily Bit of AI',
+    dateLabel: 'Today',
+    summary:
+      'Computer vision is the part of AI that learns to turn raw image pixels into useful understanding, from simple edges to full objects.',
+    displayCaption: "Today’s Daily Bit of AI: computer vision — how AI learns to understand images.",
+    // Drop generated images in `public/daily-bits/` and keep these paths.
+    imageSrc: `${import.meta.env.BASE_URL}daily-bits/computer-vision.png`,
+    imageAlt: 'Computer vision Daily Bit visual',
+    tags: ['How AI Works', 'Basics', 'Real-World Use'],
+    body: [
+      'When you look at a photo, you instantly notice things like faces, cars, text, or a tennis ball.',
+      'AI cannot do that naturally. To a model, an image starts as a giant grid of numbers for pixel brightness and color.',
+      'Computer vision is the part of AI that learns to turn that messy grid into meaningful information.',
+      'Early layers might notice simple patterns like edges, corners, or color changes.',
+      'Later layers combine those into larger patterns like eyes, wheels, hands, or entire objects.',
+      'That is how AI can unlock phones with faces, detect tumors in scans, read handwriting, or help self-driving cars identify pedestrians and stop signs.',
+      'The big idea: computer vision teaches AI to go from raw pixels to useful understanding.'
+    ]
+  },
+  {
+    id: 'search-and-planning',
+    title: 'Search and Planning',
+    label: 'Daily Bit of AI',
+    dateLabel: 'Yesterday',
+    summary:
+      'Search and planning help AI look ahead, compare possible next steps, and choose a strong sequence of actions.',
+    displayCaption: "Today’s Daily Bit of AI: search and planning — how AI figures out multi-step moves.",
+    imageSrc: `${import.meta.env.BASE_URL}daily-bits/search-and-planning.png`,
+    imageAlt: 'Search and planning Daily Bit visual',
+    tags: ['How AI Works', 'Basics', 'Real-World Use'],
+    body: [
+      'Some AI problems are not about recognizing patterns right away.',
+      'They are about choosing a sequence of actions that leads to a good result.',
+      'That is what search and planning are for. Instead of asking “what is this?”, AI asks “if I do this first, then what happens next?”',
+      'It explores possible future steps, compares outcomes, and tries to find a strong path forward.',
+      'This is why AI can play games like chess, solve route-finding problems, and help robots move through space without crashing.',
+      'It is not just reacting to the current moment. It is looking ahead.',
+      'The big idea: search helps AI examine possible choices, and planning helps organize those choices into a useful step-by-step strategy.'
+    ]
+  },
   {
     id: 'anomaly-detection',
     title: 'Anomaly Detection',
