@@ -24,7 +24,7 @@ const groupedResources: Array<{
 ];
 
 export default function ResourcesSection() {
-  const resourcesByCategory: Record<ResourceCategory, typeof resources> = {
+  const resourcesByCategory: Record<ResourceCategory, Array<(typeof resources)[number]>> = {
     'start-here': [],
     'keep-learning': [],
     'revisit-sessions': []
