@@ -24,16 +24,6 @@ const groupedResources: Array<{
 ];
 
 export default function ResourcesSection() {
-  const resourcesByCategory: Record<ResourceCategory, Array<(typeof resources)[number]>> = {
-    'start-here': [],
-    'keep-learning': [],
-    'revisit-sessions': []
-  };
-
-  resources.forEach((resource) => {
-    resourcesByCategory[resource.category].push(resource);
-  });
-
   return (
     <section id="resources">
       <div className="section-shell">
@@ -65,7 +55,7 @@ export default function ResourcesSection() {
                       <a
                         href={resource.href}
                         target="_blank"
-                        rel="noreferrer"
+                        rel="noopener noreferrer"
                         className="mt-3 inline-flex text-sm font-semibold text-blue-700 hover:text-blue-800"
                       >
                         {resource.status === 'coming-soon' ? 'Coming soon' : 'Open resource →'}
@@ -81,3 +71,13 @@ export default function ResourcesSection() {
     </section>
   );
 }
+
+const resourcesByCategory: Record<ResourceCategory, Array<(typeof resources)[number]>> = {
+  'start-here': [],
+  'keep-learning': [],
+  'revisit-sessions': []
+};
+
+resources.forEach((resource) => {
+  resourcesByCategory[resource.category].push(resource);
+});
