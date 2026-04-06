@@ -23,6 +23,16 @@ const groupedResources: Array<{
   }
 ];
 
+const resourcesByCategory: Record<ResourceCategory, Array<(typeof resources)[number]>> = {
+  'start-here': [],
+  'keep-learning': [],
+  'revisit-sessions': []
+};
+
+resources.forEach((resource) => {
+  resourcesByCategory[resource.category].push(resource);
+});
+
 export default function ResourcesSection() {
   return (
     <section id="resources">
@@ -71,13 +81,3 @@ export default function ResourcesSection() {
     </section>
   );
 }
-
-const resourcesByCategory: Record<ResourceCategory, Array<(typeof resources)[number]>> = {
-  'start-here': [],
-  'keep-learning': [],
-  'revisit-sessions': []
-};
-
-resources.forEach((resource) => {
-  resourcesByCategory[resource.category].push(resource);
-});
