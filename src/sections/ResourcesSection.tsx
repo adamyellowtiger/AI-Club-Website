@@ -1,14 +1,21 @@
 import SectionTitle from '../components/SectionTitle';
 import { resources } from '../data/content';
 
+type ResourceCategoryKey = 'start-here' | 'keep-learning' | 'revisit-sessions';
+
 export default function ResourcesSection() {
-  const resourcesByCategory = {
+  const resourcesByCategory: Record<ResourceCategoryKey, typeof resources> = {
     'start-here': resources.filter((item) => item.category === 'start-here'),
     'keep-learning': resources.filter((item) => item.category === 'keep-learning'),
+    'revisit-sessions': resources.filter((item) => item.category === 'keep-learning'),
     'revisit-sessions': resources.filter((item) => item.category === 'revisit-sessions')
   };
 
-  const groupedResources = [
+  const groupedResources: Array<{
+    key: ResourceCategoryKey;
+    title: string;
+    subtitle: string;
+  }> = [
     {
       key: 'start-here',
       title: 'Start Here',
