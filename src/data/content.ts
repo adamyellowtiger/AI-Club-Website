@@ -78,19 +78,61 @@ export type AIBit = {
   displayCaption?: string;
   imageSrc?: string;
   imageAlt?: string;
+  supportingImages?: {
+    src: string;
+    alt: string;
+    caption?: string;
+  }[];
   tags: string[];
   body: string[];
 };
 
 export const aiBits: AIBit[] = [
   {
-    id: 'self-supervised-learning',
-    title: 'Self-Supervised Learning',
+    id: 'support-vector-machines',
+    title: 'Support Vector Machines',
     label: 'Daily Bit of AI',
     dateLabel: 'Today',
     summary:
+      'Support vector machines are a classic AI method for classification that try to separate groups using the boundary with the largest possible margin.',
+    displayCaption: "Today’s Daily Bit of AI: support vector machines — how AI finds the best boundary.",
+    imageSrc: `${import.meta.env.BASE_URL}daily-bits/support-vector-machines-main.png`,
+    imageAlt: 'Support vector machines Daily Bit main visual',
+    supportingImages: [
+      {
+        src: `${import.meta.env.BASE_URL}daily-bits/linear-vs-non-linear-svm.webp`,
+        alt: 'Linear SVM versus non-linear SVM comparison diagram',
+        caption:
+          'Linear vs non-linear SVM: some datasets can be separated with a straight boundary, while others need a curved one.'
+      },
+      {
+        src: `${import.meta.env.BASE_URL}daily-bits/support-vectors-hyperplane.webp`,
+        alt: 'Support vectors and hyperplane diagram',
+        caption:
+          'Support vectors are the closest points to the boundary, and they help define the maximum-margin hyperplane.'
+      }
+    ],
+    tags: ['How AI Works', 'Basics', 'Classic Models'],
+    body: [
+      'Support vector machines, or SVMs, are a classic AI method used mainly for classification.',
+      'Their goal is not just to separate two groups, but to find the separating boundary with the largest margin, meaning the biggest gap between the classes.',
+      'The points closest to that boundary are called support vectors, and they are the ones that most strongly determine where the boundary ends up.',
+      'That separating boundary is often called a hyperplane. In a simple 2D picture, it looks like a line. In higher dimensions, it becomes a higher-dimensional separator.',
+      'Some datasets can be split with a straight boundary. That is the linear case.',
+      'But if the classes are arranged in a more complicated pattern, SVMs can use kernels to handle non-linear boundaries.',
+      'A setting called C controls the tradeoff between keeping the margin wide and punishing classification mistakes.',
+      'SVMs can work especially well on smaller, high-dimensional datasets, but they can become expensive to train on large ones.',
+      'The big idea: SVMs try to find the boundary that separates groups with the widest possible safety gap.'
+    ]
+  },
+  {
+    id: 'self-supervised-learning',
+    title: 'Self-Supervised Learning',
+    label: 'Daily Bit of AI',
+    dateLabel: 'Yesterday',
+    summary:
       'Self-supervised learning helps AI learn from raw unlabeled data by turning the data itself into training tasks, which makes modern large-scale AI much more practical.',
-    displayCaption: "Today’s Daily Bit of AI: self-supervised learning — how AI learns without human labels.",
+    displayCaption: "Yesterday’s Daily Bit of AI: self-supervised learning — how AI learns without human labels.",
     imageSrc: `${import.meta.env.BASE_URL}daily-bits/dailyBitOfAI20260405.png`,
     imageAlt: 'Self-supervised learning Daily Bit visual',
     tags: ['How AI Works', 'Basics', 'Training'],
@@ -107,10 +149,10 @@ export const aiBits: AIBit[] = [
     id: 'computer-vision',
     title: 'Computer Vision',
     label: 'Daily Bit of AI',
-    dateLabel: 'Yesterday',
+    dateLabel: '2 days ago',
     summary:
       'Computer vision is the part of AI that learns to turn raw image pixels into useful understanding, from simple edges to full objects.',
-    displayCaption: "Yesterday’s Daily Bit of AI: computer vision — how AI learns to understand images.",
+    displayCaption: "Daily Bit of AI from 2 days ago: computer vision — how AI learns to understand images.",
     // Drop generated images in `public/daily-bits/` and keep these paths.
     imageSrc: `${import.meta.env.BASE_URL}daily-bits/computer-vision.png`,
     imageAlt: 'Computer vision Daily Bit visual',
@@ -129,10 +171,10 @@ export const aiBits: AIBit[] = [
     id: 'search-and-planning',
     title: 'Search and Planning',
     label: 'Daily Bit of AI',
-    dateLabel: '2 days ago',
+    dateLabel: '3 days ago',
     summary:
       'Search and planning help AI look ahead, compare possible next steps, and choose a strong sequence of actions.',
-    displayCaption: "Daily Bit of AI from 2 days ago: search and planning — how AI figures out multi-step moves.",
+    displayCaption: "Daily Bit of AI from 3 days ago: search and planning — how AI figures out multi-step moves.",
     imageSrc: `${import.meta.env.BASE_URL}daily-bits/search-and-planning.png`,
     imageAlt: 'Search and planning Daily Bit visual',
     tags: ['How AI Works', 'Basics', 'Real-World Use'],

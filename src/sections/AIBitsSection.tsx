@@ -62,6 +62,16 @@ export default function AIBitsSection() {
                 {featuredBit.body.map((paragraph, index) => (
                   <p key={`${featuredBit.id}-${index}`}>{paragraph}</p>
                 ))}
+                {featuredBit.supportingImages && featuredBit.supportingImages.length > 0 && (
+                  <div className="grid gap-4 pt-2 sm:grid-cols-2">
+                    {featuredBit.supportingImages.map((image, index) => (
+                      <figure key={`${featuredBit.id}-support-${index}`} className="space-y-2">
+                        <img src={image.src} alt={image.alt} className="w-full rounded-xl border border-slate-200" />
+                        {image.caption && <figcaption className="text-sm text-slate-500">{image.caption}</figcaption>}
+                      </figure>
+                    ))}
+                  </div>
+                )}
               </div>
             )}
           </article>
@@ -112,6 +122,16 @@ export default function AIBitsSection() {
                     {bit.body.map((paragraph, index) => (
                       <p key={`${bit.id}-${index}`}>{paragraph}</p>
                     ))}
+                    {bit.supportingImages && bit.supportingImages.length > 0 && (
+                      <div className="grid gap-4 pt-2 sm:grid-cols-2">
+                        {bit.supportingImages.map((image, index) => (
+                          <figure key={`${bit.id}-support-${index}`} className="space-y-2">
+                            <img src={image.src} alt={image.alt} className="w-full rounded-xl border border-slate-200" />
+                            {image.caption && <figcaption className="text-sm text-slate-500">{image.caption}</figcaption>}
+                          </figure>
+                        ))}
+                      </div>
+                    )}
                   </div>
                 )}
               </article>
