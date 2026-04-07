@@ -124,14 +124,14 @@ export default function AIBitsSection() {
                     ))}
                     {bit.supportingImages && bit.supportingImages.length > 0 && (
                       <div className="grid gap-4 pt-2 sm:grid-cols-2">
-                        {bit.supportingImages.map((image, index) => (
-                          <figure key={`${bit.id}-support-${index}`} className="space-y-2">
-                            <img src={image.src} alt={image.alt} className="w-full rounded-lg border border-slate-200" />
-                            {image.caption && <figcaption className="text-xs text-slate-500">{image.caption}</figcaption>}
-                          </figure>
-                        ))}
-                      </div>
-                    )}
+                    {bit.supportingImages.map((image, index) => (
+                      <figure key={`${bit.id}-support-${index}`} className="space-y-2">
+                        <img src={image.src} alt={image.alt} className="w-full rounded-xl border border-slate-200" />
+                        {image.caption && <figcaption className="text-sm text-slate-500">{image.caption}</figcaption>}
+                      </figure>
+                    ))}
+                  </div>
+                )}
                   </div>
                 )}
               </article>
