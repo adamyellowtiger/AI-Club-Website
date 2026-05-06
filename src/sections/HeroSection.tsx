@@ -1,4 +1,4 @@
-import ByteBot from '../graphics/ByteBot';
+import bytebotImage from '../../bytebot_image.png';
 import { meetings } from '../data/content';
 
 export default function HeroSection() {
@@ -39,7 +39,7 @@ export default function HeroSection() {
         </div>
         <div className="relative flex justify-center">
           <div className="absolute -z-10 h-56 w-56 rounded-full bg-blue-100 blur-2xl" />
-          <ByteBot className="h-72 w-72" pose="wave" />
+          <img src={bytebotImage} alt="ByteBot, the AI Club mascot" className="h-72 w-72 object-contain" />
           <p className="absolute -bottom-2 rounded-full border border-blue-100 bg-white px-3 py-1 text-xs font-semibold text-blue-700 shadow-soft">
             Meet ByteBot at club sessions
           </p>
