@@ -47,11 +47,18 @@ export type Meeting = {
 
 export const meetings: Meeting[] = [
   {
-    id: 'ai-agents',
-    date: 'TBD',
-    topic: 'AI Agents',
-    note: 'Explore what AI agents are, how they differ from ordinary chatbots, and where they are actually useful.',
+    id: 'ai-creativity',
+    date: 'May 6, 2026',
+    topic: 'AI Creativity',
+    note: 'Explore how AI can support creative work, including brainstorming, image generation, writing, design, music, and the limits of machine creativity.',
     status: 'upcoming'
+  },
+  {
+    id: 'ai-agents',
+    date: 'Previous Session',
+    topic: 'AI Agents',
+    note: 'We explored what AI agents are, how they differ from ordinary chatbots, and where they are actually useful.',
+    status: 'past'
   },
   {
     id: 'mechanistic-interpretability',
@@ -296,47 +303,6 @@ export const aiBits: AIBit[] = [
     ]
   }
 ];
-
-
-export const promptathon = {
-  title: 'Prompt-A-Thon Competition',
-  subtitle:
-    'A team-based AI competition where students use prompt engineering, iteration, and critical thinking to solve real problems.',
-  details: [
-    { label: 'Date', value: 'May 6, 2026' },
-    { label: 'Time', value: '8:30 AM - 4:00 PM' },
-    { label: 'Site', value: 'York University at Markham' },
-    { label: 'Team Size', value: 'Teams of 4 (Grades 9-12 division for Bayview)' },
-    { label: 'Open Spots', value: 'Bayview AI Club currently has 2 open spots' }
-  ],
-  overview:
-    'A Prompt-A-Thon is a creative problem-solving challenge where teams use strategic prompting with Generative AI to research, iterate, and develop solutions to a central challenge. The event helps students move from passive AI use to active, critical thinking and responsible AI practice.',
-  skills: ['Prompting', 'Critical analysis', 'Iteration', 'Human-in-the-loop thinking', 'Fact-checking'],
-  bringItems: [
-    'Laptop or device with internet access and DTAP-approved tools',
-    'Charging cable',
-    'Headphones',
-    '1 power bar (optional)',
-    'Helpful accessories (external mouse, keyboard, or headset)',
-    'Signed media release forms'
-  ],
-  format: [
-    'Teams use AI as a thought partner to address a current issue.',
-    'Preliminary judges circulate throughout the day to ask about prompts, process, and ideas.',
-    'Teams may be notified by 1:45 PM if selected for the final pitch.',
-    'Certificates are handed out around 3:15 PM, followed by closing remarks and 4:00 PM pickup.'
-  ],
-  notes: [
-    'Lunch is provided.',
-    'Any food brought must be nut-free.',
-    'All team members must be from the same school.',
-    'Students must follow the YRDSB Code of Student Conduct.',
-    'Use only DTAP-approved digital tools and permitted materials.',
-    'Dishonest conduct such as cheating or plagiarism is not allowed.',
-    'Tables and chairs are provided onsite.'
-  ],
-  callout: 'Bayview AI Club currently has 2 open spots for our Prompt-A-Thon team.'
-};
 
 export type ResourceCategory = 'start-here' | 'keep-learning' | 'revisit-sessions';
 

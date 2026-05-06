@@ -6,7 +6,6 @@ import FaqSection from './sections/FaqSection';
 import HeroSection from './sections/HeroSection';
 import JoinSection from './sections/JoinSection';
 import MeetingsSection from './sections/MeetingsSection';
-import PromptathonSection from './sections/PromptathonSection';
 import RecentActivitySection from './sections/RecentActivitySection';
 import ResourcesSection from './sections/ResourcesSection';
 import TeamSection from './sections/TeamSection';
@@ -20,7 +19,6 @@ export default function App() {
         <HeroSection />
         <AboutSection />
         <WhatWeDoSection />
-        <PromptathonSection />
         <MeetingsSection />
         <RecentActivitySection />
         <AIBitsSection />
