@@ -47,11 +47,18 @@ export type Meeting = {
 
 export const meetings: Meeting[] = [
   {
-    id: 'ai-creativity',
-    date: 'May 6, 2026',
-    topic: 'AI Creativity',
-    note: 'Explore how AI can support creative work, including brainstorming, image generation, writing, design, music, and the limits of machine creativity.',
+    id: 'ai-in-games',
+    date: 'Wednesday, May 13 • After school • Room 129',
+    topic: 'AI in Games',
+    note: 'Join us on Wednesday, May 13 after school in room 129 for AI in Games. We\'ll explore how AI makes decisions in games, how characters find paths, and how reinforcement learning connects to modern game strategy. No coding or advanced math background needed.',
     status: 'upcoming'
+  },
+  {
+    id: 'ai-creativity',
+    date: 'Previous Session',
+    topic: 'AI Creativity',
+    note: 'Explored how AI can support creative work, including brainstorming, image generation, writing, design, music, and the limits of machine creativity.',
+    status: 'past'
   },
   {
     id: 'ai-agents',
