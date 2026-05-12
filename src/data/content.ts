@@ -8,6 +8,7 @@ import {
   Users,
   WandSparkles
 } from 'lucide-react';
+import diffusionModelImage from './diffusion model.png';
 
 export const navLinks = [
   { label: 'About', href: '#about' },
@@ -110,7 +111,7 @@ export const aiBits: AIBit[] = [
     summary:
       'Support vector machines are a classic AI method for classification that try to separate groups using the boundary with the largest possible margin.',
     displayCaption: "Today’s Daily Bit of AI: support vector machines — how AI finds the best boundary.",
-    imageSrc: `${import.meta.env.BASE_URL}daily-bits/support-vector-machines-main.png`,
+    imageSrc: diffusionModelImage,
     imageAlt: 'Support vector machines Daily Bit main visual',
     supportingImages: [
       {
