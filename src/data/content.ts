@@ -8,6 +8,7 @@ import {
   Users,
   WandSparkles
 } from 'lucide-react';
+import diffusionModelImage from './diffusion-model.png';
 
 export const navLinks = [
   { label: 'About', href: '#about' },
@@ -103,40 +104,25 @@ export type AIBit = {
 
 export const aiBits: AIBit[] = [
   {
-    id: 'support-vector-machines',
-    title: 'Support Vector Machines',
+    id: 'diffusion-models',
+    title: 'Diffusion Models',
     label: 'Daily Bit of AI',
     dateLabel: 'Today',
     summary:
-      'Support vector machines are a classic AI method for classification that try to separate groups using the boundary with the largest possible margin.',
-    displayCaption: "Today’s Daily Bit of AI: support vector machines — how AI finds the best boundary.",
-    imageSrc: `${import.meta.env.BASE_URL}daily-bits/support-vector-machines-main.png`,
-    imageAlt: 'Support vector machines Daily Bit main visual',
-    supportingImages: [
-      {
-        src: `${import.meta.env.BASE_URL}daily-bits/linear-vs-non-linear-svm.webp`,
-        alt: 'Linear SVM versus non-linear SVM comparison diagram',
-        caption:
-          'Linear vs non-linear SVM: some datasets can be separated with a straight boundary, while others need a curved one.'
-      },
-      {
-        src: `${import.meta.env.BASE_URL}daily-bits/support-vectors-hyperplane.webp`,
-        alt: 'Support vectors and hyperplane diagram',
-        caption:
-          'Support vectors are the closest points to the boundary, and they help define the maximum-margin hyperplane.'
-      }
-    ],
-    tags: ['How AI Works', 'Basics', 'Classic Models'],
+      'Diffusion models generate images by starting from random noise and repeatedly denoising it into structured visuals guided by learned patterns.',
+    displayCaption: "Today’s Daily Bit of AI: diffusion models — how AI turns noise into images.",
+    imageSrc: diffusionModelImage,
+    imageAlt: 'Diffusion model Daily Bit visual',
+    tags: ['How AI Works', 'Basics', 'Generative AI'],
     body: [
-      'Support vector machines, or SVMs, are a classic AI method used mainly for classification.',
-      'Their goal is not just to separate two groups, but to find the separating boundary with the largest margin, meaning the biggest gap between the classes.',
-      'The points closest to that boundary are called support vectors, and they are the ones that most strongly determine where the boundary ends up.',
-      'That separating boundary is often called a hyperplane. In a simple 2D picture, it looks like a line. In higher dimensions, it becomes a higher-dimensional separator.',
-      'Some datasets can be split with a straight boundary. That is the linear case.',
-      'But if the classes are arranged in a more complicated pattern, SVMs can use kernels to handle non-linear boundaries.',
-      'A setting called C controls the tradeoff between keeping the margin wide and punishing classification mistakes.',
-      'SVMs can work especially well on smaller, high-dimensional datasets, but they can become expensive to train on large ones.',
-      'The big idea: SVMs try to find the boundary that separates groups with the widest possible safety gap.'
+      'Diffusion models are a popular kind of generative AI used to create images and other media.',
+      'They are trained by gradually adding noise to real data, then learning how to reverse that process.',
+      'At generation time, the model starts with random noise and removes noise step by step.',
+      'Each denoising step adds structure, turning static into recognizable shapes, textures, and details.',
+      'A text prompt can guide this process so the final output matches a requested style or scene.',
+      'Because generation happens across many small steps, diffusion models can produce high-quality, coherent outputs.',
+      'The tradeoff is speed: many denoising steps can be computationally expensive.',
+      'The big idea: diffusion models learn how to turn noise into meaningful data through iterative denoising.'
     ]
   },
   {
