@@ -8,6 +8,7 @@ import JoinSection from './sections/JoinSection';
 import MeetingsSection from './sections/MeetingsSection';
 import RecentActivitySection from './sections/RecentActivitySection';
 import ResourcesSection from './sections/ResourcesSection';
+import SeasonalAnnouncement from './sections/SeasonalAnnouncement';
 import TeamSection from './sections/TeamSection';
 import WhatWeDoSection from './sections/WhatWeDoSection';
 
@@ -17,6 +18,7 @@ export default function App() {
       <Navbar />
       <main>
         <HeroSection />
+        <SeasonalAnnouncement />
         <AboutSection />
         <WhatWeDoSection />
         <MeetingsSection />

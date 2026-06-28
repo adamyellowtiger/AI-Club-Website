@@ -38,6 +38,13 @@ export const featureCards = [
   { icon: Binary, title: 'Resource Sharing', text: 'Members collect guides, videos, and tools so everyone can keep learning outside meetings.' }
 ];
 
+export const seasonalAnnouncement = {
+  badge: 'Summer Update',
+  title: 'See you next fall!',
+  message:
+    'Bayview AI Club meetings are paused for the summer. We’ll resume in the 2026–2027 school year with new lessons, demos, and projects.'
+};
+
 export type Meeting = {
   id: string;
   date: string;
@@ -51,8 +58,8 @@ export const meetings: Meeting[] = [
     id: 'ai-in-games',
     date: 'Wednesday, May 13 • After school • Room 129',
     topic: 'AI in Games',
-    note: 'Join us on Wednesday, May 13 after school in room 129 for AI in Games. We\'ll explore how AI makes decisions in games, how characters find paths, and how reinforcement learning connects to modern game strategy. No coding or advanced math background needed.',
-    status: 'upcoming'
+    note: 'We explored how AI makes decisions in games, how characters find paths, and how reinforcement learning connects to modern game strategy.',
+    status: 'past'
   },
   {
     id: 'ai-creativity',
@@ -104,13 +111,32 @@ export type AIBit = {
 
 export const aiBits: AIBit[] = [
   {
-    id: 'diffusion-models',
-    title: 'Diffusion Models',
+    id: 'model-distillation',
+    title: 'Model Distillation',
     label: 'Daily Bit of AI',
     dateLabel: 'Today',
     summary:
+      'Model distillation is a way to train a smaller AI model to imitate a larger model, keeping much of the performance while making it faster and cheaper to run.',
+    displayCaption: 'Today’s Daily Bit of AI: model distillation — how big AI teaches smaller AI.',
+    tags: ['How AI Works', 'Efficiency', 'Training'],
+    body: [
+      'Large AI models can be powerful, but they are often expensive and slow to run.',
+      'Model distillation is a technique where a smaller “student” model learns from a larger “teacher” model.',
+      'Instead of only learning from the original training labels, the student also learns from the teacher’s outputs.',
+      'Those outputs can contain extra hints, such as which wrong answers were close and which were clearly unlikely.',
+      'The goal is not to make the student identical to the teacher. The goal is to keep enough useful behavior while reducing size, cost, and latency.',
+      'This matters because many real products need AI that works quickly on phones, websites, school tools, or low-cost servers.',
+      'The big idea: model distillation compresses knowledge from a larger model into a smaller one so AI can be faster and easier to deploy.'
+    ]
+  },
+  {
+    id: 'diffusion-models',
+    title: 'Diffusion Models',
+    label: 'Daily Bit of AI',
+    dateLabel: 'Yesterday',
+    summary:
       'Diffusion models generate images by starting from random noise and repeatedly denoising it into structured visuals guided by learned patterns.',
-    displayCaption: "Today’s Daily Bit of AI: diffusion models — how AI turns noise into images.",
+    displayCaption: "Yesterday’s Daily Bit of AI: diffusion models — how AI turns noise into images.",
     imageSrc: diffusionModelImage,
     imageAlt: 'Diffusion model Daily Bit visual',
     tags: ['How AI Works', 'Basics', 'Generative AI'],
@@ -129,10 +155,10 @@ export const aiBits: AIBit[] = [
     id: 'self-supervised-learning',
     title: 'Self-Supervised Learning',
     label: 'Daily Bit of AI',
-    dateLabel: 'Yesterday',
+    dateLabel: '2 days ago',
     summary:
       'Self-supervised learning helps AI learn from raw unlabeled data by turning the data itself into training tasks, which makes modern large-scale AI much more practical.',
-    displayCaption: "Yesterday’s Daily Bit of AI: self-supervised learning — how AI learns without human labels.",
+    displayCaption: "Daily Bit of AI from 2 days ago: self-supervised learning — how AI learns without human labels.",
     imageSrc: `${import.meta.env.BASE_URL}daily-bits/dailyBitOfAI20260405.png`,
     imageAlt: 'Self-supervised learning Daily Bit visual',
     tags: ['How AI Works', 'Basics', 'Training'],
@@ -149,10 +175,10 @@ export const aiBits: AIBit[] = [
     id: 'computer-vision',
     title: 'Computer Vision',
     label: 'Daily Bit of AI',
-    dateLabel: '2 days ago',
+    dateLabel: '3 days ago',
     summary:
       'Computer vision is the part of AI that learns to turn raw image pixels into useful understanding, from simple edges to full objects.',
-    displayCaption: "Daily Bit of AI from 2 days ago: computer vision — how AI learns to understand images.",
+    displayCaption: "Daily Bit of AI from 3 days ago: computer vision — how AI learns to understand images.",
     // Drop generated images in `public/daily-bits/` and keep these paths.
     imageSrc: `${import.meta.env.BASE_URL}daily-bits/computer-vision.png`,
     imageAlt: 'Computer vision Daily Bit visual',
@@ -171,10 +197,10 @@ export const aiBits: AIBit[] = [
     id: 'search-and-planning',
     title: 'Search and Planning',
     label: 'Daily Bit of AI',
-    dateLabel: '3 days ago',
+    dateLabel: '4 days ago',
     summary:
       'Search and planning help AI look ahead, compare possible next steps, and choose a strong sequence of actions.',
-    displayCaption: "Daily Bit of AI from 3 days ago: search and planning — how AI figures out multi-step moves.",
+    displayCaption: "Daily Bit of AI from 4 days ago: search and planning — how AI figures out multi-step moves.",
     imageSrc: `${import.meta.env.BASE_URL}daily-bits/search-and-planning.png`,
     imageAlt: 'Search and planning Daily Bit visual',
     tags: ['How AI Works', 'Basics', 'Real-World Use'],
