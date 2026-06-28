@@ -2,7 +2,7 @@ import bytebotImage from '../../bytebot_image.png';
 import { meetings } from '../data/content';
 
 export default function HeroSection() {
-  const nextMeeting = meetings.find((meeting) => meeting.status === 'upcoming') ?? meetings[0];
+  const nextMeeting = meetings.find((meeting) => meeting.status === 'upcoming');
   const proofPoints = ['Beginner-friendly', 'Real AI tools', 'Student-led'];
 
   return (
@@ -33,7 +33,7 @@ export default function HeroSection() {
           )}
           <div className="mt-8 flex flex-wrap gap-3">
             <a href="#join" className="rounded-xl bg-blue-600 px-5 py-3 font-semibold text-white shadow-soft hover:bg-blue-700">Get connected now</a>
-            <a href="#meetings" className="rounded-xl border border-blue-200 bg-white px-5 py-3 font-semibold text-blue-700 hover:bg-blue-50">See the next session</a>
+            <a href="#meetings" className="rounded-xl border border-blue-200 bg-white px-5 py-3 font-semibold text-blue-700 hover:bg-blue-50">See meeting updates</a>
             <a href="#ai-bits" className="inline-flex items-center px-1 py-3 text-sm font-semibold text-blue-700 hover:text-blue-800">Read a Daily Bit →</a>
           </div>
         </div>

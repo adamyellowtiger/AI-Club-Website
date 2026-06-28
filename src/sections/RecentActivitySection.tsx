@@ -3,7 +3,7 @@ import { aiBits, meetings, resources } from '../data/content';
 
 export default function RecentActivitySection() {
   const latestBit = aiBits[0];
-  const nextSession = meetings.find((meeting) => meeting.status === 'upcoming') ?? meetings[0] ?? null;
+  const nextSession = meetings.find((meeting) => meeting.status === 'upcoming') ?? null;
   const slidesArchive = resources.find((resource) => resource.title === 'Meeting Slides Archive');
   const weeklyRecaps = resources.find((resource) => resource.title === 'Weekly Recap Notes');
 
@@ -26,13 +26,13 @@ export default function RecentActivitySection() {
           </article>
 
           <article className="card">
-            <p className="text-xs font-semibold uppercase tracking-wide text-slate-500">Next Session Topic</p>
-            <h3 className="mt-2 text-lg font-bold text-slate-900">{nextSession?.topic ?? 'Upcoming session updates'}</h3>
+            <p className="text-xs font-semibold uppercase tracking-wide text-slate-500">{nextSession ? 'Next Session Topic' : 'Meeting Status'}</p>
+            <h3 className="mt-2 text-lg font-bold text-slate-900">{nextSession?.topic ?? 'Summer pause in effect'}</h3>
             <p className="mt-2 text-sm text-slate-600">
-              {nextSession?.note ?? 'Meeting topics are posted in the meetings section and shared through club channels.'}
+              {nextSession?.note ?? 'Regular meetings are paused for the summer and will resume in the 2026–2027 school year.'}
             </p>
             <a href="#meetings" className="mt-4 inline-flex text-sm font-semibold text-blue-700 hover:text-blue-800">
-              See meeting details →
+              See meeting updates →
             </a>
           </article>
 

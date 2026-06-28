@@ -1,8 +1,8 @@
 import SectionTitle from '../components/SectionTitle';
-import { meetings } from '../data/content';
+import { meetings, seasonalAnnouncement } from '../data/content';
 
 export default function MeetingsSection() {
-  const upcomingMeeting = meetings.find((meeting) => meeting.status === 'upcoming') ?? meetings[0];
+  const upcomingMeeting = meetings.find((meeting) => meeting.status === 'upcoming');
   const pastMeetings = meetings.filter((meeting) => meeting.status === 'past');
 
   return (
@@ -10,8 +10,8 @@ export default function MeetingsSection() {
       <div className="section-shell">
         <SectionTitle
           eyebrow="Meeting Schedule"
-          title="Plan your next AI Club session"
-          subtitle="See what is coming next, revisit recent sessions, and follow what the club has been actively covering."
+          title="Meeting timeline and updates"
+          subtitle="Revisit recent sessions and check club updates while regular meetings are paused for the summer."
         />
         <div className="mx-auto max-w-3xl space-y-5">
           {upcomingMeeting && (
@@ -23,6 +23,15 @@ export default function MeetingsSection() {
               <p className="mt-3 text-sm font-semibold text-amber-700">{upcomingMeeting.date}</p>
               <p className="mt-3 text-slate-600">{upcomingMeeting.note}</p>
               <p className="mt-3 text-sm font-medium text-blue-700">No prior experience needed.</p>
+            </article>
+          )}
+          {!upcomingMeeting && (
+            <article className="card">
+              <span className="mb-3 inline-flex rounded-full border border-blue-200 bg-blue-50 px-3 py-1 text-xs font-semibold text-blue-700">
+                Summer Pause
+              </span>
+              <h3 className="text-xl font-bold text-slate-900">{seasonalAnnouncement.title}</h3>
+              <p className="mt-3 text-slate-600">{seasonalAnnouncement.message}</p>
             </article>
           )}
 
