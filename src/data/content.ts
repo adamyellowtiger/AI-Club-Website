@@ -111,13 +111,30 @@ export type AIBit = {
 
 export const aiBits: AIBit[] = [
   {
-    id: 'model-distillation',
-    title: 'Model Distillation',
+    id: 'loss-functions-and-normalization',
+    title: 'Loss Functions and Normalization',
     label: 'Daily Bit of AI',
     dateLabel: 'Today',
     summary:
+      'A loss function scores how wrong an AI model is, while normalization puts data on a similar scale so the model can learn more smoothly.',
+    displayCaption:
+      "Today’s Daily Bit of AI: how loss functions measure errors and normalization keeps data balanced.",
+    tags: ['How AI Works', 'Basics', 'Training'],
+    body: [
+      'A loss function tells an AI model how wrong its prediction was. Think of it as an error score that the model tries to make smaller as it learns.',
+      'Normalization puts data values onto a similar scale so that one large number does not unfairly dominate the learning process.',
+      'Imagine an AI predicting house prices using house size and number of bedrooms. House size might be around 2,000, while the number of bedrooms might be only 3 or 4. Without normalization, the model may focus too much on house size simply because its numbers are larger.',
+      'The loss function then measures how far the predicted price is from the real price, helping the model adjust. Together, loss functions and normalization help AI learn more smoothly and improve over time.'
+    ]
+  },
+  {
+    id: 'model-distillation',
+    title: 'Model Distillation',
+    label: 'Daily Bit of AI',
+    dateLabel: 'Yesterday',
+    summary:
       'Model distillation is a way to train a smaller AI model to imitate a larger model, keeping much of the performance while making it faster and cheaper to run.',
-    displayCaption: 'Today’s Daily Bit of AI: model distillation — how big AI teaches smaller AI.',
+    displayCaption: 'Yesterday’s Daily Bit of AI: model distillation — how big AI teaches smaller AI.',
     tags: ['How AI Works', 'Efficiency', 'Training'],
     body: [
       'Large AI models can be powerful, but they are often expensive and slow to run.',
@@ -133,10 +150,10 @@ export const aiBits: AIBit[] = [
     id: 'diffusion-models',
     title: 'Diffusion Models',
     label: 'Daily Bit of AI',
-    dateLabel: 'Yesterday',
+    dateLabel: '2 days ago',
     summary:
       'Diffusion models generate images by starting from random noise and repeatedly denoising it into structured visuals guided by learned patterns.',
-    displayCaption: "Yesterday’s Daily Bit of AI: diffusion models — how AI turns noise into images.",
+    displayCaption: "Daily Bit of AI from 2 days ago: diffusion models — how AI turns noise into images.",
     imageSrc: diffusionModelImage,
     imageAlt: 'Diffusion model Daily Bit visual',
     tags: ['How AI Works', 'Basics', 'Generative AI'],
@@ -155,10 +172,10 @@ export const aiBits: AIBit[] = [
     id: 'self-supervised-learning',
     title: 'Self-Supervised Learning',
     label: 'Daily Bit of AI',
-    dateLabel: '2 days ago',
+    dateLabel: '3 days ago',
     summary:
       'Self-supervised learning helps AI learn from raw unlabeled data by turning the data itself into training tasks, which makes modern large-scale AI much more practical.',
-    displayCaption: "Daily Bit of AI from 2 days ago: self-supervised learning — how AI learns without human labels.",
+    displayCaption: "Daily Bit of AI from 3 days ago: self-supervised learning — how AI learns without human labels.",
     imageSrc: `${import.meta.env.BASE_URL}daily-bits/dailyBitOfAI20260405.png`,
     imageAlt: 'Self-supervised learning Daily Bit visual',
     tags: ['How AI Works', 'Basics', 'Training'],
@@ -175,10 +192,10 @@ export const aiBits: AIBit[] = [
     id: 'computer-vision',
     title: 'Computer Vision',
     label: 'Daily Bit of AI',
-    dateLabel: '3 days ago',
+    dateLabel: '4 days ago',
     summary:
       'Computer vision is the part of AI that learns to turn raw image pixels into useful understanding, from simple edges to full objects.',
-    displayCaption: "Daily Bit of AI from 3 days ago: computer vision — how AI learns to understand images.",
+    displayCaption: "Daily Bit of AI from 4 days ago: computer vision — how AI learns to understand images.",
     // Drop generated images in `public/daily-bits/` and keep these paths.
     imageSrc: `${import.meta.env.BASE_URL}daily-bits/computer-vision.png`,
     imageAlt: 'Computer vision Daily Bit visual',
@@ -197,10 +214,10 @@ export const aiBits: AIBit[] = [
     id: 'search-and-planning',
     title: 'Search and Planning',
     label: 'Daily Bit of AI',
-    dateLabel: '4 days ago',
+    dateLabel: '5 days ago',
     summary:
       'Search and planning help AI look ahead, compare possible next steps, and choose a strong sequence of actions.',
-    displayCaption: "Daily Bit of AI from 4 days ago: search and planning — how AI figures out multi-step moves.",
+    displayCaption: "Daily Bit of AI from 5 days ago: search and planning — how AI figures out multi-step moves.",
     imageSrc: `${import.meta.env.BASE_URL}daily-bits/search-and-planning.png`,
     imageAlt: 'Search and planning Daily Bit visual',
     tags: ['How AI Works', 'Basics', 'Real-World Use'],
