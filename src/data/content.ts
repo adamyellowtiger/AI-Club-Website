@@ -9,6 +9,7 @@ import {
   WandSparkles
 } from 'lucide-react';
 import diffusionModelImage from './diffusion-model.png';
+import dailyBitOfAI20260710Image from '../../daily bit of ai 20260710.png';
 
 export const navLinks = [
   { label: 'About', href: '#about' },
@@ -111,10 +112,29 @@ export type AIBit = {
 
 export const aiBits: AIBit[] = [
   {
+    id: 'can-ai-explain-its-own-decisions',
+    title: 'Can AI Explain Its Own Decisions?',
+    label: 'Daily Bit of AI',
+    dateLabel: 'Today',
+    summary:
+      'Explainable AI helps people understand why a model made a prediction by showing which parts of the input influenced the result.',
+    displayCaption:
+      "Today’s Daily Bit of AI: explainable AI — helping people understand how AI reaches a decision.",
+    imageSrc: dailyBitOfAI20260710Image,
+    imageAlt: 'Byte explaining explainable AI with an input, AI decision, and explanation flow.',
+    tags: ['Explainable AI', 'Trust', 'Real-World Use'],
+    body: [
+      'Some AI systems make accurate predictions, but it is not always clear why they chose that answer.',
+      'Explainable AI focuses on tools that show which parts of the input influenced a model’s decision.',
+      'This is especially important in medicine, hiring, finance, and education, where people need to trust and understand high-impact decisions.',
+      'Imagine an AI that checks a student’s math solution. A basic model might only say “correct” or “incorrect.” An explainable model should also point to the exact step where the mistake happened so the feedback is actually useful.'
+    ]
+  },
+  {
     id: 'loss-functions-and-normalization',
     title: 'Loss Functions and Normalization',
     label: 'Daily Bit of AI',
-    dateLabel: 'Today',
+    dateLabel: 'Yesterday',
     summary:
       'A loss function scores how wrong an AI model is, while normalization puts data on a similar scale so the model can learn more smoothly.',
     displayCaption:
