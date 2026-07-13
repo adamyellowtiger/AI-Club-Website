@@ -112,6 +112,21 @@ export type AIBit = {
 
 export const aiBits: AIBit[] = [
   {
+    id: 'when-ai-uses-tools',
+    title: 'When AI Uses Tools',
+    label: 'Daily Bit of AI',
+    dateLabel: 'July 12, 2026',
+    summary:
+      'AI agents can use tools such as search, calculators, calendars, code editors, and files to complete tasks more accurately.',
+    displayCaption:
+      'Daily Bit of AI for July 12, 2026: how AI agents use tools to plan, check their work, and create better answers.',
+    tags: ['AI Agents', 'Tools', 'Real-World Use'],
+    body: [
+      'Some AI systems do more than just answer questions. They can use tools, such as search, calculators, calendars, code editors, or files, to complete tasks more accurately. This is one reason AI agents are powerful: they can plan steps, use the right tool, check the result, and then continue.',
+      'Imagine asking an AI to plan a study schedule. A basic chatbot might only give advice from memory. An AI agent could check your calendar, calculate available study time, organize tasks by deadline, and then create a realistic daily plan.'
+    ]
+  },
+  {
     id: 'can-ai-explain-its-own-decisions',
     title: 'Can AI Explain Its Own Decisions?',
     label: 'Daily Bit of AI',
