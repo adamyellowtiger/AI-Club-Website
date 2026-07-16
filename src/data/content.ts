@@ -112,6 +112,20 @@ export type AIBit = {
 
 export const aiBits: AIBit[] = [
   {
+    id: 'can-ai-work-as-a-team',
+    title: 'Can AI Work as a Team?',
+    label: 'Daily Bit of AI',
+    dateLabel: 'July 15, 2026',
+    summary:
+      'Multi-agent AI systems use several specialized AI agents that collaborate on different roles or parts of a larger task.',
+    displayCaption: 'Several specialized AI agents can collaborate on one larger task.',
+    tags: ['Multi-Agent AI', 'Teamwork', 'Planning'],
+    body: [
+      'Multi-agent AI systems use several AI agents that each handle different roles or parts of a task. One agent might research information, another might check calculations, and another might organize the final answer. This can improve performance, but the agents must communicate clearly or they may repeat work, disagree, or pass along mistakes.',
+      'Imagine using AI to plan a school fundraiser. One agent could research possible activities, another could estimate costs, and a third could create the schedule. A final agent could review the plan and flag problems before it is presented to the club.'
+    ]
+  },
+  {
     id: 'when-ai-uses-tools',
     title: 'When AI Uses Tools',
     label: 'Daily Bit of AI',
