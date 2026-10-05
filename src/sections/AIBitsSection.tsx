@@ -1,144 +1,138 @@
-import { useState } from 'react';
-import SectionTitle from '../components/SectionTitle';
-import { aiBits } from '../data/content';
-import ByteBot from '../graphics/ByteBot';
-
+import { ArrowUpRight } from "lucide-react";
+import { aiBits, type AIBit } from "../data/aiBits";
+import { formatDate } from "../data/site";
+function BitBody({ bit }: { bit: AIBit }) {
+  return (
+    <div className="bit-body">
+      {bit.body.map((paragraph) => (
+        <p key={paragraph}>{paragraph}</p>
+      ))}
+      {bit.supportingImages?.map((image) => (
+        <figure key={image.src}>
+          <img src={image.src} alt={image.alt} loading="lazy" />
+          {image.caption && <figcaption>{image.caption}</figcaption>}
+        </figure>
+      ))}
+    </div>
+  );
+}
 export default function AIBitsSection() {
-  const [featuredBit, ...archiveBits] = aiBits;
-  const [expandedBitId, setExpandedBitId] = useState<string | null>(null);
-
-  const toggleBit = (bitId: string) => {
-    setExpandedBitId((current) => (current === bitId ? null : bitId));
-  };
-
+  const sorted = [...aiBits].sort((a, b) => b.date.localeCompare(a.date));
+  const [latest, ...recent] = sorted;
   return (
     <section id="ai-bits">
       <div className="section-shell">
-        <SectionTitle
-          eyebrow="Daily Bit of AI"
-          title="Recent Daily Bits"
-          subtitle="Quick summaries first, with full explainers available when you want to dive deeper."
-        />
-
-        <div className="grid gap-6 lg:grid-cols-[1.2fr_0.8fr]">
-          <article className="card">
-            {(featuredBit.label || featuredBit.dateLabel) && (
-              <div className="mb-3 flex flex-wrap items-center gap-2 text-xs font-semibold uppercase tracking-wide text-slate-500">
-                {featuredBit.label && <span>{featuredBit.label}</span>}
-                {featuredBit.dateLabel && (
-                  <>
-                    <span aria-hidden="true">•</span>
-                    <span>{featuredBit.dateLabel}</span>
-                  </>
-                )}
-              </div>
-            )}
-            <div className="mb-3 flex flex-wrap gap-2">
-              {featuredBit.tags.map((tag) => (
-                <span key={tag} className="pill">
-                  {tag}
-                </span>
-              ))}
-            </div>
-            <h3 className="text-2xl font-bold text-slate-900">{featuredBit.title}</h3>
-            <p className="mt-3 text-slate-600">{featuredBit.summary}</p>
-            {featuredBit.imageSrc && (
-              <img
-                src={featuredBit.imageSrc}
-                alt={featuredBit.imageAlt ?? `${featuredBit.title} visual`}
-                className="mt-4 w-full rounded-xl border border-slate-200"
-              />
-            )}
-            {featuredBit.displayCaption && <p className="mt-3 text-sm text-slate-500">{featuredBit.displayCaption}</p>}
-            <button
-              type="button"
-              onClick={() => toggleBit(featuredBit.id)}
-              className="mt-6 inline-flex rounded-lg bg-blue-600 px-4 py-2 text-sm font-semibold text-white hover:bg-blue-700"
-            >
-              {expandedBitId === featuredBit.id ? 'Show less' : 'Read full bit'}
-            </button>
-            {expandedBitId === featuredBit.id && (
-              <div className="mt-4 space-y-3 text-slate-600">
-                {featuredBit.body.map((paragraph, index) => (
-                  <p key={`${featuredBit.id}-${index}`}>{paragraph}</p>
-                ))}
-                {featuredBit.supportingImages && featuredBit.supportingImages.length > 0 && (
-                  <div className="grid gap-4 pt-2 sm:grid-cols-2">
-                    {featuredBit.supportingImages.map((image, index) => (
-                      <figure key={`${featuredBit.id}-support-${index}`} className="space-y-2">
-                        <img src={image.src} alt={image.alt} className="w-full rounded-xl border border-slate-200" />
-                        {image.caption && <figcaption className="text-sm text-slate-500">{image.caption}</figcaption>}
-                      </figure>
-                    ))}
-                  </div>
-                )}
-              </div>
-            )}
-          </article>
-
-          <div className="space-y-4">
-            <div className="card flex items-center justify-center">
-              <ByteBot className="h-36 w-36" pose="point" />
-            </div>
-            {archiveBits.map((bit) => (
-              <article key={bit.id} className="card">
-                {(bit.label || bit.dateLabel) && (
-                  <div className="mb-3 flex flex-wrap items-center gap-2 text-[11px] font-semibold uppercase tracking-wide text-slate-500">
-                    {bit.label && <span>{bit.label}</span>}
-                    {bit.dateLabel && (
-                      <>
-                        <span aria-hidden="true">•</span>
-                        <span>{bit.dateLabel}</span>
-                      </>
-                    )}
-                  </div>
-                )}
-                <div className="mb-3 flex flex-wrap gap-2">
-                  {bit.tags.map((tag) => (
-                    <span key={tag} className="pill">
-                      {tag}
-                    </span>
+        <div className="section-heading">
+          <div>
+            <p className="eyebrow">Daily Bit of AI</p>
+            <h2>A little curiosity goes a long way.</h2>
+            <p>
+              One idea at a time. Read the latest published Bit or revisit the
+              collection.
+            </p>
+          </div>
+          <a
+            className="text-link"
+            href={`${import.meta.env.BASE_URL}?view=bits`}
+          >
+            All Daily Bits <ArrowUpRight size={17} />
+          </a>
+        </div>
+        {latest && (
+          <div className="bits-layout">
+            <article className="featured-bit">
+              <div className="bit-copy">
+                <p className="eyebrow">
+                  Latest published ·{" "}
+                  <time dateTime={latest.date}>{formatDate(latest.date)}</time>
+                </p>
+                <h3>{latest.title}</h3>
+                <p>{latest.summary}</p>
+                <div className="tag-row">
+                  {latest.tags.map((tag) => (
+                    <span key={tag}>{tag}</span>
                   ))}
                 </div>
-                <h4 className="font-bold text-slate-900">{bit.title}</h4>
-                <p className="mt-2 text-sm text-slate-600">{bit.summary}</p>
-                {bit.imageSrc && (
-                  <img
-                    src={bit.imageSrc}
-                    alt={bit.imageAlt ?? `${bit.title} visual`}
-                    className="mt-3 w-full rounded-lg border border-slate-200"
-                  />
-                )}
-                {bit.displayCaption && <p className="mt-2 text-xs text-slate-500">{bit.displayCaption}</p>}
-                <button
-                  type="button"
-                  onClick={() => toggleBit(bit.id)}
-                  className="mt-4 inline-flex rounded-lg border border-blue-200 bg-white px-3 py-2 text-xs font-semibold text-blue-700 hover:bg-blue-50"
+                <details>
+                  <summary>
+                    Read the full Bit <ArrowUpRight size={17} />
+                  </summary>
+                  <BitBody bit={latest} />
+                </details>
+              </div>
+              {latest.imageSrc && (
+                <a
+                  className="bit-image"
+                  href={latest.imageSrc}
+                  aria-label={`Open illustration: ${latest.title}`}
                 >
-                  {expandedBitId === bit.id ? 'Show less' : 'Read more'}
-                </button>
-                {expandedBitId === bit.id && (
-                  <div className="mt-4 space-y-3 text-sm text-slate-600">
-                    {bit.body.map((paragraph, index) => (
-                      <p key={`${bit.id}-${index}`}>{paragraph}</p>
-                    ))}
-                    {bit.supportingImages && bit.supportingImages.length > 0 && (
-                      <div className="grid gap-4 pt-2 sm:grid-cols-2">
-                        {bit.supportingImages.map((image, index) => (
-                          <figure key={`${bit.id}-support-${index}`} className="space-y-2">
-                            <img src={image.src} alt={image.alt} className="w-full rounded-xl border border-slate-200" />
-                            {image.caption && <figcaption className="text-sm text-slate-500">{image.caption}</figcaption>}
-                          </figure>
-                        ))}
-                      </div>
-                    )}
-                  </div>
-                )}
-              </article>
-            ))}
+                  <img
+                    src={latest.imageSrc}
+                    alt={latest.imageAlt ?? latest.title}
+                    loading="lazy"
+                    width="1024"
+                    height="1024"
+                  />
+                </a>
+              )}
+            </article>
+            <div className="recent-bits">
+              <p className="eyebrow">From the collection</p>
+              {recent.slice(0, 3).map((bit) => (
+                <article key={bit.id}>
+                  <time dateTime={bit.date}>{formatDate(bit.date)}</time>
+                  <h3>
+                    <a
+                      href={`${import.meta.env.BASE_URL}?view=bits#bit-${bit.id}`}
+                    >
+                      {bit.title}
+                      <ArrowUpRight size={18} />
+                    </a>
+                  </h3>
+                  <p>{bit.summary}</p>
+                </article>
+              ))}
+            </div>
           </div>
-        </div>
+        )}
       </div>
     </section>
+  );
+}
+export function AIBitArchive() {
+  return (
+    <main id="main" className="section-shell bit-archive">
+      <a className="text-link" href={import.meta.env.BASE_URL}>
+        ← Back to Bayview AI Club
+      </a>
+      <p className="eyebrow">The collection</p>
+      <h1>Daily Bits of AI</h1>
+      <p>
+        Short explainers from the club. Original publication dates are
+        preserved.
+      </p>
+      {[...aiBits]
+        .sort((a, b) => b.date.localeCompare(a.date))
+        .map((bit) => (
+          <article id={`bit-${bit.id}`} key={bit.id}>
+            <time dateTime={bit.date}>{formatDate(bit.date)}</time>
+            <h2>{bit.title}</h2>
+            <p>{bit.summary}</p>
+            {bit.imageSrc && (
+              <img
+                src={bit.imageSrc}
+                alt={bit.imageAlt ?? bit.title}
+                loading="lazy"
+                width="1024"
+                height="1024"
+              />
+            )}
+            {bit.displayCaption && (
+              <p className="small">{bit.displayCaption}</p>
+            )}
+            <BitBody bit={bit} />
+          </article>
+        ))}
+    </main>
   );
 }

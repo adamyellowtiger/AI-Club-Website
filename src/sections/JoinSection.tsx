@@ -1,61 +1,79 @@
-import SectionTitle from '../components/SectionTitle';
-import { instagramHandle, instagramUrl, joinLinks } from '../data/content';
-
+import {
+  ArrowUpRight,
+  MessageCircle,
+  GraduationCap,
+  Instagram,
+} from "lucide-react";
+import { channels, site } from "../data/site";
+import { faqs } from "../data/faq";
 export default function JoinSection() {
-  const channels = [
-    {
-      title: 'Discord',
-      actionLabel: joinLinks[0]?.label ?? 'Join Discord',
-      href: joinLinks[0]?.href ?? '#join',
-      helperText: 'Fastest way to get reminders, ask questions, and stay in the club chat.',
-      emphasis: 'Start here'
-    },
-    {
-      title: 'Google Classroom',
-      actionLabel: joinLinks[1]?.label ?? 'Join Google Classroom',
-      href: joinLinks[1]?.href ?? '#join',
-      helperText: 'Official school channel for classroom posts, shared resources, and formal updates.',
-      emphasis: 'Official school channel'
-    },
-    {
-      title: 'Instagram',
-      actionLabel: `Follow ${instagramHandle}`,
-      href: instagramUrl,
-      helperText: 'Best for visuals, highlights, and public updates you can share with friends.',
-      emphasis: 'Public updates'
-    }
-  ];
-
+  const icons = {
+    Discord: MessageCircle,
+    "Google Classroom": GraduationCap,
+    Instagram,
+  };
   return (
-    <section id="join">
+    <section id="join" className="join-region">
       <div className="section-shell">
-        <div className="rounded-3xl bg-gradient-to-r from-blue-700 to-blue-500 p-8 text-white shadow-soft md:p-12">
-          <SectionTitle
-            eyebrow="Join Us"
-            title="Stay connected with Bayview AI Club"
-            subtitle="Choose the channel that fits how you want updates, then use Classroom for official school posts and resources."
-            tone="inverse"
-          />
-          <div className="mt-6 grid gap-4 lg:grid-cols-3">
-            {channels.map((channel) => (
-              <article key={channel.title} className="min-w-0 rounded-2xl border border-white/25 bg-white/10 p-4">
-                <p className="text-xs font-semibold uppercase tracking-wide text-blue-100">{channel.emphasis}</p>
-                <h3 className="mt-2 text-lg font-bold text-white">{channel.title}</h3>
-                <p className="mt-2 text-sm text-blue-100">{channel.helperText}</p>
+        <div className="join-intro">
+          <p className="eyebrow">There’s a place for your curiosity</p>
+          <h2>
+            You don’t have to know AI.
+            <br />
+            You just have to wonder.
+          </h2>
+          <p>
+            Join other Bayview students in {site.room}. Start with the club
+            channels for confirmed dates and announcements.
+          </p>
+        </div>
+        <div className="join-channels">
+          {channels.map((channel) => {
+            const Icon = icons[channel.name as keyof typeof icons];
+            return (
+              <article
+                key={channel.name}
+                className={
+                  channel.name === "Discord"
+                    ? "channel featured-channel"
+                    : "channel"
+                }
+              >
+                <Icon size={25} />
+                <h3>{channel.name}</h3>
+                <p>{channel.description}</p>
                 <a
+                  className="button"
                   href={channel.href}
-                  className="mt-4 inline-flex rounded-xl bg-white px-4 py-2 font-semibold text-blue-700 hover:bg-blue-50"
                   target="_blank"
-                  rel="noreferrer"
+                  rel="noopener noreferrer"
                 >
-                  {channel.actionLabel}
+                  {channel.label}
+                  <ArrowUpRight size={17} />
                 </a>
               </article>
-            ))}
+            );
+          })}
+        </div>
+        <p className="classroom-note">
+          Use your YRDSB gapps account for Google Classroom. Class code:{" "}
+          <strong>{site.classroomCode}</strong>
+        </p>
+        <div id="faq" className="faq-layout">
+          <div>
+            <p className="eyebrow">Good questions</p>
+            <h2>Before you drop by.</h2>
           </div>
-          <div className="mt-6 rounded-2xl border border-blue-300/60 bg-white/10 p-4 text-sm leading-relaxed text-blue-50">
-            <p>Use a YRDSB gapps account to join Google Classroom.</p>
-            <p className="mt-1">If the link does not work, use class code: 7b6loaop.</p>
+          <div>
+            {faqs.map((faq) => (
+              <details key={faq.q}>
+                <summary>
+                  {faq.q}
+                  <span aria-hidden="true">+</span>
+                </summary>
+                <p>{faq.a}</p>
+              </details>
+            ))}
           </div>
         </div>
       </div>

@@ -1,56 +1,107 @@
-import SectionTitle from '../components/SectionTitle';
-import { meetings, seasonalAnnouncement } from '../data/content';
-
+import { ArrowUpRight, CalendarDays, MapPin, Clock } from "lucide-react";
+import {
+  nextMeeting,
+  previousMeeting,
+  followingMeeting,
+  currentPhase,
+} from "../data/roadmap";
+import { formatDate, site, siteNotice } from "../data/site";
+import MeetingResources from "../components/MeetingResources";
 export default function MeetingsSection() {
-  const upcomingMeeting = meetings.find((meeting) => meeting.status === 'upcoming');
-  const pastMeetings = meetings.filter((meeting) => meeting.status === 'past');
-
   return (
     <section id="meetings">
-      <div className="section-shell">
-        <SectionTitle
-          eyebrow="Meeting Schedule"
-          title="Meeting timeline and updates"
-          subtitle="Revisit recent sessions and check club updates while regular meetings are paused for the summer."
-        />
-        <div className="mx-auto max-w-3xl space-y-5">
-          {upcomingMeeting && (
-            <article className="card">
-              <span className="mb-3 inline-flex rounded-full border border-amber-200 bg-amber-50 px-3 py-1 text-xs font-semibold text-amber-700">
-                Next Meeting
-              </span>
-              <h3 className="text-xl font-bold text-slate-900">{upcomingMeeting.topic}</h3>
-              <p className="mt-3 text-sm font-semibold text-amber-700">{upcomingMeeting.date}</p>
-              <p className="mt-3 text-slate-600">{upcomingMeeting.note}</p>
-              <p className="mt-3 text-sm font-medium text-blue-700">No prior experience needed.</p>
-            </article>
-          )}
-          {!upcomingMeeting && (
-            <article className="card">
-              <span className="mb-3 inline-flex rounded-full border border-blue-200 bg-blue-50 px-3 py-1 text-xs font-semibold text-blue-700">
-                Summer Pause
-              </span>
-              <h3 className="text-xl font-bold text-slate-900">{seasonalAnnouncement.title}</h3>
-              <p className="mt-3 text-slate-600">{seasonalAnnouncement.message}</p>
-            </article>
-          )}
-
-          {pastMeetings.length > 0 && (
-            <div className="card p-5">
-              <div className="mb-3 flex items-center justify-between gap-2">
-                <h3 className="text-base font-bold text-slate-900">Recent Sessions</h3>
-                <span className="pill">{pastMeetings.length}</span>
-              </div>
-              <p className="mb-3 text-sm text-slate-600">New topics and slide decks are added over time as meetings continue.</p>
-              <div className="space-y-3">
-                {pastMeetings.map((meeting) => (
-                  <article key={meeting.id} className="rounded-xl border border-blue-100 bg-blue-50/40 px-4 py-3">
-                    <p className="mt-1 font-semibold text-slate-900">{meeting.topic}</p>
-                    <p className="mt-1 text-sm text-slate-600">{meeting.note}</p>
-                  </article>
-                ))}
-              </div>
-            </div>
+      <div className="section-shell meeting-shell">
+        {siteNotice.enabled && (
+          <aside className={`site-notice notice-${siteNotice.tone ?? "info"}`}>
+            <strong>{siteNotice.label}</strong> {siteNotice.message}
+          </aside>
+        )}
+        <div className="next-meeting">
+          <div className="next-context">
+            <p className="eyebrow">At the club</p>
+            <h2>
+              {nextMeeting?.status === "current"
+                ? "This week at AI Club"
+                : "Up next"}
+            </h2>
+            <p>{currentPhase?.title ?? "The year in review"}</p>
+            <a href="#join">
+              Get meeting announcements <ArrowUpRight size={16} />
+            </a>
+          </div>
+          <div className="next-topic">
+            {nextMeeting ? (
+              <>
+                <p className="meeting-meta">
+                  Meeting {String(nextMeeting.number).padStart(2, "0")} ·{" "}
+                  {nextMeeting.type}
+                  <span className="pill">
+                    {nextMeeting.status === "current"
+                      ? "Current"
+                      : nextMeeting.date
+                        ? "Upcoming"
+                        : "Date TBA"}
+                  </span>
+                </p>
+                <h3>{nextMeeting.title}</h3>
+                <p>{nextMeeting.coreIdea ?? nextMeeting.question}</p>
+                <div className="next-facts">
+                  <span>
+                    <CalendarDays />
+                    {formatDate(nextMeeting.date)}
+                  </span>
+                  <span>
+                    <MapPin />
+                    {site.room}
+                  </span>
+                  <span>
+                    <Clock />
+                    {site.time} · {site.duration}
+                  </span>
+                </div>
+                {nextMeeting.leader && <p>Led by {nextMeeting.leader}</p>}
+                {nextMeeting.preparation && (
+                  <p>Prepare: {nextMeeting.preparation}</p>
+                )}
+                <MeetingResources meeting={nextMeeting} />
+                <a
+                  className="text-link"
+                  href={`#meeting-${nextMeeting.number}`}
+                >
+                  Explore this meeting <ArrowUpRight size={16} />
+                </a>
+              </>
+            ) : (
+              <>
+                <h3>Program complete</h3>
+                <p>
+                  Revisit the year’s lessons and experiments in the roadmap.
+                </p>
+                <a className="text-link" href="#program">
+                  Explore the program
+                </a>
+              </>
+            )}
+          </div>
+        </div>
+        <div className="meeting-neighbours">
+          <span>
+            <strong>Previously</strong>{" "}
+            {previousMeeting ? (
+              <a href={`#meeting-${previousMeeting.number}`}>
+                {previousMeeting.title}
+              </a>
+            ) : (
+              "No 2026–27 completions posted yet"
+            )}
+          </span>
+          {followingMeeting && (
+            <span>
+              <strong>Next topic</strong>{" "}
+              <a href={`#meeting-${followingMeeting.number}`}>
+                {followingMeeting.title} <ArrowUpRight size={14} />
+              </a>
+            </span>
           )}
         </div>
       </div>

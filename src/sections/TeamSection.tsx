@@ -1,33 +1,47 @@
-import SectionTitle from '../components/SectionTitle';
-import { team } from '../data/content';
-
+import { site } from "../data/site";
+import { team, facultyAdvisor } from "../data/team";
 export default function TeamSection() {
   return (
     <section id="team">
       <div className="section-shell">
-        <SectionTitle
-          eyebrow="Leadership"
-          title="Student leadership team"
-          subtitle="Meet the students responsible for planning meetings, supporting learning, and coordinating outreach."
-        />
-        <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
-          {team.map((person) => (
-            <article key={person.name} className="card">
-              <div className="mb-4 flex h-14 w-14 items-center justify-center rounded-full bg-blue-100 text-lg font-bold text-blue-700">
-                {person.name
-                  .split(' ')
-                  .map((n) => n[0])
-                  .join('')}
-              </div>
-              <h3 className="font-bold text-slate-900">{person.name}</h3>
-              <p className="text-sm font-semibold text-blue-700">{person.role}</p>
-              <p className="mt-3 text-sm text-slate-600">{person.summary}</p>
-              <p className="mt-3 text-xs font-medium text-slate-500">
-                <span className="font-semibold text-slate-700">{person.focusLabel}:</span> {person.focus}
-              </p>
-            </article>
-          ))}
+        <div className="section-heading">
+          <div>
+            <p className="eyebrow">Meet your {site.year} team</p>
+            <h2>Student-led. Built together.</h2>
+            <p>
+              The people behind the lessons, experiments, and club community.
+            </p>
+          </div>
         </div>
+        <div className="team-grid">
+          {[...team]
+            .sort((a, b) => a.order - b.order)
+            .map((person) => (
+              <article
+                key={person.name}
+                className={`team-member tier-${person.tier}`}
+              >
+                {person.tier === "leadership" && (
+                  <span className="initials" aria-hidden="true">
+                    {person.name
+                      .split(" ")
+                      .map((n) => n[0])
+                      .join("")}
+                  </span>
+                )}
+                <div>
+                  <p className="team-role">{person.role}</p>
+                  <h3>{person.name}</h3>
+                  <p className="team-responsibilities">
+                    {person.responsibilities.join(" ")}
+                  </p>
+                </div>
+              </article>
+            ))}
+        </div>
+        <p className="faculty">
+          Faculty Advisor <span>— {facultyAdvisor}</span>
+        </p>
       </div>
     </section>
   );
