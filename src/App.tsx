@@ -1,32 +1,36 @@
-import Footer from './components/Footer';
-import Navbar from './components/Navbar';
-import AboutSection from './sections/AboutSection';
-import AIBitsSection from './sections/AIBitsSection';
-import FaqSection from './sections/FaqSection';
-import HeroSection from './sections/HeroSection';
-import JoinSection from './sections/JoinSection';
-import MeetingsSection from './sections/MeetingsSection';
-import RecentActivitySection from './sections/RecentActivitySection';
-import ResourcesSection from './sections/ResourcesSection';
-import SeasonalAnnouncement from './sections/SeasonalAnnouncement';
-import TeamSection from './sections/TeamSection';
-import WhatWeDoSection from './sections/WhatWeDoSection';
+import Footer from "./components/Footer";
+import Navbar from "./components/Navbar";
+import AIBitsSection, { AIBitArchive } from "./sections/AIBitsSection";
+import ProgramRoadmap from "./components/ProgramRoadmap";
+import HeroSection from "./sections/HeroSection";
+import JoinSection from "./sections/JoinSection";
+import MeetingsSection from "./sections/MeetingsSection";
+import ResourcesSection from "./sections/ResourcesSection";
+import TeamSection from "./sections/TeamSection";
+import WhatWeDoSection from "./sections/WhatWeDoSection";
 
 export default function App() {
+  if (new URLSearchParams(window.location.search).get("view") === "bits")
+    return (
+      <>
+        <AIBitArchive />
+        <Footer />
+      </>
+    );
   return (
     <>
+      <a className="skip-link" href="#main">
+        Skip to content
+      </a>
       <Navbar />
-      <main>
+      <main id="main">
         <HeroSection />
-        <SeasonalAnnouncement />
-        <AboutSection />
-        <WhatWeDoSection />
         <MeetingsSection />
-        <RecentActivitySection />
+        <ProgramRoadmap />
+        <WhatWeDoSection />
         <AIBitsSection />
         <ResourcesSection />
         <TeamSection />
-        <FaqSection />
         <JoinSection />
       </main>
       <Footer />

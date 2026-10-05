@@ -1,82 +1,103 @@
-import SectionTitle from '../components/SectionTitle';
-import { resources, type ResourceCategory } from '../data/content';
-
-const groupedResources: Array<{
-  key: ResourceCategory;
-  title: string;
-  subtitle: string;
-}> = [
+import { ArrowUpRight, FileText } from "lucide-react";
+import { resources } from "../data/resources";
+import { archivedMeetings } from "../data/archive";
+import { orderedMeetings } from "../data/roadmap";
+import MeetingResources from "../components/MeetingResources";
+import Byte from "../graphics/Byte";
+const groups = [
+  { key: "start-here", title: "Start here", label: "01 / THE ESSENTIALS" },
   {
-    key: 'start-here',
-    title: 'Start Here',
-    subtitle: 'Get oriented fast with beginner-friendly essentials.'
+    key: "keep-learning",
+    title: "Explore further",
+    label: "02 / FOLLOW YOUR CURIOSITY",
   },
   {
-    key: 'keep-learning',
-    title: 'Keep Learning',
-    subtitle: 'Go deeper with practical tools and thoughtful AI context.'
+    key: "revisit-sessions",
+    title: "2025–26 archive",
+    label: "03 / FROM PREVIOUS SESSIONS",
   },
-  {
-    key: 'revisit-sessions',
-    title: 'Revisit Club Sessions',
-    subtitle: 'Review what the club has actually covered and shared.'
-  }
 ];
-
-const resourcesByCategory: Record<ResourceCategory, Array<(typeof resources)[number]>> = {
-  'start-here': [],
-  'keep-learning': [],
-  'revisit-sessions': []
-};
-
-resources.forEach((resource) => {
-  resourcesByCategory[resource.category].push(resource);
-});
-
 export default function ResourcesSection() {
+  const published = orderedMeetings.filter(
+    (m) => m.slidesHref || m.recapHref || m.labHref,
+  );
   return (
-    <section id="resources">
+    <section id="resources" className="resources-region">
       <div className="section-shell">
-        <SectionTitle
-          eyebrow="Resources"
-          title="Practical resources for every stage"
-          subtitle="Start with the essentials, keep building your skills, and revisit meeting materials anytime."
-        />
-
-        <div className="space-y-6">
-          {groupedResources.map((group) => {
-            const categoryResources = resourcesByCategory[group.key];
-
-            return (
-              <div key={group.key} className="card p-5">
-                <div className="mb-4">
-                  <h3 className="text-lg font-bold text-slate-900">{group.title}</h3>
-                  <p className="mt-1 text-sm text-slate-600">{group.subtitle}</p>
-                </div>
-
-                <div className="grid gap-4 md:grid-cols-2">
-                  {categoryResources.map((resource) => (
-                    <article key={resource.href} className="rounded-2xl border border-blue-100 bg-blue-50/40 p-4">
-                      <div className="flex items-start justify-between gap-3">
-                        <h4 className="text-base font-semibold text-slate-900">{resource.title}</h4>
-                        {resource.featured && <span className="pill">Featured</span>}
-                      </div>
-                      <p className="mt-2 text-sm text-slate-600">{resource.description}</p>
-                      <a
-                        href={resource.href}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="mt-3 inline-flex text-sm font-semibold text-blue-700 hover:text-blue-800"
-                      >
-                        {resource.status === 'coming-soon' ? 'Coming soon' : 'Open resource →'}
-                      </a>
-                    </article>
-                  ))}
-                </div>
-              </div>
-            );
-          })}
+        <div className="section-heading">
+          <div>
+            <p className="eyebrow">The club library</p>
+            <h2>Your next question starts here.</h2>
+            <p>
+              Catch up, prepare for a lab, or follow an idea a little further.
+            </p>
+          </div>
+          <Byte pose="builder" className="library-byte" decorative />
         </div>
+        <div className="resource-grid">
+          {groups.map((group) => (
+            <div className="resource-group" key={group.key}>
+              <p className="eyebrow">{group.label}</p>
+              <h3>{group.title}</h3>
+              {resources
+                .filter((r) => r.category === group.key)
+                .map((resource) => (
+                  <a
+                    key={resource.href}
+                    className="resource-row"
+                    href={resource.href}
+                  >
+                    <FileText size={19} />
+                    <span>
+                      <strong>{resource.title}</strong>
+                      <small>{resource.description}</small>
+                    </span>
+                    <ArrowUpRight size={17} />
+                  </a>
+                ))}
+            </div>
+          ))}
+        </div>
+        <div className="current-resources">
+          <div>
+            <h3>2026–27 meeting materials</h3>
+            <p>
+              Slides, recaps, and lab notebooks live alongside each meeting.
+            </p>
+          </div>
+          <a className="text-link" href="#program">
+            Browse the roadmap <ArrowUpRight size={17} />
+          </a>
+          {published.length > 0 ? (
+            <div className="published-resources">
+              {published.map((m) => (
+                <article key={m.number}>
+                  <h4>
+                    Meeting {m.number}: {m.title}
+                  </h4>
+                  <MeetingResources meeting={m} />
+                </article>
+              ))}
+            </div>
+          ) : (
+            <p className="small">
+              Materials will appear here as they are published.
+            </p>
+          )}
+        </div>
+        <details className="history-details">
+          <summary>
+            Previous-year meeting history <ArrowUpRight size={17} />
+          </summary>
+          <div className="history-list">
+            {archivedMeetings.map((m) => (
+              <article key={m.id}>
+                <h3>{m.topic}</h3>
+                <p>{m.note}</p>
+              </article>
+            ))}
+          </div>
+        </details>
       </div>
     </section>
   );

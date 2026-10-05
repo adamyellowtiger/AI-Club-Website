@@ -1,19 +1,41 @@
-import SectionTitle from '../components/SectionTitle';
-import { featureCards } from '../data/content';
-
+import { BookOpen, FlaskConical, Blocks } from "lucide-react";
 export default function WhatWeDoSection() {
   return (
-    <section id="what-we-do">
+    <section id="what-we-do" className="learning-region">
       <div className="section-shell">
-        <SectionTitle eyebrow="What We Do" title="Meetings that are active, creative, and useful" subtitle="Every session includes practical learning, collaboration, and space for student ideas." />
-        <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
-          {featureCards.map(({ icon: Icon, title, text }) => (
-            <article key={title} className="card">
-              <Icon className="mb-4 text-blue-600" size={30} />
-              <h3 className="font-bold text-slate-900">{title}</h3>
-              <p className="mt-2 text-sm text-slate-600">{text}</p>
-            </article>
-          ))}
+        <p className="eyebrow">How we learn</p>
+        <h2>Less watching. More figuring things out.</h2>
+        <div className="learning-steps">
+          <article>
+            <BookOpen />
+            <span className="step-number">01 / LEARN</span>
+            <h3>Make sense of the idea.</h3>
+            <p>
+              Short theory sessions explain what modern AI systems actually do,
+              one concept at a time.
+            </p>
+            <small>Theory program · Adam Fan</small>
+          </article>
+          <article>
+            <FlaskConical />
+            <span className="step-number">02 / TEST</span>
+            <h3>See what holds up.</h3>
+            <p>
+              Make a prediction. Change one variable. Use a controlled
+              experiment to examine the evidence.
+            </p>
+            <small>Lab program · Leo Wang</small>
+          </article>
+          <article>
+            <Blocks />
+            <span className="step-number">03 / BUILD</span>
+            <h3>Take the idea further.</h3>
+            <p>
+              Explore tools, club demonstrations, Daily Bits, and challenges.
+              Ask better questions together.
+            </p>
+            <small>Teaching support · Albert Yang</small>
+          </article>
         </div>
       </div>
     </section>
