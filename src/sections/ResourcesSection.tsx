@@ -49,8 +49,18 @@ export default function ResourcesSection() {
                   >
                     <FileText size={19} />
                     <span>
+                      <small>
+                        {resource.href.endsWith(".pdf")
+                          ? "PDF guide"
+                          : "Session archive"}
+                      </small>
                       <strong>{resource.title}</strong>
                       <small>{resource.description}</small>
+                      <small className="text-link">
+                        {resource.href.endsWith(".pdf")
+                          ? "Open PDF ↗"
+                          : "Browse archive ↗"}
+                      </small>
                     </span>
                     <ArrowUpRight size={17} />
                   </a>
@@ -65,7 +75,7 @@ export default function ResourcesSection() {
               Slides, recaps, and lab notebooks live alongside each meeting.
             </p>
           </div>
-          <a className="text-link" href="#program">
+          <a className="text-link" href="#/program">
             Browse the roadmap <ArrowUpRight size={17} />
           </a>
           {published.length > 0 ? (

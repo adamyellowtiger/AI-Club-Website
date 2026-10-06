@@ -1,429 +1,468 @@
 export type MeetingStatus = "completed" | "current" | "upcoming" | "tba";
+export const categories = {
+  concept: { label: "Concept", filterLabel: "Concepts" },
+  coding: { label: "Coding", filterLabel: "Coding" },
+  career: { label: "Career", filterLabel: "Careers" },
+  ethics: { label: "Ethics", filterLabel: "Ethics" },
+  project: { label: "Project", filterLabel: "Projects" },
+  showcase: { label: "Showcase", filterLabel: "Showcase" },
+} as const;
+export type MeetingCategory = keyof typeof categories;
+export type RoadmapFilter = "all" | MeetingCategory;
 export type Meeting = {
   number: number;
   phase: number;
-  type: "theory" | "lab";
+  category: MeetingCategory;
+  tags: string[];
   title: string;
   status: MeetingStatus;
+  summary: string;
   date?: string;
   leader?: string;
   preparation?: string;
-  coreIdea?: string;
-  application?: string;
+  goal?: string;
+  activity?: string;
   takeaway?: string;
-  question?: string;
-  experiment?: string;
-  variable?: string;
-  measure?: string;
   discussion?: string;
-  optionalMath?: string;
-  extension?: string;
-  stationA?: string;
-  stationB?: string;
+  measure?: string;
   report?: string;
+  highlight?: string;
+  optionalMath?: string;
+  mathExplanation?: string;
+  careerConnection?: string;
   slidesHref?: string;
   recapHref?: string;
   labHref?: string;
-  labTier?: "light" | "prepared" | "signature";
 };
 export const phases = [
   {
     number: 1,
-    id: "ai-foundations",
-    title: "AI Foundations",
-    progression: "AI types → data & models → evaluation",
+    id: "foundations-learning",
+    title: "Foundations and Learning",
+    progression:
+      "AI basics → first ML model → optimization → neural networks → careers",
   },
   {
     number: 2,
-    id: "learning-networks",
-    title: "Learning and Networks",
-    progression: "Optimization → neural networks → computer vision",
+    id: "vision-model-failure",
+    title: "Vision and Model Failure",
+    progression:
+      "Computer vision → classifier → shortcuts & bias → robustness tests",
   },
   {
     number: 3,
     id: "language-transformers",
     title: "Language and Transformers",
-    progression: "Tokens → embeddings → attention → LLM evaluation",
+    progression:
+      "Tokens → tiny language model → attention → transformer exploration → skills",
   },
   {
     number: 4,
-    id: "modern-ai-systems",
-    title: "Modern AI Systems",
-    progression: "RAG & agents → reinforcement learning → multimodal AI",
+    id: "search-rag-agents",
+    title: "Search, RAG, and Agents",
+    progression:
+      "Embeddings → semantic search → RAG → club assistant → agents → automation",
   },
   {
     number: 5,
-    id: "reliability-security",
-    title: "Reliability and Security",
-    progression: "Interpretability → adversarial failures → red-teaming",
+    id: "decisions-safety-building",
+    title: "Decisions, Safety, and Building",
+    progression:
+      "Reinforcement learning → RL coding → governance → project strategy → showcase",
   },
 ];
-// Dates and progress are unconfirmed. Update these entries as meetings are announced.
+// Update confirmed dates and progress here. No sessions are assumed completed.
 export const meetings: Meeting[] = [
   {
     number: 1,
     phase: 1,
-    type: "theory",
-    title: "What Counts as AI?",
+    category: "concept",
+    tags: ["AI Foundations"],
+    title: "What AI Actually Does",
     status: "tba",
-    coreIdea:
-      "Distinguish ordinary software, rule-based AI, machine learning, and generative AI.",
-    application:
-      "Compare a calculator, spam filter, recommendation system, and chatbot.",
-    takeaway: "Different AI systems learn and act in different ways.",
+    summary:
+      "Machine learning, generative AI, models, training, inference, and data.",
+    goal: "Give everyone a common mental model before coding begins.",
+    takeaway:
+      "AI systems learn patterns from data and use learned models to make predictions or generate outputs.",
   },
   {
     number: 2,
     phase: 1,
-    type: "lab",
-    title: "AI System Identification",
+    category: "coding",
+    tags: ["Python", "Machine Learning"],
+    title: "Your First Machine Learning Model",
     status: "tba",
-    question: "Can students identify how a hidden system works by testing it?",
-    experiment:
-      "Test a rule-based program, a trained classifier, and an LLM without being told which is which.",
-    measure: "Correct identifications and the evidence used.",
-    discussion:
-      "Which behaviours revealed rules, learned patterns, or generation?",
-    labTier: "light",
+    summary: "Train and test a small Python classifier with scikit-learn.",
+    activity:
+      "Run or modify real ML code: train/test a small classifier and inspect its predictions.",
+    goal: "Work with real machine-learning code in the first technical session.",
+    careerConnection:
+      "Data science and ML engineering use this same train, test, and inspect workflow.",
   },
   {
     number: 3,
     phase: 1,
-    type: "theory",
-    title: "Data and Simple Models",
+    category: "concept",
+    tags: ["Math", "Machine Learning"],
+    title: "How Models Learn",
     status: "tba",
-    coreIdea:
-      "Examples, features, labels, training data, and simple decision boundaries.",
-    application: "Spam detection or classroom-object recognition.",
-    takeaway:
-      "A model learns a mapping from examples rather than receiving every rule directly.",
+    summary:
+      "How parameters, loss, optimization, and gradient descent fit together.",
+    optionalMath: "theta_(t+1) = theta_t - eta * grad L(theta_t)",
+    mathExplanation:
+      "theta represents the parameters, eta is the learning rate, and the gradient points toward increasing loss. Move in the opposite direction to reduce error. Calculus is not required.",
   },
   {
     number: 4,
     phase: 1,
-    type: "lab",
-    title: "Train a Tiny Classifier",
+    category: "coding",
+    tags: ["Python", "Math"],
+    title: "Gradient Descent in Python",
     status: "tba",
-    question: "How does the choice of training examples affect predictions?",
-    experiment:
-      "Train a small classifier on classroom objects or gestures, then test unfamiliar examples.",
-    variable: "Number and variety of training examples.",
-    measure: "Correct predictions on new examples.",
-    labTier: "prepared",
+    summary: "Change a learning rate and visualize how the loss responds.",
+    activity:
+      "Implement or interact with a small Python optimization example. Change the learning rate and plot the loss.",
+    discussion: "Why can learning be too slow, unstable, or fail?",
+    careerConnection:
+      "ML engineers use optimization experiments to diagnose training behaviour.",
   },
   {
     number: 5,
     phase: 1,
-    type: "theory",
-    title: "Evaluation and Generalization",
+    category: "concept",
+    tags: ["Deep Learning"],
+    title: "Neural Networks",
     status: "tba",
-    coreIdea:
-      "Training and test data, accuracy, false positives, false negatives, and overfitting.",
-    application:
-      "Compare the consequences of mistakes in spam filtering, safety, and rare-event detection.",
-    takeaway:
-      "A model is useful only if it performs well on relevant unseen cases.",
+    summary:
+      "Neurons, weights, activations, hidden layers, and learned representations.",
+    goal: "Build an intuitive explanation of how layers learn representations before introducing mathematical detail.",
   },
   {
     number: 6,
     phase: 1,
-    type: "lab",
-    title: "The 95% Accuracy Trap",
+    category: "coding",
+    tags: ["Python", "PyTorch", "Deep Learning"],
+    title: "Build a Neural Network",
     status: "tba",
-    question: "Can a highly accurate model still be useless?",
-    experiment: "Test a majority-class model on an imbalanced dataset.",
-    measure:
-      "Accuracy, important cases detected, false positives, and false negatives.",
-    discussion: "Which metric actually matches the real goal?",
-    labTier: "light",
+    summary: "Train a small PyTorch network and change a meaningful setting.",
+    activity:
+      "Train a small neural network on a prepared dataset. Change architecture, learning rate, epochs, or hidden-layer width and compare the result.",
+    careerConnection:
+      "Deep-learning engineers and researchers design, train, and evaluate networks.",
   },
   {
     number: 7,
-    phase: 2,
-    type: "theory",
-    title: "Loss and Gradient Descent",
+    phase: 1,
+    category: "career",
+    tags: ["Careers"],
+    title: "AI Careers I — What People Actually Do",
     status: "tba",
-    coreIdea:
-      "A loss function measures error. Gradient descent repeatedly adjusts parameters to reduce that error.",
-    optionalMath: "theta_new = theta - learning_rate × gradient",
-    application:
-      "Connect optimization to fitting a line and training a classifier.",
-    takeaway: "Training is an optimization process, not instant understanding.",
+    summary:
+      "Compare real AI roles, daily tasks, technical skills, and starting points.",
+    activity:
+      "Compare ML engineer, AI/software engineer, research scientist, data scientist, robotics engineer, AI product roles, and related quantitative or technical careers.",
+    goal: "Explain actual tasks, typical skills, and realistic starting points for high-school students.",
   },
   {
     number: 8,
     phase: 2,
-    type: "lab",
-    title: "Learning-Rate Race",
+    category: "concept",
+    tags: ["Computer Vision"],
+    title: "Computer Vision",
     status: "tba",
-    question: "What happens when the learning rate is too small or too large?",
-    experiment:
-      "Run gradient descent from the same starting point with several learning rates.",
-    measure: "Steps to low loss, final loss, and instability.",
-    discussion: "Why can the fastest-looking setting fail?",
-    labTier: "light",
+    summary:
+      "Pixels, feature extraction, convolution, and image classification.",
+    activity:
+      "Connect CNN intuition to scientific imaging, autonomous systems, accessibility, and recognition.",
+    careerConnection:
+      "Computer vision engineering, robotics, and medical imaging.",
   },
   {
     number: 9,
     phase: 2,
-    type: "theory",
-    title: "Neural Networks",
+    category: "coding",
+    tags: ["Python", "PyTorch", "Computer Vision"],
+    title: "Train an Image Classifier",
     status: "tba",
-    coreIdea:
-      "Weighted inputs, activation functions, hidden layers, and feature combinations.",
-    application:
-      "Relate hidden layers to handwriting, voices, and complex patterns.",
-    takeaway:
-      "Layers combine simple signals into increasingly useful features.",
+    summary:
+      "Train and test an image classifier with a CNN or transfer learning.",
+    activity:
+      "Use a manageable dataset to train/test a real image classifier with a PyTorch CNN or transfer learning.",
+    careerConnection:
+      "Vision teams adapt pretrained models and evaluate performance on their own data.",
   },
   {
     number: 10,
     phase: 2,
-    type: "lab",
-    title: "Solving XOR",
+    category: "ethics",
+    tags: ["Ethics", "Computer Vision"],
+    title: "When AI Learns the Wrong Thing",
     status: "tba",
-    question:
-      "Why can a hidden layer solve patterns that one straight boundary cannot?",
-    experiment:
-      "Use a neural-network playground to solve XOR with different network structures.",
-    variable: "Number of hidden neurons and layers.",
-    measure: "Training result, test result, and decision-boundary shape.",
-    labTier: "light",
+    summary:
+      "Investigate dataset bias, shortcuts, spurious correlations, and distribution shift.",
+    activity:
+      "Use concrete technical examples to inspect how a model can learn a shortcut instead of the intended feature.",
+    discussion:
+      "Who is affected when a dataset misses important cases or a model fails on a new population?",
   },
   {
     number: 11,
     phase: 2,
-    type: "theory",
-    title: "How AI Sees Images",
+    category: "coding",
+    tags: ["Python", "Computer Vision", "Robustness"],
+    title: "Break the Vision Model",
     status: "tba",
-    coreIdea:
-      "Pixels, filters, edges, convolution, and layered visual features.",
-    application:
-      "Phone cameras, handwriting recognition, and scientific images.",
-    takeaway:
-      "Vision models build complex objects from simpler spatial patterns.",
+    summary: "Change one image property and measure how predictions change.",
+    activity:
+      "Change lighting, crop, background, angle, occlusion, or another controlled property. Measure how predictions change.",
+    discussion: "Did the model learn the intended feature or a shortcut?",
+    careerConnection:
+      "Model evaluation and reliability work includes robustness testing under changing conditions.",
   },
   {
     number: 12,
-    phase: 2,
-    type: "lab",
-    title: "Filters and Vision Failures",
+    phase: 3,
+    category: "concept",
+    tags: ["LLMs"],
+    title: "How Large Language Models Work",
     status: "tba",
-    question: "Which visual features influence a classifier?",
-    experiment:
-      "Apply edge filters and test a classifier under changed angles, backgrounds, and lighting.",
-    measure: "Accuracy before and after the change.",
-    discussion: "Did the model learn the object or a shortcut?",
-    labTier: "prepared",
+    summary:
+      "Tokens, next-token prediction, context, probabilities, and generation.",
+    takeaway:
+      "Fluent output does not automatically mean factual understanding.",
   },
   {
     number: 13,
     phase: 3,
-    type: "theory",
-    title: "Next-Token Prediction and Tokens",
+    category: "coding",
+    tags: ["Python", "LLMs"],
+    title: "Build a Tiny Language Model",
     status: "tba",
-    coreIdea:
-      "An LLM processes tokens and repeatedly predicts likely continuations.",
-    application: "Autocomplete, chat, translation, and code generation.",
-    takeaway:
-      "Fluent continuation does not automatically guarantee factual knowledge.",
+    summary:
+      "Expose next-token prediction with a small character- or token-level model.",
+    activity:
+      "Build simple character-level or token-level prediction and inspect the likely next token.",
+    goal: "Expose the mechanics of next-token prediction without requiring a production-scale transformer.",
   },
   {
     number: 14,
     phase: 3,
-    type: "lab",
-    title: "Human Language Model",
+    category: "concept",
+    tags: ["Transformers", "LLMs", "Math"],
+    title: "Transformers and Attention",
     status: "tba",
-    question: "How do probability and temperature change generated text?",
-    experiment:
-      "Students assign probabilities to possible next words and compare low- and high-temperature sampling.",
-    extension: "Inspect tokenization of unusual words, equations, and code.",
-    discussion: "When does randomness improve output, and when does it hurt?",
-    labTier: "light",
+    summary:
+      "How attention and transformer blocks combine information from context.",
+    optionalMath: "Attention(Q,K,V) = softmax(QK^T / sqrt(d))V",
+    mathExplanation:
+      "Queries and keys determine which tokens are relevant. Softmax turns the scores into weights used to combine values. The meeting starts with this intuition; the equation is optional.",
+    careerConnection: "ML engineering, NLP research, and software engineering.",
   },
   {
     number: 15,
     phase: 3,
-    type: "theory",
-    title: "Embeddings",
+    category: "coding",
+    tags: ["Python", "Transformers", "LLMs"],
+    title: "Explore a Transformer",
     status: "tba",
-    coreIdea:
-      "Embeddings represent words, sentences, and documents as vectors whose positions capture useful relationships.",
-    application:
-      "Semantic search, recommendations, clustering, and document retrieval.",
-    optionalMath: "Dot product and cosine similarity.",
-    takeaway: "Similar meanings can be represented by nearby vectors.",
+    summary:
+      "Manipulate inputs and inspect tokenization, embeddings, attention, and outputs.",
+    activity:
+      "Change inputs to a small or pretrained model. Inspect tokens, embeddings, attention, and model outputs.",
+    careerConnection:
+      "NLP researchers and ML engineers inspect model behaviour to debug and evaluate systems.",
   },
   {
     number: 16,
     phase: 3,
-    type: "lab",
-    title: "Semantic Similarity Map",
+    category: "career",
+    tags: ["Careers"],
+    title: "AI Careers II — Skills That Will Matter",
     status: "tba",
-    question: "Can vector similarity recognize meaning beyond shared words?",
-    experiment:
-      "Embed short sentences and display a two-dimensional similarity map.",
-    measure:
-      "Whether related meanings cluster together despite different wording.",
-    discussion: "Which examples are misplaced or ambiguous?",
-    labTier: "prepared",
+    summary: "Explore durable skills and adaptability as AI tools improve.",
+    activity:
+      "Discuss programming fundamentals, mathematics, statistics, systems thinking, domain expertise, experimentation, communication, evaluating AI output, and building reliable systems.",
+    takeaway:
+      "Build durable skills and adaptability. No specific job is guaranteed to be AI-proof.",
   },
   {
     number: 17,
-    phase: 3,
-    type: "theory",
-    title: "Attention and Transformers",
+    phase: 4,
+    category: "concept",
+    tags: ["Embeddings", "Search", "Math"],
+    title: "Embeddings and Semantic Search",
     status: "tba",
-    coreIdea:
-      "Attention lets each token gather relevant information from other tokens. Transformer blocks repeat this process.",
-    optionalMath: "Attention(Q,K,V) = softmax(QK^T / sqrt(d))V",
-    application: "Pronoun resolution, translation, summarization, and coding.",
-    takeaway:
-      "Transformers combine context through repeated attention and processing layers.",
+    summary: "Represent meaning with vectors and compare semantic similarity.",
+    activity:
+      "Connect vector representations to search, recommendations, clustering, and retrieval.",
+    optionalMath:
+      "dot(a,b) = Σ a_i b_i; cosine(a,b) = dot(a,b) / (||a|| ||b||)",
+    mathExplanation:
+      "For nonzero vectors, cosine similarity compares direction rather than length. Nearby meanings can be represented by similar vectors.",
+    careerConnection:
+      "Search and recommendation teams use embeddings to retrieve and organize information.",
   },
   {
     number: 18,
-    phase: 3,
-    type: "lab",
-    title: "Attention Explorer",
+    phase: 4,
+    category: "coding",
+    tags: ["Python", "Embeddings", "Search"],
+    title: "Build Semantic Search",
     status: "tba",
-    question: "Which earlier words influence an ambiguous token?",
-    experiment:
-      "Predict attention patterns and compare them with a small model's attention heat map.",
-    variable: "Change a pronoun, a noun, or the sentence order.",
-    discussion: "Does the visualization match what students expected?",
-    labTier: "prepared",
+    summary:
+      "Build a small search system over approved club or school-safe documents.",
+    activity:
+      "Build a small semantic search system and compare its results with keyword search on the same approved documents.",
+    careerConnection:
+      "Search engineering and retrieval systems combine data preparation, representation, and evaluation.",
   },
   {
     number: 19,
-    phase: 3,
-    type: "theory",
-    title: "LLM Training and Evaluation",
+    phase: 4,
+    category: "concept",
+    tags: ["RAG", "LLMs"],
+    title: "RAG and Modern AI Applications",
     status: "tba",
-    coreIdea:
-      "Separate pretraining, post-training, prompting, hallucination, and evaluation.",
-    application:
-      "Study tools, math feedback, summarization, and structured extraction.",
-    takeaway:
-      "LLM quality must be tested on multiple unseen examples using a clear rubric.",
+    summary:
+      "Retrieve evidence, provide context, generate an answer, then check its citations.",
+    activity:
+      "Trace retrieve → provide context → generate → cite/check evidence.",
+    discussion:
+      "What should a system do when information is missing or an answer is not supported?",
+    careerConnection:
+      "AI engineering, search/retrieval systems, and enterprise software.",
   },
   {
     number: 20,
-    phase: 3,
-    type: "lab",
-    title: "Prompt Benchmark",
+    phase: 4,
+    category: "project",
+    tags: ["Python", "RAG", "LLMs"],
+    title: "Build the AI Club Assistant",
     status: "tba",
-    question: "Which prompt change consistently improves performance?",
-    experiment:
-      "Compare baseline, example-guided, and structured-output prompts on the same hidden test cases.",
-    measure: "Correctness, format compliance, hallucinations, and consistency.",
-    discussion: "Did the improvement generalize beyond one example?",
-    labTier: "prepared",
+    summary: "Build and evaluate a RAG assistant using approved club material.",
+    activity:
+      "Build a small RAG assistant over approved AI Club documents or website material.",
+    measure:
+      "Factual accuracy, citation accuracy, and the ability to say information is unavailable.",
+    highlight: "Signature project",
+    careerConnection:
+      "AI application teams build retrieval systems and evaluate whether answers are grounded in evidence.",
   },
   {
     number: 21,
     phase: 4,
-    type: "theory",
-    title: "RAG, Tools, and Agents",
+    category: "concept",
+    tags: ["Agents", "Security"],
+    title: "Agents and Tool Use",
     status: "tba",
-    coreIdea:
-      "RAG retrieves evidence. Tools perform actions. Agents coordinate steps and check results.",
-    application:
-      "School knowledge assistants, calculators, research workflows, and event planning.",
-    takeaway: "A modern AI product is often a model inside a larger system.",
+    summary:
+      "Tools, workflows, agent loops, verification, and permission boundaries.",
+    activity:
+      "Inspect tools, workflows, agent loops, verification steps, failure cases, and safe permissions.",
+    takeaway:
+      "An agent needs clear permission boundaries and checks on its actions.",
   },
   {
     number: 22,
     phase: 4,
-    type: "lab",
-    title: "AI Club Knowledge Assistant",
+    category: "coding",
+    tags: ["Python", "Agents", "Security"],
+    title: "Build a Simple AI Agent",
     status: "tba",
-    question: "Does retrieval improve factual and citation accuracy?",
-    experiment:
-      "Compare a prompt-only model with a RAG assistant built from AI Club website content and documents. Develop it into a reusable club demonstration.",
-    measure:
-      "Answer accuracy, citation accuracy, and refusal when information is missing.",
-    labTier: "signature",
+    summary:
+      "Create a constrained multi-step workflow with prepared tools or simulated tasks.",
+    activity:
+      "Build a constrained multi-step agent or workflow using safe prepared tools or simulated tasks. Keep actions within explicit permissions.",
+    goal: "Observe planning and verification without deploying an uncontrolled autonomous web agent.",
+    careerConnection:
+      "AI and software engineers design reliable workflows around models and tools.",
   },
   {
     number: 23,
     phase: 4,
-    type: "theory",
-    title: "Reinforcement Learning",
+    category: "career",
+    tags: ["Careers", "Ethics", "Automation"],
+    title: "AI, Jobs, and Automation",
     status: "tba",
-    coreIdea:
-      "An agent observes a state, chooses an action, receives a reward, and improves its policy.",
-    application: "Games, robotics, recommendations, and automated decisions.",
-    takeaway: "The reward defines what the agent tries to optimize.",
+    summary: "Compare task automation, augmentation, and changes to work.",
+    discussion:
+      "Task automation versus whole-job automation; productivity; changing entry-level work; new roles; and economic trade-offs.",
+    takeaway:
+      "Compare plausible changes and uncertainty rather than claiming to predict every future job.",
   },
   {
     number: 24,
-    phase: 4,
-    type: "lab",
-    title: "Reward Hacking in a Grid World",
+    phase: 5,
+    category: "concept",
+    tags: ["Reinforcement Learning", "Ethics"],
+    title: "Reinforcement Learning",
     status: "tba",
-    question: "Can a badly designed reward create unintended behaviour?",
-    experiment: "Train the same grid-world agent under two reward functions.",
-    measure:
-      "Goal completion, path length, total reward, and repeated useless actions.",
-    discussion: "How should the reward be redesigned?",
-    labTier: "prepared",
+    summary:
+      "States, actions, rewards, policies, and exploration—with reward hacking in view.",
+    activity:
+      "Trace states, actions, rewards, policies, and exploration. Use reward hacking as a bridge into safety.",
+    careerConnection: "Robotics, research, and optimization.",
   },
   {
     number: 25,
-    phase: 4,
-    type: "theory",
-    title: "Diffusion and Multimodal AI",
+    phase: 5,
+    category: "coding",
+    tags: ["Python", "Reinforcement Learning"],
+    title: "Code a Reinforcement Learning Agent",
     status: "tba",
-    coreIdea:
-      "Multimodal models connect text, images, and audio. Diffusion models generate through iterative denoising.",
-    application:
-      "Image generation, editing, accessibility, and visual question answering.",
-    takeaway:
-      "Generated images emerge through repeated noise removal guided by learned patterns.",
+    summary:
+      "Change rewards or the environment in a small grid world and observe behaviour.",
+    activity:
+      "Code an agent in a small grid world or another understandable environment. Change the reward or environment and observe behaviour.",
+    discussion:
+      "Does a higher reward mean the agent achieved the intended goal?",
+    careerConnection:
+      "Reinforcement-learning experiments connect reward design with evaluation and control.",
   },
   {
     number: 26,
-    phase: 4,
-    type: "lab",
-    title: "Controlled Image Generation",
+    phase: 5,
+    category: "ethics",
+    tags: ["Ethics", "Privacy", "Governance"],
+    title: "AI Ethics — Who Should Control AI?",
     status: "tba",
-    question: "How does one prompt or generation setting change an image?",
-    experiment:
-      "Keep the seed fixed while changing one prompt phrase, guidance setting, or denoising step count.",
-    measure:
-      "Prompt following, consistency, and unintended changes. Present results as a prepared comparison grid.",
-    labTier: "signature",
+    summary:
+      "Discuss access, responsibility, privacy, transparency, and AI governance.",
+    discussion:
+      "Who should control model access? Who is responsible for failures? Compare privacy, surveillance, copyright, transparency, safety testing, and the roles of governments, companies, and open-source communities.",
+    goal: "Compare multiple defensible positions using concrete cases.",
   },
   {
     number: 27,
     phase: 5,
-    type: "theory",
-    title: "Interpretability and AI Security",
+    category: "career",
+    tags: ["Careers", "Projects"],
+    title: "AI Careers III — Build Something That Matters",
     status: "tba",
-    coreIdea:
-      "Feature importance, ablation, adversarial examples, prompt injection, and human oversight.",
-    application:
-      "Model debugging, RAG security, and detecting hidden shortcuts.",
+    summary:
+      "Turn technical skills into projects with ownership, evaluation, and clear communication.",
+    activity:
+      "Explore personal AI projects, GitHub, documentation, demos, competitions, research exposure, internships later, and open-source contributions.",
     takeaway:
-      "Strong average performance does not guarantee that a system is understandable, secure, or robust.",
+      "A strong project solves a real problem and demonstrates technical ownership, evaluation, iteration, and clear communication—not complexity alone.",
   },
   {
     number: 28,
     phase: 5,
-    type: "lab",
-    title: "Final AI Red-Team Challenge",
+    category: "showcase",
+    tags: ["Projects", "Security", "Ethics"],
+    title: "Final AI Build + Red-Team Challenge",
     status: "tba",
-    question: "Can teams find a meaningful AI failure and propose a defence?",
-    stationA: "Alter an image or feature and observe prediction changes.",
-    stationB:
-      "Run a controlled prompt-injection test against the AI Club RAG assistant.",
+    summary:
+      "Demonstrate projects and run controlled tests against each other’s systems.",
+    activity:
+      "Teams demonstrate their projects and run controlled tests against each other’s systems using agreed permissions and prepared or public data.",
     report:
-      "Report one attack, one failure, one possible defence, and one remaining limitation. Use only prepared club systems and synthetic/public data.",
-    labTier: "signature",
+      "What we built; how it works; one successful test; one failure; one attempted defence; and one remaining limitation.",
+    highlight: "Year-end showcase",
   },
 ];
-
 export const orderedMeetings = [...meetings].sort(
   (a, b) => a.number - b.number,
 );
@@ -440,5 +479,29 @@ export const followingMeeting =
   orderedMeetings.find(
     (m) => m.number > nextMeeting.number && m.status !== "completed",
   );
-export const theoryTotal = meetings.filter((m) => m.type === "theory").length;
-export const labTotal = meetings.filter((m) => m.type === "lab").length;
+export const categoryTotals = Object.fromEntries(
+  Object.keys(categories).map((category) => [
+    category,
+    meetings.filter((m) => m.category === category).length,
+  ]),
+) as Record<MeetingCategory, number>;
+export const buildTotal = meetings.filter((m) =>
+  ["coding", "project", "showcase"].includes(m.category),
+).length;
+export const progressPercent = Math.round(
+  (completedMeetings.length / meetings.length) * 100,
+);
+// Interest filters also include explicit secondary tags, so cross-disciplinary sessions remain discoverable.
+const interestTags: Partial<Record<MeetingCategory, string>> = {
+  coding: "Python",
+  career: "Careers",
+  ethics: "Ethics",
+  project: "Projects",
+};
+export function matchesFilter(meeting: Meeting, filter: RoadmapFilter) {
+  return (
+    filter === "all" ||
+    meeting.category === filter ||
+    meeting.tags.includes(interestTags[filter] ?? "")
+  );
+}

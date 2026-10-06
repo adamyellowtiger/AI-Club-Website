@@ -1,3 +1,4 @@
+import CategoryBadge from "../components/CategoryBadge";
 import { ArrowUpRight, CalendarDays, MapPin, Clock } from "lucide-react";
 import {
   nextMeeting,
@@ -25,16 +26,16 @@ export default function MeetingsSection() {
                 : "Up next"}
             </h2>
             <p>{currentPhase?.title ?? "The year in review"}</p>
-            <a href="#join">
+            <a href="#/join">
               Get meeting announcements <ArrowUpRight size={16} />
             </a>
           </div>
           <div className="next-topic">
             {nextMeeting ? (
               <>
-                <p className="meeting-meta">
+                <div className="meeting-meta">
                   Meeting {String(nextMeeting.number).padStart(2, "0")} ·{" "}
-                  {nextMeeting.type}
+                  <CategoryBadge category={nextMeeting.category} />
                   <span className="pill">
                     {nextMeeting.status === "current"
                       ? "Current"
@@ -42,9 +43,9 @@ export default function MeetingsSection() {
                         ? "Upcoming"
                         : "Date TBA"}
                   </span>
-                </p>
+                </div>
                 <h3>{nextMeeting.title}</h3>
-                <p>{nextMeeting.coreIdea ?? nextMeeting.question}</p>
+                <p>{nextMeeting.summary}</p>
                 <div className="next-facts">
                   <span>
                     <CalendarDays />
@@ -66,7 +67,7 @@ export default function MeetingsSection() {
                 <MeetingResources meeting={nextMeeting} />
                 <a
                   className="text-link"
-                  href={`#meeting-${nextMeeting.number}`}
+                  href={`#/program/meeting-${nextMeeting.number}`}
                 >
                   Explore this meeting <ArrowUpRight size={16} />
                 </a>
@@ -77,7 +78,7 @@ export default function MeetingsSection() {
                 <p>
                   Revisit the year’s lessons and experiments in the roadmap.
                 </p>
-                <a className="text-link" href="#program">
+                <a className="text-link" href="#/program">
                   Explore the program
                 </a>
               </>
@@ -88,7 +89,7 @@ export default function MeetingsSection() {
           <span>
             <strong>Previously</strong>{" "}
             {previousMeeting ? (
-              <a href={`#meeting-${previousMeeting.number}`}>
+              <a href={`#/program/meeting-${previousMeeting.number}`}>
                 {previousMeeting.title}
               </a>
             ) : (
@@ -98,7 +99,7 @@ export default function MeetingsSection() {
           {followingMeeting && (
             <span>
               <strong>Next topic</strong>{" "}
-              <a href={`#meeting-${followingMeeting.number}`}>
+              <a href={`#/program/meeting-${followingMeeting.number}`}>
                 {followingMeeting.title} <ArrowUpRight size={14} />
               </a>
             </span>
