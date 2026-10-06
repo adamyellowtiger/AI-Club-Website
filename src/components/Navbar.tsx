@@ -1,8 +1,9 @@
 import { Menu, X, ArrowUpRight, Cpu } from "lucide-react";
-import { useRef, useState } from "react";
-import { navLinks } from "../data/site";
-export default function Navbar() {
+import { useEffect, useRef, useState } from "react";
+import { pages, routeHref, type Page } from "../navigation";
+export default function Navbar({ active }: { active: Page }) {
   const [open, setOpen] = useState(false);
+  useEffect(() => setOpen(false), [active]);
   const toggle = useRef<HTMLButtonElement>(null);
   return (
     <header
@@ -15,7 +16,7 @@ export default function Navbar() {
       }}
     >
       <nav className="nav-shell" aria-label="Main navigation">
-        <a href="#top" className="wordmark">
+        <a href="#/home" className="wordmark">
           <span className="brand-icon">
             <Cpu size={21} />
           </span>
@@ -35,11 +36,12 @@ export default function Navbar() {
           id="primary-links"
           className={open ? "nav-links is-open" : "nav-links"}
         >
-          {navLinks.map((link) => (
-            <li key={link.href}>
+          {Object.entries(pages).map(([key, link]) => (
+            <li key={key}>
               <a
                 className={link.label === "Join" ? "nav-join" : ""}
-                href={link.href}
+                href={routeHref(key as Page)}
+                aria-current={active === key ? "page" : undefined}
                 onClick={() => setOpen(false)}
               >
                 {link.label}

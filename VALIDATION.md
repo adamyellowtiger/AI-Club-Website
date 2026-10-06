@@ -35,3 +35,13 @@ Kept the existing light blue/white identity, Byte poses, GitHub Pages base, hist
 ## Executive confirmation still needed
 
 Confirm meeting dates, current progress, session leaders where desired, preparation instructions, and material links as they become available. Continue collecting member feedback before treating the early survey as representative of the entire club.
+
+
+## Multi-page restructuring — October 5, 2026
+
+- `npm run validate` and `npm run build` pass.
+- Browser checks cover all seven routes at 375, 430, 768, and 1440 pixels: no horizontal overflow; exactly one H1 and one active navbar link per view.
+- Checked direct route loading, refresh, browser Back/Forward, mobile route selection, Escape returning focus to the menu button, Coding filter (11 meetings), and deep links revealing meetings 14 and 20.
+- Full Bit disclosure and FAQ deep links work; no page errors during interaction checks.
+- Visually reviewed desktop Home and mobile AI Bits screenshots. Home is approximately 2,761 pixels tall at 1440 pixels wide.
+- Existing meeting content, five phases, team order, resources, and historical data remain unchanged.

@@ -71,7 +71,7 @@ Hero building-session counts derive from coding, project, and showcase categorie
 
 To post an announcement, set `siteNotice.enabled` to `true`, fill in `label` and `message`, and choose `info`, `important`, or `event`. Set it back to `false` when the notice expires.
 
-To add a Daily Bit, copy an existing entry, give it a unique `id`, use an ISO date such as `2026-10-05`, and fill in the title, summary, tags, and body paragraphs. Add an image to `public/daily-bits/` if available, with meaningful alternative text. The homepage sorts by date, features the latest, and shows up to three recent entries. Every entry is readable at `/AI-Club-Website/?view=bits`.
+To add a Daily Bit, copy an existing entry, give it a unique `id`, use an ISO date such as `2026-10-05`, and fill in the title, summary, tags, and body paragraphs. Add an image to `public/daily-bits/` if available, with meaningful alternative text. The homepage shows the three latest summaries. Full entries live at `/AI-Club-Website/#/ai-bits`, with the latest entry featured.
 
 Team members sort by `order`, not by name. Keep the approved order and tiers: two co-presidents, senior executive, functional executives, then supporting executive. The faculty advisor is separate.
 
@@ -84,3 +84,12 @@ The reusable `src/graphics/Byte.tsx` supports `excited`, `pointing`, `thinking`,
 ## Before publishing
 
 Run validation and the production build. Check the preview at mobile and desktop widths. Try navigation, phase controls, meeting details, the Daily Bit archive, FAQ, and resource links. Confirm any dates and announcements with the executive team. External social channels may require sign-in; their destinations are preserved from the original site.
+
+
+## Page navigation
+
+The site uses dependency-free hash routes so direct links and refresh work on GitHub Pages under `/AI-Club-Website/`: `#/home`, `#/program`, `#/meetings`, `#/ai-bits`, `#/resources`, `#/team`, and `#/join`.
+
+`src/navigation.ts` owns page labels, titles, descriptions, and route parsing. `PageHeader` supplies the shared interior-page heading. Route changes update metadata, scroll to the top, and focus the heading. Deep links use `#/program/meeting-20`, `#/ai-bits/bit-<id>`, or `#/join/faq`. Legacy section hashes and the former `?view=bits` entry point are accepted for compatibility; primary navigation uses only the new routes.
+
+Home includes the hero, next meeting, four discovery cards, three recent Bits, and a short Join invitation. The complete roadmap and learning pillars live on Program. Meetings derives upcoming/current-year history from the same roadmap and includes historical sessions. Resources retains the original downloadable files and archive pages.

@@ -18,14 +18,6 @@ export const siteNotice: SiteNotice = {
   message: "",
   tone: "info",
 };
-export const navLinks = [
-  { label: "Program", href: "#program" },
-  { label: "Meetings", href: "#meetings" },
-  { label: "AI Bits", href: "#ai-bits" },
-  { label: "Resources", href: "#resources" },
-  { label: "Team", href: "#team" },
-  { label: "Join", href: "#join" },
-];
 export const channels = [
   {
     name: "Discord",

@@ -28,3 +28,8 @@ No dates, completions, attendance figures, or new resources were invented. The f
 ## Coding and careers revision
 
 Retain the established light blue/white palette and system typography. ui-ux-pro-max’s broad technical query suggested a dark terminal palette, which conflicts with the explicit preservation brief; its semantic control, focus, contrast, and touch-target guidance is applied. Categories use Lucide icons, text labels, and restrained blue/cyan/slate tints. Filters use primary categories plus explicit interest tags, announce result counts, and hide empty phases. Optional math is a nested disclosure, separate from the beginner-facing summary. Career connections stay compact. The four learning pillars form four columns on desktop, two on tablet, and one on mobile.
+
+
+## Multi-page navigation
+
+Retain the blue/white palette, Byte illustrations, typography, borders, and rounded cards. Shared interior headers use a compact pale-blue band with one H1. Home is a concise entry point; full collections live in their own views. Navigation is 96px tall on desktop with 21px wordmark, 44px icon, 14px links, and 48px Join button. Below 1024px, use an 80px header and keyboard-accessible disclosure menu. Active routes use blue text/underline on desktop and a pale-blue background on mobile, plus aria-current. These choices follow ui-ux-pro-max active-state and keyboard-navigation guidance.

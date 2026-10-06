@@ -10,7 +10,7 @@ export default function HeroSection() {
           <p className="eyebrow">
             <span className="status-dot" /> {site.year} · {site.school}
           </p>
-          <h1>Bayview AI Club</h1>
+          <h1 tabIndex={-1}>Bayview AI Club</h1>
           <p className="hero-tagline">
             Understand AI.
             <br />
@@ -23,10 +23,10 @@ export default function HeroSection() {
             matters more than prior experience.
           </p>
           <div className="hero-actions">
-            <a href="#join" className="button primary">
+            <a href="#/join" className="button primary">
               Join the Club <ArrowRight size={18} />
             </a>
-            <a href="#program" className="button secondary">
+            <a href="#/program" className="button secondary">
               Explore the {site.year} Program
             </a>
           </div>
@@ -72,7 +72,7 @@ export default function HeroSection() {
             <strong>{phases.length}</strong>
             <span>phases, from basics to real systems</span>
           </div>
-          <a href="#meetings">
+          <a href="#/meetings">
             What’s happening next <ArrowRight size={18} />
           </a>
         </div>

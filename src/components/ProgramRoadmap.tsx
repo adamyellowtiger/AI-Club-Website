@@ -1,3 +1,4 @@
+import { readRoute } from "../navigation";
 import { useEffect, useState } from "react";
 import { ChevronDown } from "lucide-react";
 import {
@@ -42,7 +43,7 @@ export default function ProgramRoadmap() {
 
   useEffect(() => {
     const reveal = () => {
-      const hash = window.location.hash.slice(1);
+      const hash = readRoute().anchor;
       const meeting = meetings.find((m) => `meeting-${m.number}` === hash);
       const phase = phases.find((p) => `phase-${p.id}` === hash);
       const number = meeting?.phase ?? phase?.number;
