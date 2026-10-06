@@ -1,7 +1,7 @@
 export const faqs = [
   {
     q: "Do I need coding experience?",
-    a: "No. Beginners are welcome. We start with clear explanations, and labs use guided activities, browser tools, or prepared notebooks.",
+    a: "No. Beginners are welcome. We start with clear explanations and guided Python activities or prepared notebooks. Optional math is available for students who want more depth.",
   },
   {
     q: "Can I join if I missed earlier meetings?",
@@ -9,7 +9,7 @@ export const faqs = [
   },
   {
     q: "What happens during meetings?",
-    a: "Meetings last about 20–30 minutes after school in Room 129. Theory sessions introduce an idea; the following lab lets you make a prediction, test it, and examine the evidence.",
+    a: "Meetings last about 20–30 minutes after school in Room 129. The program combines concept sessions, coding, projects, careers, and ethics. You will train models, inspect results, and test failures, with guidance for beginners.",
   },
   {
     q: "Where are meeting resources posted?",

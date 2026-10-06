@@ -1,6 +1,6 @@
 # Bayview AI Club · 2026–27
 
-A student-led AI club website built with Vite, React, TypeScript, Tailwind CSS, and Lucide. The program pairs 14 theory meetings with 14 labs across five phases. No backend or account system is needed.
+A student-led AI club website built with Vite, React, TypeScript, Tailwind CSS, and Lucide. The program contains 28 chronological meetings across five phases: concepts, coding, careers, ethics, projects, and a showcase. No backend or account system is needed.
 
 ## Run locally
 
@@ -44,7 +44,17 @@ slidesHref: '2026-27/meetings/01-slides.pdf',
 
 Only add the link after uploading the file. Missing resource fields produce a quiet pending message, not a broken button. Counts, current phase, previous meeting, and next topic are calculated from the roadmap. Without a current meeting, the first incomplete meeting is shown as the next planned topic. Initially all dates and progress are unconfirmed; no completed sessions are claimed.
 
-Keep meeting numbers 1–28, alternate theory/lab, retain the five phases, and reserve Signature Labs for 22, 26, and 28. `npm run validate` checks these rules.
+Keep unique meeting numbers 1–28 and put every meeting in an existing phase. Phases must progress in order as meeting numbers increase. Every meeting needs a title, summary, category, status, and tags array. `npm run validate` checks these rules, dates, and resource paths.
+
+### Categories, interests, and depth
+
+Choose one primary `category`: `concept`, `coding`, `career`, `ethics`, `project`, or `showcase`. There is no required alternation. Use `tags` for secondary interests such as `Python`, `PyTorch`, `Ethics`, `Careers`, `Projects`, or `RAG`.
+
+The roadmap defaults to All. Filters match a primary category and relevant secondary tags: Coding includes Python, Careers includes Careers, Ethics includes Ethics, and Projects includes Projects. A meeting can appear in more than one interest filter; counts are derived and need not add up. Empty phases are hidden during filtering. Each category has a shared icon and label in `CategoryBadge.tsx`.
+
+Add `goal`, `activity`, `measure`, `discussion`, `takeaway`, or `report` when useful. Keep `summary` short enough to scan. Add `optionalMath` and a plain-language `mathExplanation` for an optional Math Corner; students open it separately inside the meeting details. Add `careerConnection` to explain where a skill is used, without promising jobs or salaries. An optional `highlight` labels special sessions (currently the assistant project and year-end showcase); no meeting numbers are hard-coded into the renderer.
+
+Hero building-session counts derive from coding, project, and showcase categories. Progress and category totals also derive from the data. Do not enter separate counters.
 
 ## Other content updates
 

@@ -60,7 +60,7 @@ export function formatDate(date?: string) {
     : "Date TBA";
 }
 export function resourceUrl(href: string) {
-  return /^(https?:|#)/.test(href)
+  return /^(https?:|#)/.test(href) || href.startsWith(import.meta.env.BASE_URL)
     ? href
     : `${import.meta.env.BASE_URL}${href.replace(/^\//, "")}`;
 }

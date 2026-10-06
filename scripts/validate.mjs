@@ -20,28 +20,53 @@ async function loadData(name) {
     `data:text/javascript;base64,${Buffer.from(outputText).toString("base64")}`
   );
 }
-const { meetings, phases } = await loadData("roadmap");
+const { meetings, phases, categories } = await loadData("roadmap");
 assert.equal(meetings.length, 28);
 assert.deepEqual(
   meetings.map((m) => m.number).sort((a, b) => a - b),
   Array.from({ length: 28 }, (_, i) => i + 1),
 );
 assert.equal(phases.length, 5);
-assert.equal(meetings.filter((m) => m.type === "theory").length, 14);
-assert.equal(meetings.filter((m) => m.type === "lab").length, 14);
+assert.equal(new Set(phases.map((p) => p.number)).size, phases.length);
+assert.equal(new Set(phases.map((p) => p.id)).size, phases.length);
 assert.deepEqual(
-  meetings.filter((m) => m.labTier === "signature").map((m) => m.number),
-  [22, 26, 28],
+  phases.map((p) => p.number),
+  Array.from({ length: phases.length }, (_, i) => i + 1),
 );
 assert.ok(
   meetings.filter((m) => m.status === "current").length <= 1,
   "Only one current meeting is allowed",
 );
-const phaseEnds = [6, 12, 20, 26, 28];
-for (const m of meetings) {
-  assert.equal(m.type, m.number % 2 ? "theory" : "lab");
-  assert.equal(m.phase, phaseEnds.findIndex((end) => m.number <= end) + 1);
-  assert.ok(m.type === "theory" ? m.coreIdea && m.takeaway : m.question);
+const ordered = [...meetings].sort((a, b) => a.number - b.number);
+let previousPhase = 0;
+for (const m of ordered) {
+  assert.ok(
+    phases.some((p) => p.number === m.phase),
+    `Unknown phase for meeting ${m.number}`,
+  );
+  assert.ok(
+    m.phase >= previousPhase,
+    `Phase order goes backwards at meeting ${m.number}`,
+  );
+  previousPhase = m.phase;
+  assert.ok(
+    Object.hasOwn(categories, m.category),
+    `Invalid category: ${m.category}`,
+  );
+  assert.ok(["completed", "current", "upcoming", "tba"].includes(m.status));
+  assert.ok(
+    typeof m.title === "string" && m.title.trim(),
+    `Missing title: ${m.number}`,
+  );
+  assert.ok(
+    typeof m.summary === "string" && m.summary.trim(),
+    `Missing summary: ${m.number}`,
+  );
+  assert.ok(
+    Array.isArray(m.tags) &&
+      m.tags.every((tag) => typeof tag === "string" && tag.trim()),
+    `Invalid tags: ${m.number}`,
+  );
   if (m.date) {
     assert.match(m.date, /^\d{4}-\d{2}-\d{2}$/);
     assert.equal(
@@ -50,6 +75,11 @@ for (const m of meetings) {
     );
   }
 }
+for (const phase of phases)
+  assert.ok(
+    meetings.some((m) => m.phase === phase.number),
+    `Empty phase: ${phase.title}`,
+  );
 const { team } = await loadData("team");
 assert.deepEqual(
   [...team].sort((a, b) => a.order - b.order).map((m) => m.name),
@@ -75,9 +105,27 @@ const links = [
   ]),
 ].filter(Boolean);
 for (const href of links) {
-  assert.notEqual(href, "#");
-  if (!/^https?:/.test(href)) {
-    const relative = href.replace(/^\/AI-Club-Website\//, "");
+  assert.equal(href, href.trim(), `Whitespace in resource path: ${href}`);
+  if (/^https?:\/\//.test(href)) {
+    assert.ok(new URL(href).hostname, `Invalid external URL: ${href}`);
+  } else {
+    const relative = decodeURIComponent(
+      href.replace(/^\/AI-Club-Website\//, ""),
+    );
+    assert.ok(
+      relative && !/^[\/]|[\\:#?]/.test(relative),
+      `Malformed local resource: ${href}`,
+    );
+    assert.ok(
+      !relative.startsWith("public/"),
+      `Omit public/ from resource URLs: ${href}`,
+    );
+    assert.ok(
+      relative
+        .split("/")
+        .every((part) => part && part !== "." && part !== ".."),
+      `Invalid path segments: ${href}`,
+    );
     assert.ok(
       existsSync(new URL(`../public/${relative}`, import.meta.url)),
       `Missing asset: ${href}`,
@@ -101,5 +149,5 @@ for (const file of [
   }
 }
 console.log(
-  "Validated: 28 meetings, 14 theory/lab pairs, five phases, three signature labs, dates, team order, unique Bits, and all local data/archive links.",
+  "Validated: 28 chronological meetings, five ordered phases, valid categories and content, dates, team order, unique Bits, and valid local data/archive links.",
 );

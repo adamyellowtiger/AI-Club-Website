@@ -1,3 +1,4 @@
+import CategoryBadge from "../components/CategoryBadge";
 import { ArrowUpRight, CalendarDays, MapPin, Clock } from "lucide-react";
 import {
   nextMeeting,
@@ -32,9 +33,9 @@ export default function MeetingsSection() {
           <div className="next-topic">
             {nextMeeting ? (
               <>
-                <p className="meeting-meta">
+                <div className="meeting-meta">
                   Meeting {String(nextMeeting.number).padStart(2, "0")} ·{" "}
-                  {nextMeeting.type}
+                  <CategoryBadge category={nextMeeting.category} />
                   <span className="pill">
                     {nextMeeting.status === "current"
                       ? "Current"
@@ -42,9 +43,9 @@ export default function MeetingsSection() {
                         ? "Upcoming"
                         : "Date TBA"}
                   </span>
-                </p>
+                </div>
                 <h3>{nextMeeting.title}</h3>
-                <p>{nextMeeting.coreIdea ?? nextMeeting.question}</p>
+                <p>{nextMeeting.summary}</p>
                 <div className="next-facts">
                   <span>
                     <CalendarDays />

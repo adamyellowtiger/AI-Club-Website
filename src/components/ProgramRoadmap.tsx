@@ -1,105 +1,45 @@
 import { useEffect, useState } from "react";
+import { ChevronDown } from "lucide-react";
 import {
-  ArrowDown,
-  ArrowRight,
-  ChevronDown,
-  BookOpen,
-  FlaskConical,
-  Star,
-} from "lucide-react";
-import {
+  categories,
   phases,
   orderedMeetings,
   meetings,
   completedMeetings,
   currentPhase,
   nextMeeting,
-  type Meeting,
+  matchesFilter,
+  progressPercent,
+  type RoadmapFilter,
+  type MeetingCategory,
 } from "../data/roadmap";
-import { formatDate } from "../data/site";
+import { site } from "../data/site";
 import Byte from "../graphics/Byte";
-import MeetingResources from "./MeetingResources";
-const statusLabels = {
-  completed: "Completed",
-  current: "Current meeting",
-  upcoming: "Upcoming",
-  tba: "Date TBA",
-};
-function MeetingCard({ meeting }: { meeting: Meeting }) {
-  const fields = [
-    ["The idea", meeting.coreIdea],
-    ["In practice", meeting.application],
-    ["Takeaway", meeting.takeaway],
-    ["The question", meeting.question],
-    ["The experiment", meeting.experiment],
-    ["Change", meeting.variable],
-    ["Measure", meeting.measure],
-    ["Discuss", meeting.discussion],
-    ["Optional math", meeting.optionalMath],
-    ["Go further", meeting.extension],
-    ["Station A", meeting.stationA],
-    ["Station B", meeting.stationB],
-    ["Team report", meeting.report],
-  ];
-  return (
-    <article
-      id={`meeting-${meeting.number}`}
-      className={`meeting-card ${meeting.type} ${meeting.status}`}
-    >
-      <div className="meeting-meta">
-        <span>
-          {meeting.type === "theory" ? (
-            <BookOpen size={14} />
-          ) : (
-            <FlaskConical size={14} />
-          )}{" "}
-          {String(meeting.number).padStart(2, "0")} · {meeting.type}
-        </span>
-        <span className="meeting-status">{statusLabels[meeting.status]}</span>
-      </div>
-      <h4>{meeting.title}</h4>
-      {meeting.labTier === "signature" && (
-        <span className="signature">
-          <Star size={13} /> Signature Lab
-          {meeting.number === orderedMeetings[orderedMeetings.length - 1].number
-            ? " · Year-end showcase"
-            : ""}
-        </span>
-      )}
-      <p>{meeting.coreIdea ?? meeting.question}</p>
-      <details className="meeting-details">
-        <summary>
-          Explore meeting <ChevronDown size={16} />
-        </summary>
-        <div className="detail-body">
-          <p className="small">
-            {formatDate(meeting.date)}
-            {meeting.leader ? ` · Led by ${meeting.leader}` : ""}
-          </p>
-          {meeting.preparation && (
-            <p>
-              <strong>Bring / prepare</strong>
-              {meeting.preparation}
-            </p>
-          )}
-          {fields
-            .filter(([, value]) => value)
-            .map(([label, value]) => (
-              <p key={label}>
-                <strong>{label}</strong>
-                {value}
-              </p>
-            ))}
-          <MeetingResources meeting={meeting} />
-        </div>
-      </details>
-    </article>
-  );
-}
+import MeetingCard from "./MeetingCard";
+
+const filters: { value: RoadmapFilter; label: string }[] = [
+  { value: "all", label: "All" },
+  ...Object.entries(categories).map(([value, category]) => ({
+    value: value as MeetingCategory,
+    label: category.filterLabel,
+  })),
+];
+
 export default function ProgramRoadmap() {
+  const [filter, setFilter] = useState<RoadmapFilter>("all");
   const [openPhases, setOpenPhases] = useState<number[]>([
     currentPhase?.number ?? phases[0].number,
   ]);
+  const visibleMeetings = orderedMeetings.filter((meeting) =>
+    matchesFilter(meeting, filter),
+  );
+  const visiblePhases = phases.filter((phase) =>
+    visibleMeetings.some((meeting) => meeting.phase === phase.number),
+  );
+  const allOpen = visiblePhases.every((phase) =>
+    openPhases.includes(phase.number),
+  );
+
   useEffect(() => {
     const reveal = () => {
       const hash = window.location.hash.slice(1);
@@ -107,6 +47,7 @@ export default function ProgramRoadmap() {
       const phase = phases.find((p) => `phase-${p.id}` === hash);
       const number = meeting?.phase ?? phase?.number;
       if (number) {
+        setFilter("all");
         setOpenPhases((previous) =>
           previous.includes(number) ? previous : [...previous, number],
         );
@@ -117,35 +58,68 @@ export default function ProgramRoadmap() {
         );
       }
     };
+    // Also handle a link to the already-selected hash after filtering hid its target.
+    const onAnchorClick = (event: MouseEvent) => {
+      const target =
+        event.target instanceof Element ? event.target.closest("a") : null;
+      if (target?.hash && target.hash === window.location.hash) reveal();
+    };
     reveal();
     window.addEventListener("hashchange", reveal);
-    return () => window.removeEventListener("hashchange", reveal);
+    document.addEventListener("click", onAnchorClick);
+    return () => {
+      window.removeEventListener("hashchange", reveal);
+      document.removeEventListener("click", onAnchorClick);
+    };
   }, []);
+
+  function selectFilter(value: RoadmapFilter) {
+    setFilter(value);
+    setOpenPhases(
+      value === "all"
+        ? [currentPhase?.number ?? phases[0].number]
+        : phases
+            .filter((phase) =>
+              meetings.some(
+                (m) => m.phase === phase.number && matchesFilter(m, value),
+              ),
+            )
+            .map((phase) => phase.number),
+    );
+  }
+
   return (
     <section id="program" className="program-region">
       <div className="section-shell">
         <div className="section-heading">
           <div>
-            <p className="eyebrow">The 2026–27 program</p>
-            <h2>One idea. Then put it to the test.</h2>
+            <p className="eyebrow">The {site.year} program</p>
+            <h2>From understanding AI to building it.</h2>
             <p>
-              A connected path from your first AI question to your own red-team
-              challenge.
+              Code real models, investigate failures, and explore where the
+              skills lead.
+            </p>
+            <p className="member-informed">
+              Shaped by early member feedback. The program will keep learning
+              from you.
             </p>
           </div>
           <Byte pose="pointing" className="roadmap-byte" decorative />
         </div>
         <div className="program-summary">
           <div>
-            <strong>Theory meetings explain. Lab meetings test.</strong>
+            <strong>
+              Learn how modern AI works → code it → test where it fails.
+            </strong>
             <p>
-              Learn an idea <ArrowRight /> make a prediction <ArrowRight /> test
-              it <ArrowRight /> examine evidence
+              Then connect the skills to real work, ethical questions, and your
+              next project.
             </p>
           </div>
           <div className="progress-block">
             <span>
-              {completedMeetings.length} / {meetings.length} completed
+              {completedMeetings.length} / {meetings.length} completed ·{" "}
+              {progressPercent}%
             </span>
             <progress
               value={completedMeetings.length}
@@ -159,28 +133,56 @@ export default function ProgramRoadmap() {
             </small>
           </div>
         </div>
+        <div
+          className="roadmap-filters"
+          role="group"
+          aria-label="Explore meetings by interest"
+        >
+          {filters.map((item) => (
+            <button
+              key={item.value}
+              aria-pressed={filter === item.value}
+              onClick={() => selectFilter(item.value)}
+            >
+              {item.label}
+              <span>
+                {meetings.filter((m) => matchesFilter(m, item.value)).length}
+              </span>
+            </button>
+          ))}
+        </div>
         <div className="roadmap-toolbar">
-          <span>Select a phase. Open a meeting to explore.</span>
+          <p aria-live="polite" aria-atomic="true">
+            {visibleMeetings.length} meetings in {visiblePhases.length} phases
+            {filter !== "all" && " · Includes related topic tags"}
+          </p>
           <button
             onClick={() =>
-              setOpenPhases(
-                openPhases.length === phases.length
-                  ? []
-                  : phases.map((p) => p.number),
+              setOpenPhases((previous) =>
+                allOpen
+                  ? previous.filter(
+                      (n) => !visiblePhases.some((p) => p.number === n),
+                    )
+                  : [
+                      ...new Set([
+                        ...previous,
+                        ...visiblePhases.map((p) => p.number),
+                      ]),
+                    ],
               )
             }
           >
-            {openPhases.length === phases.length
-              ? "Collapse all"
-              : "Expand all phases"}
+            {allOpen ? "Collapse all" : "Expand all phases"}
           </button>
         </div>
         <div className="phase-list">
-          {phases.map((phase) => {
-            const phaseMeetings = orderedMeetings.filter(
+          {visiblePhases.map((phase) => {
+            const phaseMeetings = visibleMeetings.filter(
               (m) => m.phase === phase.number,
             );
-            const theories = phaseMeetings.filter((m) => m.type === "theory");
+            const allPhaseMeetings = orderedMeetings.filter(
+              (m) => m.phase === phase.number,
+            );
             const open = openPhases.includes(phase.number);
             return (
               <section
@@ -194,7 +196,7 @@ export default function ProgramRoadmap() {
                     aria-controls={`phase-content-${phase.number}`}
                     onClick={() =>
                       setOpenPhases((previous) =>
-                        open
+                        previous.includes(phase.number)
                           ? previous.filter((n) => n !== phase.number)
                           : [...previous, phase.number],
                       )
@@ -208,10 +210,15 @@ export default function ProgramRoadmap() {
                       <small>{phase.progression}</small>
                     </span>
                     <span className="phase-range">
-                      Meetings {phaseMeetings[0].number}–
-                      {phaseMeetings[phaseMeetings.length - 1].number}
+                      {filter === "all"
+                        ? `Meetings ${allPhaseMeetings[0].number}–${allPhaseMeetings[allPhaseMeetings.length - 1].number}`
+                        : `${phaseMeetings.length} matching`}
                     </span>
-                    <ChevronDown className="phase-chevron" size={20} />
+                    <ChevronDown
+                      className="phase-chevron"
+                      size={20}
+                      aria-hidden="true"
+                    />
                   </button>
                 </h3>
                 <div
@@ -219,25 +226,11 @@ export default function ProgramRoadmap() {
                   hidden={!open}
                   className="phase-content"
                 >
-                  {theories.map((theory) => {
-                    const lab = phaseMeetings.find(
-                      (m) => m.number === theory.number + 1 && m.type === "lab",
-                    );
-                    return (
-                      <div className="meeting-pair" key={theory.number}>
-                        <MeetingCard meeting={theory} />
-                        <div
-                          className="pair-connector"
-                          role="img"
-                          aria-label="Then test the concept"
-                        >
-                          <ArrowRight className="pair-right" />
-                          <ArrowDown className="pair-down" />
-                        </div>
-                        {lab && <MeetingCard meeting={lab} />}
-                      </div>
-                    );
-                  })}
+                  <div className="meeting-timeline">
+                    {phaseMeetings.map((meeting) => (
+                      <MeetingCard key={meeting.number} meeting={meeting} />
+                    ))}
+                  </div>
                 </div>
               </section>
             );

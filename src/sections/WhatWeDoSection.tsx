@@ -1,40 +1,46 @@
-import { BookOpen, FlaskConical, Blocks } from "lucide-react";
+import { BookOpen, Code2, FlaskConical, Compass } from "lucide-react";
 export default function WhatWeDoSection() {
   return (
     <section id="what-we-do" className="learning-region">
       <div className="section-shell">
         <p className="eyebrow">How we learn</p>
-        <h2>Less watching. More figuring things out.</h2>
+        <h2>Understand. Build. Test. Look forward.</h2>
         <div className="learning-steps">
           <article>
-            <BookOpen />
-            <span className="step-number">01 / LEARN</span>
-            <h3>Make sense of the idea.</h3>
+            <BookOpen aria-hidden="true" />
+            <span className="step-number">01 / UNDERSTAND</span>
+            <h3>Look inside the ideas.</h3>
             <p>
-              Short theory sessions explain what modern AI systems actually do,
-              one concept at a time.
+              Learn how neural networks, LLMs, transformers, RAG, agents, and
+              reinforcement learning work.
             </p>
-            <small>Theory program · Adam Fan</small>
           </article>
           <article>
-            <FlaskConical />
-            <span className="step-number">02 / TEST</span>
-            <h3>See what holds up.</h3>
+            <Code2 aria-hidden="true" />
+            <span className="step-number">02 / BUILD</span>
+            <h3>Work with real code.</h3>
             <p>
-              Make a prediction. Change one variable. Use a controlled
-              experiment to examine the evidence.
+              Use Python, scikit-learn, and PyTorch to train models, build
+              search systems, and create AI applications.
             </p>
-            <small>Lab program · Leo Wang</small>
           </article>
           <article>
-            <Blocks />
-            <span className="step-number">03 / BUILD</span>
-            <h3>Take the idea further.</h3>
+            <FlaskConical aria-hidden="true" />
+            <span className="step-number">03 / TEST</span>
+            <h3>Find the failure.</h3>
             <p>
-              Explore tools, club demonstrations, Daily Bits, and challenges.
-              Ask better questions together.
+              Measure bias, shortcuts, hallucinations, and unsafe behaviour.
+              Compare evidence instead of treating AI as magic.
             </p>
-            <small>Teaching support · Albert Yang</small>
+          </article>
+          <article>
+            <Compass aria-hidden="true" />
+            <span className="step-number">04 / LOOK FORWARD</span>
+            <h3>Know where skills lead.</h3>
+            <p>
+              Explore real roles, adaptable skills, economic changes, and the
+              ethical decisions behind reliable systems.
+            </p>
           </article>
         </div>
       </div>
