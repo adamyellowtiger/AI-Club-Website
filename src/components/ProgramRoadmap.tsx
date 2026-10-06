@@ -15,7 +15,6 @@ import {
   type MeetingCategory,
 } from "../data/roadmap";
 import { site } from "../data/site";
-import Byte from "../graphics/Byte";
 import MeetingCard from "./MeetingCard";
 import KickoffMeeting from "./KickoffMeeting";
 
@@ -97,7 +96,7 @@ export default function ProgramRoadmap() {
   return (
     <section id="program" className="program-region">
       <div className="section-shell">
-        <div className="section-heading">
+        <div className="section-heading illustrated-heading">
           <div>
             <p className="eyebrow">The {site.year} program</p>
             <h2>From understanding AI to building it.</h2>
@@ -110,7 +109,15 @@ export default function ProgramRoadmap() {
               from you.
             </p>
           </div>
-          <Byte pose="pointing" className="roadmap-byte" decorative />
+          <img
+            src={`${import.meta.env.BASE_URL}illustrations/byte_program.png`}
+            alt=""
+            className="roadmap-byte-image"
+            width={1536}
+            height={1024}
+            loading="lazy"
+            decoding="async"
+          />
         </div>
         <div className="program-summary">
           <div>

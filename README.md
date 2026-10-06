@@ -79,7 +79,7 @@ Team members sort by `order`, not by name. Keep the approved order and tiers: tw
 
 All existing PDFs, slide decks, Daily Bit images, and original root assets remain. Public paths are intentionally preserved, including `meeting-slides-archive.html`, `weekly-recap-notes-archive.html`, `resources/`, `slides/`, and `daily-bits/`. Some historical files are duplicates; do not delete or move them just to tidy folders, because old shared links may depend on them.
 
-The reusable `src/graphics/Byte.tsx` supports `excited`, `pointing`, `thinking`, `teaching`, `confused`, and `builder` poses. Keep the name Byte. Styling and responsive rules live in `src/styles.css`; design decisions are documented in `design-system/MASTER.md`.
+The Home, Program, and Resources pages use the supplied transparent PNG illustrations in `public/illustrations/`. Keep the name Byte and use base-aware URLs for these assets. Styling and responsive rules live in `src/styles.css`; design decisions are documented in `design-system/MASTER.md`.
 
 ## Before publishing
 

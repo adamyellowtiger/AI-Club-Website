@@ -2,7 +2,7 @@ import { ArrowUpRight } from "lucide-react";
 import { resourceUrl } from "../data/site";
 
 export default function KickoffMeeting() {
-  const presentation = resourceUrl("slides/bayview-ai-club-kickoff.pdf");
+  const presentation = resourceUrl("slides/Bayview_AI_Club_Kickoff.pptx");
   return (
     <section id="meeting-0" className="meeting-card completed kickoff-meeting" aria-labelledby="kickoff-title">
       <div className="timeline-number" aria-hidden="true">0</div>
@@ -19,10 +19,10 @@ export default function KickoffMeeting() {
           <div className="resource-links">
             <a href={presentation} target="_blank" rel="noopener noreferrer">
               Open Presentation <ArrowUpRight size={16} aria-hidden="true" />
-              <span className="sr-only"> (PDF, opens in a new tab)</span>
+              <span className="sr-only"> (PowerPoint, opens in a new tab or downloads)</span>
             </a>
           </div>
-          <a href={presentation} target="_blank" rel="noopener noreferrer" aria-label="View Kickoff Presentation (PDF, opens in a new tab)">
+          <a href={presentation} target="_blank" rel="noopener noreferrer" aria-label="View Kickoff Presentation (PowerPoint, opens in a new tab or downloads)">
             <img className="kickoff-preview" src={resourceUrl("slides/bayview-ai-club-kickoff-preview.png")} alt="Cover slide of the Bayview AI Club kickoff presentation" loading="lazy" />
           </a>
         </div>

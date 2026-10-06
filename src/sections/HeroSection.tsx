@@ -1,5 +1,4 @@
 import { ArrowRight, MapPin, Clock, Check } from "lucide-react";
-import Byte from "../graphics/Byte";
 import { site } from "../data/site";
 import { meetings, buildTotal, phases } from "../data/roadmap";
 export default function HeroSection() {
@@ -46,18 +45,14 @@ export default function HeroSection() {
           </div>
         </div>
         <div className="hero-illustration">
-          <div className="diagram-label">CURIOSITY → EVIDENCE</div>
-          <div className="orbit orbit-one" />
-          <div className="orbit orbit-two" />
-          <div className="byte-note note-top">
-            <span className="tiny-dot" /> Make a prediction.
-          </div>
-          <Byte pose="excited" className="hero-byte" />
-          <div className="byte-note note-bottom">
-            “Let’s find out together.”<span>BYTE / YOUR AI GUIDE</span>
-          </div>
-          <div className="diagram-cross cross-one">+</div>
-          <div className="diagram-cross cross-two">+</div>
+          <img
+            src={`${import.meta.env.BASE_URL}illustrations/byte_hero.png`}
+            alt=""
+            className="hero-byte-image"
+            width={1448}
+            height={1086}
+            decoding="async"
+          />
         </div>
         <div className="program-stats">
           <div>

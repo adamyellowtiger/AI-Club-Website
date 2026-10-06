@@ -3,7 +3,6 @@ import { resources } from "../data/resources";
 import { archivedMeetings } from "../data/archive";
 import { orderedMeetings } from "../data/roadmap";
 import MeetingResources from "../components/MeetingResources";
-import Byte from "../graphics/Byte";
 const groups = [
   { key: "start-here", title: "Start here", label: "01 / THE ESSENTIALS" },
   {
@@ -24,7 +23,7 @@ export default function ResourcesSection() {
   return (
     <section id="resources" className="resources-region">
       <div className="section-shell">
-        <div className="section-heading">
+        <div className="section-heading illustrated-heading">
           <div>
             <p className="eyebrow">The club library</p>
             <h2>Your next question starts here.</h2>
@@ -32,7 +31,15 @@ export default function ResourcesSection() {
               Catch up, prepare for a lab, or follow an idea a little further.
             </p>
           </div>
-          <Byte pose="builder" className="library-byte" decorative />
+          <img
+            src={`${import.meta.env.BASE_URL}illustrations/byte_resources.png`}
+            alt=""
+            className="library-byte-image"
+            width={1536}
+            height={1024}
+            loading="lazy"
+            decoding="async"
+          />
         </div>
         <div className="resource-grid">
           {groups.map((group) => (
