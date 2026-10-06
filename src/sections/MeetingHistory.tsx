@@ -32,6 +32,11 @@ export default function MeetingHistory() {
       </div>
       <div className="history-block">
         <h2>2026–27 meeting history</h2>
+        <p>
+          <a className="text-link" href="#/program/meeting-0">
+            Meeting 0 — Kickoff · Presentation ↗
+          </a>
+        </p>
         {completedMeetings.length ? (
           completedMeetings.map((m) => (
             <p key={m.number}>
@@ -43,7 +48,7 @@ export default function MeetingHistory() {
           ))
         ) : (
           <p>
-            No completed meetings have been posted yet. Recaps and materials
+            No completed curriculum meetings have been posted yet. Recaps and materials
             will be linked here as the year unfolds.
           </p>
         )}

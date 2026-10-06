@@ -97,6 +97,8 @@ const { aiBits } = await loadData("aiBits");
 assert.equal(new Set(aiBits.map((bit) => bit.id)).size, aiBits.length);
 const { resources } = await loadData("resources");
 const links = [
+  "slides/bayview-ai-club-kickoff.pdf",
+  "slides/bayview-ai-club-kickoff-preview.png",
   ...resources.map((r) => r.href),
   ...meetings.flatMap((m) => [m.slidesHref, m.recapHref, m.labHref]),
   ...aiBits.flatMap((b) => [
@@ -104,6 +106,11 @@ const links = [
     ...(b.supportingImages ?? []).map((i) => i.src),
   ]),
 ].filter(Boolean);
+assert.deepEqual(
+  readFileSync(new URL("../public/slides/bayview-ai-club-kickoff.pdf", import.meta.url)),
+  readFileSync(new URL("../Bayview_AI_Club_Kickoff.pptx.pdf", import.meta.url)),
+  "Published kickoff PDF must match the original slideshow",
+);
 for (const href of links) {
   assert.equal(href, href.trim(), `Whitespace in resource path: ${href}`);
   if (/^https?:\/\//.test(href)) {

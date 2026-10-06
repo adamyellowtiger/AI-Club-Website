@@ -1778,6 +1778,29 @@ summary::-webkit-details-marker {
 .meeting-content {
   min-width: 0;
 }
+.kickoff-meeting {
+  margin-bottom: 28px;
+  background: #f3f8ff;
+}
+.kickoff-meeting::after {
+  display: none;
+}
+.kickoff-meeting h3 {
+  margin: 14px 0 9px;
+  font-size: 21px;
+}
+.kickoff-presentation {
+  margin-top: 20px;
+}
+.kickoff-preview {
+  display: block;
+  width: 100%;
+  max-width: 100%;
+  height: auto;
+  margin-top: 16px;
+  border: 1px solid #d5e3ef;
+  border-radius: 8px;
+}
 .timeline-number {
   display: flex;
   align-items: center;

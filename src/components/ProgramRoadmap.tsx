@@ -17,6 +17,7 @@ import {
 import { site } from "../data/site";
 import Byte from "../graphics/Byte";
 import MeetingCard from "./MeetingCard";
+import KickoffMeeting from "./KickoffMeeting";
 
 const filters: { value: RoadmapFilter; label: string }[] = [
   { value: "all", label: "All" },
@@ -44,6 +45,10 @@ export default function ProgramRoadmap() {
   useEffect(() => {
     const reveal = () => {
       const hash = readRoute().anchor;
+      if (hash === "meeting-0") {
+        document.getElementById(hash)?.scrollIntoView({ block: "start" });
+        return;
+      }
       const meeting = meetings.find((m) => `meeting-${m.number}` === hash);
       const phase = phases.find((p) => `phase-${p.id}` === hash);
       const number = meeting?.phase ?? phase?.number;
@@ -134,6 +139,7 @@ export default function ProgramRoadmap() {
             </small>
           </div>
         </div>
+        <KickoffMeeting />
         <div
           className="roadmap-filters"
           role="group"
