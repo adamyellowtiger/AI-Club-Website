@@ -28,12 +28,12 @@ body {
 }
 html {
   scroll-behavior: smooth;
-  scroll-padding-top: 100px;
+  scroll-padding-top: var(--header-height);
 }
 section[id],
 article[id],
 #faq {
-  scroll-margin-top: 100px;
+  scroll-margin-top: 16px;
 }
 button,
 a,
@@ -181,24 +181,6 @@ h4 {
   background: white;
   border-color: var(--blue);
 }
-.site-header {
-  position: sticky;
-  top: 0;
-  z-index: 50;
-  background: #ffffffed;
-  border-bottom: 1px solid var(--line);
-  backdrop-filter: blur(12px);
-}
-.nav-shell {
-  max-width: 1152px;
-  margin: auto;
-  padding: 0 32px;
-  height: 76px;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 20px;
-}
 .wordmark {
   display: flex;
   align-items: center;
@@ -221,34 +203,6 @@ h4 {
   height: 36px;
   width: 36px;
   margin-right: 7px;
-}
-.nav-links {
-  list-style: none;
-  display: flex;
-  align-items: center;
-  gap: 26px;
-  padding: 0;
-  margin: 0;
-  font-size: 13px;
-  font-weight: 600;
-}
-.nav-links a {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  min-height: 44px;
-}
-.nav-links .nav-join {
-  background: var(--blue);
-  color: white;
-  border-radius: 8px;
-  padding: 0 18px;
-}
-.nav-join:hover {
-  background: #104f9f;
-}
-.menu-toggle {
-  display: none;
 }
 .hero {
   background: linear-gradient(115deg, #f5faff, #edf6ff 70%, #dfedfb);
@@ -1268,9 +1222,6 @@ summary::-webkit-details-marker {
   }
 }
 @media (max-width: 1023px) {
-  .nav-links {
-    gap: 17px;
-  }
   .hero-layout {
     grid-template-columns: 1.3fr 0.85fr;
     gap: 24px;
@@ -1338,45 +1289,8 @@ summary::-webkit-details-marker {
   .section-shell {
     padding: 56px 22px;
   }
-  .nav-shell {
-    height: 66px;
-    padding: 0 22px;
-  }
   .wordmark {
     font-size: 16px;
-  }
-  .menu-toggle {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    min-width: 44px;
-    min-height: 44px;
-    border: 1px solid #d7e5f0;
-    border-radius: 8px;
-    color: #245582;
-  }
-  .nav-links {
-    display: none;
-    position: absolute;
-    top: 66px;
-    left: 0;
-    right: 0;
-    background: white;
-    border-bottom: 1px solid #cdddea;
-    padding: 14px 22px;
-    box-shadow: 0 15px 20px #12365d0c;
-  }
-  .nav-links.is-open {
-    display: flex;
-    flex-direction: column;
-    align-items: stretch;
-    gap: 3px;
-  }
-  .nav-links a {
-    padding: 6px 12px;
-  }
-  .nav-links .nav-join {
-    justify-content: space-between;
   }
   .hero-layout {
     grid-template-columns: 1fr;
@@ -1670,9 +1584,6 @@ summary::-webkit-details-marker {
     width: 12px;
   }
   .section-shell {
-    padding-inline: 18px;
-  }
-  .nav-shell {
     padding-inline: 18px;
   }
   .program-stats {
@@ -2043,51 +1954,10 @@ summary::-webkit-details-marker {
   }
 }
 /* Shared views and expanded navigation */
-html {
-  scroll-padding-top: 116px;
-}
-.nav-shell {
-  max-width: 1240px;
-  height: 96px;
-  gap: 24px;
-}
-.nav-shell .wordmark {
-  font-size: 21px;
-  white-space: nowrap;
-}
 .brand-icon {
   width: 44px;
   height: 44px;
   flex-shrink: 0;
-}
-.nav-links {
-  gap: 25px;
-  font-size: 14px;
-}
-.nav-links a {
-  min-height: 48px;
-  position: relative;
-}
-.nav-links a[aria-current="page"]:not(.nav-join) {
-  color: var(--blue);
-}
-.nav-links a[aria-current="page"]:not(.nav-join)::after {
-  content: "";
-  position: absolute;
-  bottom: 3px;
-  left: 0;
-  right: 0;
-  height: 2px;
-  background: var(--blue);
-  border-radius: 2px;
-}
-.nav-links .nav-join {
-  min-height: 48px;
-  padding-inline: 20px;
-}
-.nav-join[aria-current="page"] {
-  outline: 3px solid #b4d5ff;
-  outline-offset: 3px;
 }
 .page-header {
   background: linear-gradient(115deg, #f5faff, #edf6ff);
@@ -2266,67 +2136,9 @@ main:focus {
   font-weight: 600;
 }
 .bit-archive article {
-  scroll-margin-top: 116px;
-}
-@media (max-width: 1100px) {
-  .nav-links {
-    gap: 16px;
-  }
-  .nav-shell .wordmark {
-    font-size: 20px;
-  }
-  .nav-shell {
-    padding-inline: 24px;
-  }
+  scroll-margin-top: 16px;
 }
 @media (max-width: 1023px) {
-  .nav-shell {
-    height: 80px;
-    padding-inline: 24px;
-  }
-  .menu-toggle {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    min-width: 48px;
-    min-height: 48px;
-    border: 1px solid #d7e5f0;
-    border-radius: 8px;
-    background: #fff;
-    color: #245582;
-  }
-  .nav-links {
-    display: none;
-    position: absolute;
-    top: 80px;
-    left: 0;
-    right: 0;
-    background: white;
-    border-bottom: 1px solid #cdddea;
-    padding: 14px 24px;
-    box-shadow: 0 15px 20px #12365d0c;
-    max-height: calc(100dvh - 80px);
-    overflow: auto;
-  }
-  .nav-links.is-open {
-    display: flex;
-    flex-direction: column;
-    align-items: stretch;
-    gap: 3px;
-  }
-  .nav-links a {
-    padding: 6px 12px;
-  }
-  .nav-links a[aria-current="page"]:not(.nav-join) {
-    background: #edf5ff;
-    border-radius: 8px;
-  }
-  .nav-links a[aria-current="page"]:not(.nav-join)::after {
-    display: none;
-  }
-  .nav-links .nav-join {
-    justify-content: space-between;
-  }
   .discovery-grid,
   .meeting-index {
     grid-template-columns: repeat(2, minmax(0, 1fr));
@@ -2339,13 +2151,6 @@ main:focus {
   }
 }
 @media (max-width: 600px) {
-  .nav-shell {
-    padding-inline: 20px;
-  }
-  .nav-shell .wordmark {
-    font-size: 20px;
-    gap: 4px;
-  }
   .brand-icon {
     margin-right: 5px;
   }
@@ -2398,5 +2203,148 @@ main:focus {
 @media (prefers-reduced-motion: reduce) {
   .discovery-card {
     transition: none;
+  }
+}
+
+/* Shared desktop sidebar and mobile dropdown navigation. */
+:root {
+  --header-height: 72px;
+  --sidebar-width: 220px;
+}
+.site-header {
+  position: sticky;
+  top: 0;
+  z-index: 50;
+  height: var(--header-height);
+  background: #fff;
+  border-bottom: 1px solid var(--line);
+}
+.nav-shell {
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+  padding-inline: 24px;
+}
+.nav-shell .wordmark {
+  font-size: 21px;
+}
+.menu-toggle {
+  display: none;
+}
+.site-navigation {
+  position: fixed;
+  top: var(--header-height);
+  bottom: 0;
+  left: 0;
+  width: var(--sidebar-width);
+  overflow-y: auto;
+  overscroll-behavior: contain;
+  padding: 24px 16px;
+  background: #fff;
+  border-right: 1px solid var(--line);
+}
+.nav-links {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  font-size: 14px;
+  font-weight: 600;
+}
+.nav-links a {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  min-height: 48px;
+  padding: 10px 14px;
+  border-left: 3px solid transparent;
+  border-radius: 8px;
+}
+.nav-links a:hover {
+  background: var(--pale);
+}
+.nav-links a[aria-current="page"]:not(.nav-join) {
+  background: #edf5ff;
+  color: var(--blue);
+  border-left-color: var(--blue);
+}
+.nav-links .nav-join {
+  margin-top: 12px;
+  background: var(--blue);
+  color: #fff;
+}
+.nav-links .nav-join:hover {
+  background: #104f9f;
+}
+.nav-join[aria-current="page"] {
+  outline: 3px solid #b4d5ff;
+  outline-offset: 3px;
+}
+.nav-links a:focus-visible {
+  outline: 3px solid #0873cc;
+  outline-offset: 3px;
+}
+.page-layout {
+  margin-left: var(--sidebar-width);
+  min-width: 0;
+}
+@media (max-width: 1023px) {
+  :root {
+    --header-height: 80px;
+  }
+  .page-layout {
+    margin-left: 0;
+  }
+  .nav-shell .wordmark {
+    font-size: 20px;
+  }
+  .menu-toggle {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 48px;
+    min-height: 48px;
+    border: 1px solid #d7e5f0;
+    border-radius: 8px;
+    background: #fff;
+    color: #245582;
+  }
+  .site-navigation {
+    display: none;
+    position: absolute;
+    top: var(--header-height);
+    bottom: auto;
+    right: 0;
+    width: auto;
+    max-height: calc(100dvh - var(--header-height));
+    padding: 14px 24px;
+    border-right: 0;
+    border-bottom: 1px solid #cdddea;
+    box-shadow: 0 15px 20px #12365d0c;
+  }
+  .site-navigation.is-open {
+    display: block;
+  }
+  .nav-links {
+    gap: 3px;
+  }
+  .nav-links a {
+    padding: 6px 12px;
+  }
+  .nav-links .nav-join {
+    margin-top: 0;
+  }
+}
+@media (max-width: 600px) {
+  .nav-shell {
+    padding-inline: 20px;
+  }
+  .nav-shell .wordmark {
+    gap: 4px;
   }
 }

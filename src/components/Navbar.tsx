@@ -9,13 +9,13 @@ export default function Navbar({ active }: { active: Page }) {
     <header
       className="site-header"
       onKeyDown={(event) => {
-        if (event.key === "Escape") {
+        if (event.key === "Escape" && open) {
           setOpen(false);
           toggle.current?.focus();
         }
       }}
     >
-      <nav className="nav-shell" aria-label="Main navigation">
+      <div className="nav-shell">
         <a href="#/home" className="wordmark">
           <span className="brand-icon">
             <Cpu size={21} />
@@ -32,10 +32,12 @@ export default function Navbar({ active }: { active: Page }) {
         >
           {open ? <X /> : <Menu />}
         </button>
-        <ul
-          id="primary-links"
-          className={open ? "nav-links is-open" : "nav-links"}
-        >
+      </div>
+      <nav
+        className={open ? "site-navigation is-open" : "site-navigation"}
+        aria-label="Main navigation"
+      >
+        <ul id="primary-links" className="nav-links">
           {Object.entries(pages).map(([key, link]) => (
             <li key={key}>
               <a

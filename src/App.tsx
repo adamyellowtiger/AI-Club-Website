@@ -72,33 +72,35 @@ export default function App() {
         Skip to content
       </a>
       <Navbar active={route.page} />
-      <main id="main" tabIndex={-1} className={`page-view page-${route.page}`}>
-        {route.page !== "home" && <PageHeader page={route.page} />}
-        {route.page === "home" && (
-          <>
-            <HeroSection />
-            <MeetingsSection />
-            <HomePreview />
-          </>
-        )}
-        {route.page === "program" && (
-          <>
-            <ProgramRoadmap />
-            <WhatWeDoSection />
-          </>
-        )}
-        {route.page === "meetings" && (
-          <>
-            <MeetingsSection />
-            <MeetingHistory />
-          </>
-        )}
-        {route.page === "ai-bits" && <AIBitArchive />}
-        {route.page === "resources" && <ResourcesSection />}
-        {route.page === "team" && <TeamSection />}
-        {route.page === "join" && <JoinSection />}
-      </main>
-      <Footer />
+      <div className="page-layout">
+        <main id="main" tabIndex={-1} className={`page-view page-${route.page}`}>
+          {route.page !== "home" && <PageHeader page={route.page} />}
+          {route.page === "home" && (
+            <>
+              <HeroSection />
+              <MeetingsSection />
+              <HomePreview />
+            </>
+          )}
+          {route.page === "program" && (
+            <>
+              <ProgramRoadmap />
+              <WhatWeDoSection />
+            </>
+          )}
+          {route.page === "meetings" && (
+            <>
+              <MeetingsSection />
+              <MeetingHistory />
+            </>
+          )}
+          {route.page === "ai-bits" && <AIBitArchive />}
+          {route.page === "resources" && <ResourcesSection />}
+          {route.page === "team" && <TeamSection />}
+          {route.page === "join" && <JoinSection />}
+        </main>
+        <Footer />
+      </div>
     </>
   );
 }
