@@ -44,6 +44,7 @@ export const channels = [
 export function formatDate(date?: string) {
   return date
     ? new Intl.DateTimeFormat("en-CA", {
+        weekday: "long",
         month: "long",
         day: "numeric",
         year: "numeric",
