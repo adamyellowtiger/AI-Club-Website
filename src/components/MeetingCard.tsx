@@ -1,6 +1,6 @@
 import { ChevronDown, ArrowUpRight, Star } from "lucide-react";
 import type { Meeting } from "../data/roadmap";
-import { formatDate } from "../data/site";
+import { formatDate, site } from "../data/site";
 import CategoryBadge from "./CategoryBadge";
 import MeetingResources from "./MeetingResources";
 
@@ -48,6 +48,11 @@ export default function MeetingCard({ meeting }: { meeting: Meeting }) {
         </div>
         <h4>{meeting.title}</h4>
         <p className="meeting-summary">{meeting.summary}</p>
+        {(meeting.room || meeting.time || meeting.duration) && (
+          <p className="meeting-summary">
+            <strong>{meeting.room ?? site.room}</strong> · {meeting.time ?? site.time} · {meeting.duration ?? site.duration}
+          </p>
+        )}
         {meeting.highlight && (
           <span className="signature">
             <Star size={13} aria-hidden="true" />

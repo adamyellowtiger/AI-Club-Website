@@ -49,15 +49,15 @@ export default function MeetingsSection() {
                 <div className="next-facts">
                   <span>
                     <CalendarDays />
-                    {formatDate(nextMeeting.date)}
+                    <strong><time dateTime={nextMeeting.date}>{formatDate(nextMeeting.date)}</time></strong>
                   </span>
                   <span>
                     <MapPin />
-                    {site.room}
+                    <strong>{nextMeeting.room ?? site.room}</strong>
                   </span>
                   <span>
                     <Clock />
-                    {site.time} · {site.duration}
+                    {nextMeeting.time ?? site.time} · {nextMeeting.duration ?? site.duration}
                   </span>
                 </div>
                 {nextMeeting.leader && <p>Led by {nextMeeting.leader}</p>}

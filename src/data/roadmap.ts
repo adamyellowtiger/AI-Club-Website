@@ -18,6 +18,9 @@ export type Meeting = {
   status: MeetingStatus;
   summary: string;
   date?: string;
+  room?: string;
+  time?: string;
+  duration?: string;
   leader?: string;
   preparation?: string;
   goal?: string;
@@ -78,10 +81,14 @@ export const meetings: Meeting[] = [
     phase: 1,
     category: "concept",
     tags: ["AI Foundations"],
-    title: "What AI Actually Does",
-    status: "tba",
+    title: "Can You Fool AI? ✊✋✌️",
+    status: "upcoming",
+    date: "2026-10-15",
+    room: "Room 130",
+    time: "After school",
+    duration: "25–30 minutes",
     summary:
-      "Machine learning, generative AI, models, training, inference, and data.",
+      "Challenge our AI-powered rock-paper-scissors classifier! Discover how machine learning turns pixels into predictions, test it with your own hand gestures, and see if you can outsmart the model. No coding experience needed—everyone is welcome!",
     goal: "Give everyone a common mental model before coding begins.",
     takeaway:
       "AI systems learn patterns from data and use learned models to make predictions or generate outputs.",
