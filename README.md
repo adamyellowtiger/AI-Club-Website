@@ -32,14 +32,14 @@ Open `src/data/roadmap.ts`. Find the meeting by its `number` and edit only that 
 - Use `status: 'upcoming'` for an announced future meeting, or `'tba'` when its date is unknown.
 - Add `date: 'YYYY-MM-DD'` only after the date is confirmed.
 - Optionally add `leader` and `preparation` text.
-- Put new materials in `public/2026-27/meetings/` (create folders as needed).
-- Add `slidesHref`, `recapHref`, or `labHref` using a public-relative path such as `'2026-27/meetings/01-slides.pdf'`. Do not include `public/` in the link. HTTPS notebook links also work.
+- Put new slide decks and presentation previews in `public/resources/slides/`. Put other meeting materials in `public/resources/2026-27/meetings/` (create folders as needed).
+- Add `slidesHref`, `recapHref`, or `labHref` using a public-relative path such as `'resources/slides/2026-27-01-slides.pdf'`. Do not include `public/` in the link. HTTPS notebook links also work.
 
 For example, after a real announcement, a meeting may have:
 
 ```ts
 status: 'current',
-slidesHref: '2026-27/meetings/01-slides.pdf',
+slidesHref: 'resources/slides/2026-27-01-slides.pdf',
 ```
 
 Only add the link after uploading the file. Missing resource fields produce a quiet pending message, not a broken button. Counts, current phase, previous meeting, and next topic are calculated from the roadmap. Without a current meeting, the first incomplete meeting is shown as the next planned topic. Initially all dates and progress are unconfirmed; no completed sessions are claimed.
@@ -77,7 +77,22 @@ Team members sort by `order`, not by name. Keep the approved order and tiers: tw
 
 ## Assets and archives
 
-All existing PDFs, slide decks, Daily Bit images, and original root assets remain. Public paths are intentionally preserved, including `meeting-slides-archive.html`, `weekly-recap-notes-archive.html`, `resources/`, `slides/`, and `daily-bits/`. Some historical files are duplicates; do not delete or move them just to tidy folders, because old shared links may depend on them.
+Keep the repository root for the app entry point, package files, build configuration, and this README. Assets and supporting documents belong in these folders:
+
+| Folder | Contents |
+| --- | --- |
+| `public/resources/` | Downloadable guides, reading lists, cheat sheets, and recap PDFs |
+| `public/resources/slides/` | Kickoff PowerPoint, PDF, and cover preview, plus historical slide decks |
+| `public/daily-bits/` | Daily Bit artwork and supporting diagrams |
+| `public/illustrations/` | Byte mascot artwork and page illustrations |
+| `assets/originals/resources/` | Original source copies of guides and presentations, outside the deployed site |
+| `assets/originals/daily-bits/` | Original source copies of Daily Bit artwork and diagrams, outside the deployed site |
+| `docs/` | Historical validation notes in [`VALIDATION.md`](docs/VALIDATION.md) |
+| `design-system/` | Visual design guidance |
+
+Files in `public/` are copied into the production build and use URLs without the `public/` prefix. Files in `assets/originals/` are retained for reference and are not published. Edit the deployed copy in `public/` when updating website downloads.
+
+Slides formerly under `public/slides/` now live in `public/resources/slides/`; the kickoff component, preview image, slide archive, and validation paths use the new location. Previously shared direct `slides/...` URLs need the new `resources/slides/...` prefix. The archive page URLs (`meeting-slides-archive.html` and `weekly-recap-notes-archive.html`), existing resource PDFs, and existing Daily Bit URLs remain available. Duplicate Daily Bit filenames in `public/daily-bits/` are retained for existing shared links.
 
 The Home, Program, and Resources pages use the supplied transparent PNG illustrations in `public/illustrations/`. Keep the name Byte and use base-aware URLs for these assets. Styling and responsive rules live in `src/styles.css`; design decisions are documented in `design-system/MASTER.md`.
 
