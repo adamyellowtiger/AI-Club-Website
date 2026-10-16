@@ -82,7 +82,7 @@ export const meetings: Meeting[] = [
     category: "concept",
     tags: ["AI Foundations"],
     title: "Can You Fool AI? ✊✋✌️",
-    status: "upcoming",
+    status: "completed",
     date: "2026-10-15",
     room: "Room 130",
     time: "After school",
@@ -92,6 +92,9 @@ export const meetings: Meeting[] = [
     goal: "Give everyone a common mental model before coding begins.",
     takeaway:
       "AI systems learn patterns from data and use learned models to make predictions or generate outputs.",
+    slidesHref: "slides/can-you-fool-ai-oct-15-2026.pdf",
+    labHref:
+      "https://colab.research.google.com/drive/1t4Td8nvlend0j3bISLbu2_fT2m2GWlpL?usp=sharing",
   },
   {
     number: 2,

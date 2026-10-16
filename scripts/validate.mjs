@@ -97,11 +97,12 @@ const { aiBits } = await loadData("aiBits");
 assert.equal(new Set(aiBits.map((bit) => bit.id)).size, aiBits.length);
 const { resources } = await loadData("resources");
 const links = [
-  "slides/Bayview_AI_Club_Kickoff.pptx",
+  "resources/slides/Bayview_AI_Club_Kickoff.pptx",
+  "resources/slides/bayview-ai-club-kickoff.pdf",
   "illustrations/byte_hero.png",
   "illustrations/byte_program.png",
   "illustrations/byte_resources.png",
-  "slides/bayview-ai-club-kickoff-preview.png",
+  "resources/slides/bayview-ai-club-kickoff-preview.png",
   ...resources.map((r) => r.href),
   ...meetings.flatMap((m) => [m.slidesHref, m.recapHref, m.labHref]),
   ...aiBits.flatMap((b) => [
