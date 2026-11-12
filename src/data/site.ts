@@ -13,10 +13,11 @@ export type SiteNotice = {
   tone?: "info" | "important" | "event";
 };
 export const siteNotice: SiteNotice = {
-  enabled: false,
-  label: "Club update",
-  message: "",
-  tone: "info",
+  enabled: true,
+  label: "Planned online session: How to Use AI Effectively",
+  message:
+    "We’ll compare AI tools for studying, research, brainstorming, and coding, and practice checking their answers. Date and platform TBA.",
+  tone: "event",
 };
 export const channels = [
   {

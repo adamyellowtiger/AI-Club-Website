@@ -12,23 +12,20 @@ export default function MeetingHistory() {
   );
   return (
     <section className="section-shell meeting-history">
-      <h2>Coming up in the program</h2>
-      <p>
-        Planned in program order. Confirmed dates will appear here when
-        announced.
-      </p>
-      <div className="meeting-index">
-        {upcoming.map((m) => (
-          <a href={`#/program/meeting-${m.number}`} key={m.number}>
-            <span className="eyebrow">
-              Meeting {String(m.number).padStart(2, "0")} · {formatDate(m.date)}
-            </span>
-            <h3>{m.title}</h3>
-            <CategoryBadge category={m.category} />
-            <p>{m.summary}</p>
-            <span className="text-link">Explore meeting ↗</span>
-          </a>
-        ))}
+      <div className="history-block" id="classifier-retraining">
+        <h2>Rock-Paper-Scissors Classifier Retraining</h2>
+        <p>
+          <time dateTime="2026-10-30">{formatDate("2026-10-30")}</time> · Project update
+        </p>
+        <p>
+          We retrained the classifier using 60 photos of real hands. It got all
+          12 held-out photos from the new collection right, but only one of three
+          photos in a separate phone test. The two tests show why it helps to try
+          a model on photos taken under different conditions.
+        </p>
+        <a className="text-link" href="#/program/meeting-1">
+          Revisit the original classifier session ↗
+        </a>
       </div>
       <div className="history-block">
         <h2>2026–27 meeting history</h2>
@@ -52,6 +49,26 @@ export default function MeetingHistory() {
             will be linked here as the year unfolds.
           </p>
         )}
+      </div>
+      <div className="history-block">
+        <h2>Coming up in the program</h2>
+        <p>
+          Planned in program order. Confirmed dates will appear here when
+          announced.
+        </p>
+        <div className="meeting-index">
+          {upcoming.map((m) => (
+            <a href={`#/program/meeting-${m.number}`} key={m.number}>
+              <span className="eyebrow">
+                Meeting {String(m.number).padStart(2, "0")} · {formatDate(m.date)}
+              </span>
+              <h3>{m.title}</h3>
+              <CategoryBadge category={m.category} />
+              <p>{m.summary}</p>
+              <span className="text-link">Explore meeting ↗</span>
+            </a>
+          ))}
+        </div>
       </div>
       <div className="history-block">
         <p className="eyebrow">2025–26</p>

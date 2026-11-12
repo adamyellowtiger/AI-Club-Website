@@ -57,7 +57,8 @@ export default function MeetingsSection() {
                   </span>
                   <span>
                     <Clock />
-                    {nextMeeting.time ?? site.time} · {nextMeeting.duration ?? site.duration}
+                    {nextMeeting.time ?? site.time}
+                    {nextMeeting.duration && ` · ${nextMeeting.duration}`}
                   </span>
                 </div>
                 {nextMeeting.leader && <p>Led by {nextMeeting.leader}</p>}
@@ -95,6 +96,12 @@ export default function MeetingsSection() {
             ) : (
               "No 2026–27 completions posted yet"
             )}
+          </span>
+          <span>
+            <strong>Project update</strong>
+            <a href="#/meetings/classifier-retraining">
+              Rock-paper-scissors retraining <ArrowUpRight size={14} />
+            </a>
           </span>
           {followingMeeting && (
             <span>

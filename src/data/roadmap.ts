@@ -85,10 +85,10 @@ export const meetings: Meeting[] = [
     status: "completed",
     date: "2026-10-15",
     room: "Room 130",
-    time: "After school",
-    duration: "25–30 minutes",
+    time: "3:30 PM",
+    duration: "30 minutes",
     summary:
-      "Challenge our AI-powered rock-paper-scissors classifier! Discover how machine learning turns pixels into predictions, test it with your own hand gestures, and see if you can outsmart the model. No coding experience needed—everyone is welcome!",
+      "We explored how AI models learn from data and tested our rock-paper-scissors classifier with hand gestures to see where its predictions went wrong.",
     goal: "Give everyone a common mental model before coding begins.",
     takeaway:
       "AI systems learn patterns from data and use learned models to make predictions or generate outputs.",
@@ -101,14 +101,16 @@ export const meetings: Meeting[] = [
     phase: 1,
     category: "coding",
     tags: ["Python", "Machine Learning"],
-    title: "Your First Machine Learning Model",
-    status: "tba",
-    summary: "Train and test a small Python classifier with scikit-learn.",
+    title: "Intro to Python and Machine Learning",
+    status: "upcoming",
+    date: "2026-11-24",
+    room: "Bayview Secondary School · Room TBA",
+    time: "3:30–4:15 PM",
+    summary:
+      "Follow a live Python demo in PyCharm and use our rock-paper-scissors classifier to see how models learn from mistakes. No coding experience needed.",
     activity:
-      "Run or modify real ML code: train/test a small classifier and inspect its predictions.",
-    goal: "Work with real machine-learning code in the first technical session.",
-    careerConnection:
-      "Data science and ML engineering use this same train, test, and inspect workflow.",
+      "Work through short Python examples, then get an introduction to parameters, loss, and gradient descent.",
+    goal: "Read simple Python code and explain what a model changes during training.",
   },
   {
     number: 3,
